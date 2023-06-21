@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType
@@ -8,12 +6,11 @@ public enum ItemType
     Tree,
     Stump,
     Tent
-    
 }
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private ItemType _itemType;
+    [SerializeField] protected ItemType ItemType;
     
-    public ItemType ItemType => _itemType;
+    public ItemType CurrentItemType => ItemType;
 }
