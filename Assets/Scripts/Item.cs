@@ -13,5 +13,7 @@ public enum ItemType
 
 public class Item : MonoBehaviour
 {
-    public ItemType ItemType;
+    [SerializeField] private ItemType _itemType;
+    
+    public ItemType ItemType => _itemType;
 }
