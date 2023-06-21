@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MergeController : MonoBehaviour
+public class MergeManager : MonoBehaviour
 {
-
     private float _decelerationFactor = 0.1f;
     private float _minDistance = 0.2f;
 
@@ -15,8 +13,7 @@ public class MergeController : MonoBehaviour
             StartCoroutine(MergeProcess(fromItem, toItem));
         }
     }
-
-
+    
     private IEnumerator MergeProcess(ActiveItem fromItem, ActiveItem toItem)
     {
         if (fromItem.CurrentItemType == toItem.CurrentItemType)
