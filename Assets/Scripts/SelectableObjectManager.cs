@@ -1,21 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-
-public enum SelectionState
-{
-    UnitsSelected,
-    Frame,
-    Other
-}
 
 public class SelectableObjectManager : MonoBehaviour
 {
     [SerializeField] private SelectableObject _currentSelectObject;
-
-    [SerializeField] private Camera _camera;
+    [SerializeField] private LayerMask _layerMaskCell;
+    private Camera _camera;
     
     private Plane _plane;
 
@@ -37,7 +26,6 @@ public class SelectableObjectManager : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out SelectableObject hitSelectableObject))
             {
-
                 if (_currentSelectObject)
                 {
                     if (_currentSelectObject != hitSelectableObject)
@@ -57,13 +45,11 @@ public class SelectableObjectManager : MonoBehaviour
             {
                 UnhoveredCurrent();
             }
-            
         }
         else
         {
             UnhoveredCurrent();
         }
-
         
         if (Input.GetMouseButton(0))
         {
@@ -77,23 +63,24 @@ public class SelectableObjectManager : MonoBehaviour
                 _currentSelectObject.transform.position = mousePosition;
             }
         }
-
-
-        if (Input.GetMouseButtonDown(0))
+        
+        if (Input.GetMouseButtonUp(0))
         {
-            
-        }
+            ray = _camera.ScreenPointToRay(Input.mousePosition);
+            float _rayMaxDistance = 1000f;
 
-        if (Input.GetMouseButton(0))
-        {
-            
-        }
-                
+            RaycastHit hitCell;
 
+            if (Physics.Raycast(ray, out hitCell, _rayMaxDistance, _layerMaskCell))
+            {
+                if (hitCell.collider.TryGetComponent(out Cell cell))
+                {
+                    _currentSelectObject.transform.position = cell.transform.position;
+                }
+            }
+        }
     }
-
-
-
+    
     private void UnhoveredCurrent()
     {
         if (_currentSelectObject)
