@@ -4,9 +4,10 @@ public class SelectableObjectManager : MonoBehaviour
 {
     [SerializeField] private SelectableObject _currentSelectObject;
     [SerializeField] private LayerMask _layerMaskCell;
-    private Camera _camera;
     
+    private Camera _camera;
     private Plane _plane;
+    private Vector3 _startPosition;
 
     private void Start()
     {
@@ -50,6 +51,15 @@ public class SelectableObjectManager : MonoBehaviour
         {
             UnhoveredCurrent();
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (_currentSelectObject)
+            {
+                _startPosition = _currentSelectObject.transform.position;
+            }
+        }
+        
         
         if (Input.GetMouseButton(0))
         {
@@ -67,15 +77,25 @@ public class SelectableObjectManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             ray = _camera.ScreenPointToRay(Input.mousePosition);
-            float _rayMaxDistance = 1000f;
 
             RaycastHit hitCell;
+            float maxDistanceRay = 1000f;
 
-            if (Physics.Raycast(ray, out hitCell, _rayMaxDistance, _layerMaskCell))
+            if (Physics.Raycast(ray, out hitCell, maxDistanceRay, _layerMaskCell))
             {
-                if (hitCell.collider.TryGetComponent(out Cell cell))
+                if (hitCell.collider.TryGetComponent(out Cell currentCell))
                 {
-                    _currentSelectObject.transform.position = cell.transform.position;
+                    if (_currentSelectObject)
+                    {
+                        _currentSelectObject.transform.position = currentCell.transform.position;
+                    }
+                }
+            }
+            else
+            {
+                if (_currentSelectObject)
+                {
+                    _currentSelectObject.transform.position = _startPosition;
                 }
             }
         }
@@ -89,4 +109,5 @@ public class SelectableObjectManager : MonoBehaviour
             _currentSelectObject = null;
         }
     }
+    
 }
