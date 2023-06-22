@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8912089}
   - component: {fileID: 8912088}
   - component: {fileID: 8912091}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8912088
 CapsuleCollider:
@@ -168,7 +168,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -262,7 +262,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 357303946}
   - {fileID: 1185234624}
   - {fileID: 1036244794}
   - {fileID: 1475680672}
@@ -285,7 +284,7 @@ Transform:
   - {fileID: 548480506}
   - {fileID: 737336120}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &286422514
 PrefabInstance:
@@ -357,7 +356,7 @@ GameObject:
   - component: {fileID: 306298800}
   - component: {fileID: 306298799}
   - component: {fileID: 306298802}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +376,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &306298799
 CapsuleCollider:
@@ -389,7 +388,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -468,8 +467,8 @@ GameObject:
   - component: {fileID: 357303944}
   - component: {fileID: 357303943}
   - component: {fileID: 357303947}
-  m_Layer: 0
-  m_Name: Cell (SpawnPoint)
+  m_Layer: 6
+  m_Name: SpawnItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,8 +550,8 @@ Transform:
   m_LocalScale: {x: 1.5, y: 0.11152, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 44872616}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &357303947
 MonoBehaviour:
@@ -579,7 +578,7 @@ GameObject:
   - component: {fileID: 438179907}
   - component: {fileID: 438179906}
   - component: {fileID: 438179909}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +598,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &438179906
 CapsuleCollider:
@@ -611,7 +610,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -690,7 +689,7 @@ GameObject:
   - component: {fileID: 506049130}
   - component: {fileID: 506049129}
   - component: {fileID: 506049132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +709,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &506049129
 CapsuleCollider:
@@ -722,7 +721,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -801,7 +800,7 @@ GameObject:
   - component: {fileID: 545078531}
   - component: {fileID: 545078530}
   - component: {fileID: 545078533}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +820,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &545078530
 CapsuleCollider:
@@ -833,7 +832,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -912,7 +911,7 @@ GameObject:
   - component: {fileID: 548480508}
   - component: {fileID: 548480507}
   - component: {fileID: 548480510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +931,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &548480507
 CapsuleCollider:
@@ -944,7 +943,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -1023,7 +1022,7 @@ GameObject:
   - component: {fileID: 562300495}
   - component: {fileID: 562300494}
   - component: {fileID: 562300497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1043,7 +1042,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &562300494
 CapsuleCollider:
@@ -1055,7 +1054,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -1228,7 +1227,7 @@ GameObject:
   - component: {fileID: 737336122}
   - component: {fileID: 737336121}
   - component: {fileID: 737336124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1247,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &737336121
 CapsuleCollider:
@@ -1260,7 +1259,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -1326,63 +1325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e97cceb6c00441afb32a17ee4b3f442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &801895494
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7412097575342569930, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
-      propertyPath: m_Name
-      value: Cell(Tent) (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
 --- !u!1 &847319062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,7 +1355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentSelectObject: {fileID: 0}
-  _camera: {fileID: 0}
+  _layerMaskCell:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &847319064
 Transform:
   m_ObjectHideFlags: 0
@@ -1427,7 +1371,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -1526,7 +1470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1464725423562444970, guid: da0484723bd5c44b1ad2ccc16e3d324b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1464725423562444970, guid: da0484723bd5c44b1ad2ccc16e3d324b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1583,7 +1527,7 @@ GameObject:
   - component: {fileID: 1036244796}
   - component: {fileID: 1036244795}
   - component: {fileID: 1036244798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,7 +1547,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1036244795
 CapsuleCollider:
@@ -1615,7 +1559,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -1692,9 +1636,9 @@ GameObject:
   - component: {fileID: 1185234624}
   - component: {fileID: 1185234627}
   - component: {fileID: 1185234626}
-  - component: {fileID: 1185234625}
+  - component: {fileID: 1185234629}
   - component: {fileID: 1185234628}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1714,22 +1658,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1185234625
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185234623}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1185234626
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1792,6 +1722,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e97cceb6c00441afb32a17ee4b3f442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &1185234629
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185234623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1188210768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,7 +1749,7 @@ GameObject:
   - component: {fileID: 1188210771}
   - component: {fileID: 1188210770}
   - component: {fileID: 1188210773}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1825,7 +1769,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1188210770
 CapsuleCollider:
@@ -1837,7 +1781,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -1916,7 +1860,7 @@ GameObject:
   - component: {fileID: 1204259680}
   - component: {fileID: 1204259679}
   - component: {fileID: 1204259682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1936,7 +1880,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1204259679
 CapsuleCollider:
@@ -1948,7 +1892,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -2027,7 +1971,7 @@ GameObject:
   - component: {fileID: 1260569805}
   - component: {fileID: 1260569804}
   - component: {fileID: 1260569807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2047,7 +1991,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1260569804
 CapsuleCollider:
@@ -2059,7 +2003,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -2138,7 +2082,7 @@ GameObject:
   - component: {fileID: 1383302309}
   - component: {fileID: 1383302308}
   - component: {fileID: 1383302311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2158,7 +2102,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1383302308
 CapsuleCollider:
@@ -2170,7 +2114,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -2249,7 +2193,7 @@ GameObject:
   - component: {fileID: 1396985545}
   - component: {fileID: 1396985544}
   - component: {fileID: 1396985547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2269,7 +2213,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1396985544
 CapsuleCollider:
@@ -2281,7 +2225,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -2360,7 +2304,7 @@ GameObject:
   - component: {fileID: 1417787095}
   - component: {fileID: 1417787094}
   - component: {fileID: 1417787097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2380,7 +2324,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1417787094
 CapsuleCollider:
@@ -2392,7 +2336,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -2467,7 +2411,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4242068067088026014, guid: 2ef6ee6ed83be40dda848c47d8ec50fc, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4242068067088026014, guid: 2ef6ee6ed83be40dda848c47d8ec50fc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2528,7 +2472,7 @@ GameObject:
   - component: {fileID: 1475680674}
   - component: {fileID: 1475680673}
   - component: {fileID: 1475680676}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2548,7 +2492,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1475680673
 CapsuleCollider:
@@ -2560,7 +2504,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -2639,7 +2583,7 @@ GameObject:
   - component: {fileID: 1549366803}
   - component: {fileID: 1549366802}
   - component: {fileID: 1549366805}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2659,7 +2603,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1549366802
 CapsuleCollider:
@@ -2671,7 +2615,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -2750,7 +2694,7 @@ GameObject:
   - component: {fileID: 1549586602}
   - component: {fileID: 1549586601}
   - component: {fileID: 1549586604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2770,7 +2714,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1549586601
 CapsuleCollider:
@@ -2782,7 +2726,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -2944,7 +2888,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1661137245
 GameObject:
@@ -2959,7 +2903,7 @@ GameObject:
   - component: {fileID: 1661137248}
   - component: {fileID: 1661137247}
   - component: {fileID: 1661137250}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2979,7 +2923,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1661137247
 CapsuleCollider:
@@ -2991,7 +2935,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -3070,7 +3014,7 @@ GameObject:
   - component: {fileID: 2068117729}
   - component: {fileID: 2068117728}
   - component: {fileID: 2068117731}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cell (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3090,7 +3034,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44872616}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2068117728
 CapsuleCollider:
@@ -3102,7 +3046,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -3177,7 +3121,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3445731195677701118, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
       propertyPath: m_LocalPosition.x
