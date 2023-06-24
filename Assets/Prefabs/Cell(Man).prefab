@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3259634243024340254}
   - component: {fileID: 865202937}
   - component: {fileID: 3065194073017952360}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cell(Man)
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 8209529051527026739}
   - component: {fileID: 8209529051527026750}
   - component: {fileID: 8209529051527026737}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 8209529052018515820}
   - component: {fileID: 8209529052018515819}
   - component: {fileID: 8209529052018515818}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LegR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8209529052058817747}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Man
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 8209529052185790829}
   - component: {fileID: 8209529052185790824}
   - component: {fileID: 8209529052185790827}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 8209529052337154890}
   - component: {fileID: 8209529052337154889}
   - component: {fileID: 8209529052337154888}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HendR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 8209529052410318972}
   - component: {fileID: 8209529052410318971}
   - component: {fileID: 8209529052410318970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HendL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 8209529052612305419}
   - component: {fileID: 8209529052612305418}
   - component: {fileID: 8209529052612305421}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 8209529052630570815}
   - component: {fileID: 8209529052630570810}
   - component: {fileID: 8209529052630570813}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LegL
   m_TagString: Untagged
   m_Icon: {fileID: 0}

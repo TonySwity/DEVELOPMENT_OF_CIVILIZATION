@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 872448756689406229}
   - component: {fileID: 872448756689406228}
   - component: {fileID: 872448756689406231}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 872448756736215672}
   - component: {fileID: 872448756736215679}
   - component: {fileID: 872448756736215678}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 872448757596999358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 872448757646683496}
   - component: {fileID: 872448757646683503}
   - component: {fileID: 872448757646683502}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 861895228459838772}
   - component: {fileID: 872448758119140858}
   - component: {fileID: 122358771658366031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cell(Tree)
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -343,7 +343,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -373,3 +373,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemType: 1
+  NextItem: 0
+  <ItemID>k__BackingField: 0
