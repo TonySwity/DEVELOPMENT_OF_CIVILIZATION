@@ -12,10 +12,8 @@ public class ActiveItem : Item
     
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("stay");
-        if (other.attachedRigidbody.TryGetComponent(out ActiveItem activeItem))
+        if (other.TryGetComponent(out ActiveItem activeItem))
         {
-            Debug.Log("соединились");
             MergeSystem.Instance.Collapse(this, activeItem);
         }
     }
