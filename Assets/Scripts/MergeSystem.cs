@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MergeSystem : MonoBehaviour
 {
+    [SerializeField] private ActiveItem[] ActiveItems = {};
+    
     private float _decelerationFactor = 0.1f;
     private float _mergeTime = 2f;
 
