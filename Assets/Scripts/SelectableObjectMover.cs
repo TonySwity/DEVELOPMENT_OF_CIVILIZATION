@@ -1,10 +1,9 @@
 using UnityEngine;
-
-public class SelectableObjectManager : MonoBehaviour
+//objectmover
+public class SelectableObjectMover : MonoBehaviour
 {
     [SerializeField] private SelectableObject _currentSelectObject;
     [SerializeField] private LayerMask _layerMaskCell;
-    [SerializeField] private LayerMask _layerMaskActiveItem;
 
     private Camera _camera;
     private Plane _plane;
@@ -19,13 +18,11 @@ public class SelectableObjectManager : MonoBehaviour
     private void Update()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
-        Debug.DrawRay(ray.origin, ray.direction * 20f, Color.cyan);
-
-        FindSelectableObject();
-
+        
         if (Input.GetMouseButtonDown(0))
         {
+            FindSelectableObject();
+            
             if (_currentSelectObject)
             {
                 _startPosition = _currentSelectObject.transform.position;
@@ -36,8 +33,6 @@ public class SelectableObjectManager : MonoBehaviour
         {
             if (_currentSelectObject)
             {
-                ray = _camera.ScreenPointToRay(Input.mousePosition);
-
                 float distance;
                 _plane.Raycast(ray, out distance);
                 Vector3 mousePosition = ray.GetPoint(distance);
@@ -48,23 +43,41 @@ public class SelectableObjectManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             FindClearCell();
+            float maxDistanceRay = 500f;
+            
+            if(Physics.Raycast(ray,out RaycastHit hit, maxDistanceRay,_layerMaskCell))
+            {
+                if (hit.collider.TryGetComponent(out Cell cell))
+                {
+                    if (cell.CurrentItemType != ItemType.Empty)
+                    {
+                        return;
+                    }
+                    
+                    cell.SetCurrentItemType(_currentSelectObject.GetCurrentItemType());
+                }
+            }
         }
     }
 
     private void UnhoveredCurrent()
     {
-        if (_currentSelectObject)
+        if (!_currentSelectObject)
         {
-            _currentSelectObject.OnUnhover();
-            _currentSelectObject = null;
+            return;
         }
+        _currentSelectObject.OnUnhover();
+        _currentSelectObject = null;
     }
 
     private void FindSelectableObject()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        float distance = 500f;
+        
 
-        if (Physics.Raycast(ray, out RaycastHit hit) == false)
+        if (Physics.Raycast(ray, out hit) == false)
         {
             UnhoveredCurrent();
             return;
@@ -82,55 +95,50 @@ public class SelectableObjectManager : MonoBehaviour
 
         _currentSelectObject = selectableObject;
         _currentSelectObject.OnHover();
+        
+        if (Physics.Raycast(ray, out hit, distance, _layerMaskCell))
+        {
+            if (hit.collider.TryGetComponent(out Cell cell))
+            {
+                if (cell.CurrentItemType != ItemType.Empty)
+                {
+                    cell.SetCurrentItemType(ItemType.Empty);
+                }
+            }
+        }
     }
 
     private void FindClearCell()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitCell;
-        float maxDistanceRay = 1000f;
-
-        int activeItemCount = 0;
+        float maxDistanceRay = 500f;
         Collider[] hitColliders = {};
-        int maxActiveItem = 1;
-        float _radiusSphere = 0.5f;
 
         if (Physics.Raycast(ray, out hitCell, maxDistanceRay, _layerMaskCell))
         {
-
             if (hitCell.collider.TryGetComponent(out Cell currentCell) == false)
             {
                 return;
             }
-
-            hitColliders = Physics.OverlapSphere(currentCell.transform.position, _radiusSphere);
-
-            if (_currentSelectObject)
+            
+            if (_currentSelectObject && currentCell.CurrentItemType == ItemType.Empty)
             {
-                _currentSelectObject.transform.position = currentCell.transform.position;
+                SetNewPosition(currentCell.transform.position);
+            }
+            else
+            {
+                SetNewPosition(_startPosition);
             }
         }
         else
         {
             if (_currentSelectObject)
             {
-                _currentSelectObject.transform.position = _startPosition;
+                SetNewPosition(_startPosition);
             }
         }
-
-        foreach (var hitCollider in hitColliders)
-        {
-            if (hitCollider.TryGetComponent(out ActiveItem activeItem))
-            {
-                activeItemCount++;
-            }
-        }
-
-        if (activeItemCount <= maxActiveItem)
-        {
-            return;
-        }
-        Debug.Log(activeItemCount);
-        _currentSelectObject.transform.position = _startPosition;
     }
+
+    private void SetNewPosition(Vector3 position) => _currentSelectObject.transform.position = position;
 }
