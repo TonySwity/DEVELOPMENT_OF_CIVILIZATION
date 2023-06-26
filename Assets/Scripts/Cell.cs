@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    public bool IsClear { get; private set; } = true;
-    
-    public void MakeBusy()
-    {
-        IsClear = false;
-    }
+    [field: SerializeField] public ItemType CurrentItemType { get; private set; }
 
-    public void MakeClear()
+    public void SetCurrentItemType(ItemType itemType)
     {
-        IsClear = true;
+        CurrentItemType = itemType;
     }
 }
+
