@@ -22,9 +22,6 @@ public class SelectableObject : MonoBehaviour
         _activeItem.ActivatedMerge();
     }
 
-    public ItemType GetCurrentItemType()
-    {
-        return _activeItem.CurrentItemType;
-    }
-    
+    public ItemType GetCurrentItemType() => _activeItem.CurrentItemType;
+
 }
