@@ -43,26 +43,39 @@ public class SelectableObjectMover : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             FindClearCell();
+
             float maxDistanceRay = 500f;
-            
-            if(Physics.Raycast(ray,out RaycastHit hit, maxDistanceRay,_layerMaskCell))
+
+            if (_currentSelectObject == null)
             {
-                if (hit.collider.TryGetComponent(out Cell cell))
-                {
-                    if (cell.CurrentItemType != ItemType.Empty)
-                    {
-                        return;
-                    }
-                    
-                    cell.SetCurrentItemType(_currentSelectObject.GetCurrentItemType());
-                }
+                return;
             }
+            
+
+            if (Physics.Raycast(ray, out RaycastHit hit, maxDistanceRay, _layerMaskCell) == false)
+            {
+                return;
+            }
+            
+            if (hit.collider.TryGetComponent(out Cell cell) == false)
+            {
+                return;
+            }
+            
+            if (cell.CurrentItemType != ItemType.Empty)
+            {
+                return;
+            }
+            
+            cell.SetCurrentItemType(_currentSelectObject.GetCurrentItemType());
+            
+            UnhoveredCurrent();
         }
     }
 
     private void UnhoveredCurrent()
     {
-        if (!_currentSelectObject)
+        if (_currentSelectObject == null)
         {
             return;
         }
@@ -121,24 +134,20 @@ public class SelectableObjectMover : MonoBehaviour
             {
                 return;
             }
-            
-            if (_currentSelectObject && currentCell.CurrentItemType == ItemType.Empty)
-            {
-                SetNewPosition(currentCell.transform.position);
-            }
-            else
-            {
-                SetNewPosition(_startPosition);
-            }
+
+            SetNewPosition(currentCell.CurrentItemType == ItemType.Empty ? currentCell.transform.position : _startPosition);
         }
         else
         {
-            if (_currentSelectObject)
-            {
-                SetNewPosition(_startPosition);
-            }
+            SetNewPosition(_startPosition);
         }
     }
 
-    private void SetNewPosition(Vector3 position) => _currentSelectObject.transform.position = position;
+    private void SetNewPosition(Vector3 position)
+    {
+        if (_currentSelectObject)
+        {
+            _currentSelectObject.transform.position = position;
+        }
+    }
 }
