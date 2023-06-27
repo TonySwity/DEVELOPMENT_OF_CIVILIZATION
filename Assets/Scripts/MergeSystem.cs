@@ -1,20 +1,27 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MergeSystem : MonoBehaviour
 {
     [SerializeField] private ActiveItem[] ActiveItems = {};
     
-    private float _decelerationFactor = 0.1f;
-    private float _mergeTime = 2f;
+    private const float AccelerationFactor = 0.1f;
+    private const float MergeTime = 1f;
 
     public static MergeSystem Instance;
 
     private void Start()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance == this)
+        {
+            Destroy(gameObject);
+        }
+        
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Collapse(ActiveItem firstActiveItem, ActiveItem secondActiveItem)
@@ -42,7 +49,7 @@ public class MergeSystem : MonoBehaviour
         {
             Vector3 startPosition = fromItem.transform.position;
 
-            for (float t = 0; t < _mergeTime; t += Time.deltaTime / _decelerationFactor)
+            for (float t = 0; t < MergeTime; t += Time.deltaTime / AccelerationFactor)
             {
                 fromItem.transform.position = Vector3.Lerp(startPosition, toItem.transform.position, t);
                 yield return null;
