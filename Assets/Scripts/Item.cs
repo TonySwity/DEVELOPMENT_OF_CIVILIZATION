@@ -6,7 +6,8 @@ public enum ItemType
     Man,
     Tree,
     Stump,
-    Tent
+    Tent,
+    Home
 }
 
 public class Item : MonoBehaviour
