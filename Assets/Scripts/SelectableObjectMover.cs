@@ -1,13 +1,16 @@
 using UnityEngine;
-//objectmover
+
 public class SelectableObjectMover : MonoBehaviour
 {
+    private const float MaxDistanceRay = 500f;
+
     [SerializeField] private SelectableObject _currentSelectObject;
     [SerializeField] private LayerMask _layerMaskCell;
 
     private Camera _camera;
     private Plane _plane;
     private Vector3 _startPosition;
+    [SerializeField] private Cell _cell;
 
     private void Start()
     {
@@ -18,57 +21,48 @@ public class SelectableObjectMover : MonoBehaviour
     private void Update()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             FindSelectableObject();
-            
-            if (_currentSelectObject)
-            {
-                _startPosition = _currentSelectObject.transform.position;
-            }
+            SetStartPositionCurrentSelectableObject();
         }
 
         if (Input.GetMouseButton(0))
         {
-            if (_currentSelectObject)
-            {
-                float distance;
-                _plane.Raycast(ray, out distance);
-                Vector3 mousePosition = ray.GetPoint(distance);
-                _currentSelectObject.transform.position = mousePosition;
-            }
+            _plane.Raycast(ray, out float distance);
+            Vector3 mousePosition = ray.GetPoint(distance);
+            SetNewPositionCurrentSelectableObject(mousePosition);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             FindClearCell();
 
-            float maxDistanceRay = 500f;
-
             if (_currentSelectObject == null)
             {
                 return;
             }
-            
 
-            if (Physics.Raycast(ray, out RaycastHit hit, maxDistanceRay, _layerMaskCell) == false)
+            if (Physics.Raycast(ray, out RaycastHit hit, MaxDistanceRay, _layerMaskCell) == false)
             {
+                _cell.SetCurrentItemType(_currentSelectObject.GetCurrentItemType());
                 return;
             }
-            
+
             if (hit.collider.TryGetComponent(out Cell cell) == false)
             {
                 return;
             }
-            
+
             if (cell.CurrentItemType != ItemType.Empty)
             {
                 return;
             }
-            
+
+            _currentSelectObject.ActiveItem.SetCurrentCell(cell);
             cell.SetCurrentItemType(_currentSelectObject.GetCurrentItemType());
-            
+
             UnhoveredCurrent();
         }
     }
@@ -79,6 +73,7 @@ public class SelectableObjectMover : MonoBehaviour
         {
             return;
         }
+
         _currentSelectObject.OnUnhover();
         _currentSelectObject = null;
     }
@@ -87,8 +82,6 @@ public class SelectableObjectMover : MonoBehaviour
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        float distance = 500f;
-        
 
         if (Physics.Raycast(ray, out hit) == false)
         {
@@ -101,24 +94,29 @@ public class SelectableObjectMover : MonoBehaviour
             return;
         }
 
-        if (_currentSelectObject != selectableObject)
-        {
-            _currentSelectObject?.OnUnhover();
-        }
+        UnhoveredCurrent();
 
         _currentSelectObject = selectableObject;
         _currentSelectObject.OnHover();
-        
-        if (Physics.Raycast(ray, out hit, distance, _layerMaskCell))
+
+        if (Physics.Raycast(ray, out hit, MaxDistanceRay, _layerMaskCell) == false)
         {
-            if (hit.collider.TryGetComponent(out Cell cell))
-            {
-                if (cell.CurrentItemType != ItemType.Empty)
-                {
-                    cell.SetCurrentItemType(ItemType.Empty);
-                }
-            }
+            return;
         }
+
+        if (hit.collider.TryGetComponent(out Cell cell) == false)
+        {
+            return;
+        }
+
+        if (cell.CurrentItemType == ItemType.Empty)
+        {
+            return;
+        }
+
+        _cell = cell;
+        _currentSelectObject.ActiveItem.SetCurrentCell(cell);
+        cell.SetCurrentItemType(ItemType.Empty);
     }
 
     private void FindClearCell()
@@ -135,19 +133,34 @@ public class SelectableObjectMover : MonoBehaviour
                 return;
             }
 
-            SetNewPosition(currentCell.CurrentItemType == ItemType.Empty ? currentCell.transform.position : _startPosition);
+            _cell = currentCell;
+            SetNewPositionCurrentSelectableObject(currentCell.CurrentItemType == ItemType.Empty ? currentCell.transform.position : _startPosition);
         }
         else
         {
-            SetNewPosition(_startPosition);
+            if (_currentSelectObject && _cell)
+            {
+                _cell.SetCurrentItemType(_currentSelectObject.GetCurrentItemType());
+            }
+
+            SetNewPositionCurrentSelectableObject(_startPosition);
+            UnhoveredCurrent();
         }
     }
 
-    private void SetNewPosition(Vector3 position)
+    private void SetNewPositionCurrentSelectableObject(Vector3 position)
     {
         if (_currentSelectObject)
         {
             _currentSelectObject.transform.position = position;
+        }
+    }
+
+    private void SetStartPositionCurrentSelectableObject()
+    {
+        if (_currentSelectObject)
+        {
+            _startPosition = _currentSelectObject.transform.position;
         }
     }
 }
