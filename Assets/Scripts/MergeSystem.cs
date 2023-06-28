@@ -55,7 +55,11 @@ public class MergeSystem : MonoBehaviour
                 yield return null;
             }
 
+            fromItem.ResetItemTypeCell();
+            
             fromItem.transform.position = toItem.transform.position;
+            //pull
+            //Instance()
         }
     }
 }
