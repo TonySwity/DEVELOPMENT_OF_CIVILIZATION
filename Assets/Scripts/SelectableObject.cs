@@ -4,24 +4,25 @@ using UnityEngine;
 [RequireComponent(typeof(ActiveItem))]
 public class SelectableObject : MonoBehaviour
 {
-    private ActiveItem _activeItem;
+    public ActiveItem ActiveItem { get; private set; }
 
     private void Start()
     {
-        _activeItem = GetComponent<ActiveItem>();
+        ActiveItem = GetComponent<ActiveItem>();
     }
+    
     public virtual void OnHover()
     {
         transform.localScale = Vector3.one * 1.1f;
-        _activeItem.DeactivateMerge();
+        ActiveItem.DeactivateMerge();
     }
 
     public virtual void OnUnhover()
     {
         transform.localScale = Vector3.one;
-        _activeItem.ActivatedMerge();
+        ActiveItem.ActivatedMerge();
     }
 
-    public ItemType GetCurrentItemType() => _activeItem.CurrentItemType;
+    public ItemType GetCurrentItemType() => ActiveItem.CurrentItemType;
 
 }
