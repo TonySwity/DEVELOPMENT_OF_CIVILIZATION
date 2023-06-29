@@ -10,6 +10,7 @@ public class SelectableObjectMover : MonoBehaviour
     private Camera _camera;
     private Plane _plane;
     private Vector3 _startPosition;
+    private Vector3 _offset = Vector3.up * 0.2f;
     [SerializeField] private Cell _cell;
 
     private void Start()
@@ -152,7 +153,7 @@ public class SelectableObjectMover : MonoBehaviour
     {
         if (_currentSelectObject)
         {
-            _currentSelectObject.transform.position = position;
+            _currentSelectObject.transform.position = position + _offset;
         }
     }
 
