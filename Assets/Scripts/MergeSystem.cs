@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class MergeSystem : MonoBehaviour
 {
-    [SerializeField] private ActiveItem[] ActiveItems = {};
-    
     private const float AccelerationFactor = 0.1f;
     private const float MergeTime = 1f;
 
