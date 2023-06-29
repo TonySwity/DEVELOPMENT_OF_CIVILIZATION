@@ -276,9 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d489aead9c4f41b68134db12078d514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemType: 2
-  NextItem: 3
+  ItemType: 3
+  NextItem: 4
   <ItemID>k__BackingField: 0
+  <IsActivateMerge>k__BackingField: 0
 --- !u!135 &3357516290588733613
 SphereCollider:
   m_ObjectHideFlags: 0

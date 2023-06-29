@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d489aead9c4f41b68134db12078d514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemType: 1
-  NextItem: 0
+  ItemType: 2
+  NextItem: 3
   <ItemID>k__BackingField: 0
+  <IsActivateMerge>k__BackingField: 0
