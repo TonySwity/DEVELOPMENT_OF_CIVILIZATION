@@ -20,21 +20,33 @@ public class Spawner : ActiveItemPool
 
     public void Spawn()
     {
-        _iDCounter++;
+        
         print("button");
         if (TryGetActiveItem(ItemType.Tree, out ActiveItem result))
         {
-            result.AddItemID(_iDCounter);
             SetActiveItem(result, _spawnPoint.transform.position);
         }
     }
 
     private void SetActiveItem(ActiveItem activeItem, Vector3 spawn)
     {
+
+        if (_spawnPoint.CurrentItemType != ItemType.Empty)
+        {
+            return;
+        }
+        
+        ChangeIDActiveItem(activeItem);
         print(activeItem.ItemID);
         activeItem.gameObject.SetActive(true);
         activeItem.SetCurrentCell(_spawnPoint);
         _spawnPoint.SetCurrentItemType(activeItem.CurrentItemType);
         activeItem.transform.position = _spawnPoint.transform.position;
+    }
+
+    private void ChangeIDActiveItem(ActiveItem activeItem)
+    {
+        _iDCounter++;
+        activeItem.AddItemID(_iDCounter);
     }
 }
