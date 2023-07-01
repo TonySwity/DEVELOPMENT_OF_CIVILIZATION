@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class MergeSystem : MonoBehaviour
 
     public static MergeSystem Instance;
 
+    public event Action<ActiveItem> Merrged; 
     private void Start()
     {
         if (Instance == null)
@@ -21,7 +23,7 @@ public class MergeSystem : MonoBehaviour
         
         DontDestroyOnLoad(gameObject);
     }
-
+    
     public void Collapse(ActiveItem firstActiveItem, ActiveItem secondActiveItem)
     {
         ActiveItem fromItem;
@@ -56,6 +58,10 @@ public class MergeSystem : MonoBehaviour
             fromItem.ResetItemTypeCell();
             
             fromItem.transform.position = toItem.transform.position;
+            fromItem.gameObject.SetActive(false);
+            
+            Merrged?.Invoke(fromItem);
+            
             //pull
             //Instance()
         }

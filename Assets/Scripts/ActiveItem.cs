@@ -6,9 +6,10 @@ public class ActiveItem : Item
     //
     private MergeSystem _mergeSystem;
     //
-    public ItemType CurrentItemType  => ItemType; 
-    
-    [field: SerializeField] private ItemType NextItem;
+
+    public Cell CurrentCell => _currentCell;
+    public ItemType CurrentItemType  => ItemType;
+    public ItemType NextItem => NextItemType;
     [field: SerializeField] public int ItemID { get; private set; }
 
     [field: SerializeField] public bool IsActivateMerge { get; private set; }
@@ -38,7 +39,7 @@ public class ActiveItem : Item
         if (IsActivateMerge && activeItem.IsActivateMerge)
         {
             MergeSystem.Instance.Collapse(this, activeItem);
-            
+             
             //
             //_mergeSystem.Collapse(this, activeItem);
             //

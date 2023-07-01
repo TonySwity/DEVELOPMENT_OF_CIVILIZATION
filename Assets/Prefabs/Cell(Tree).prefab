@@ -373,6 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemType: 2
-  NextItem: 3
+  NextItemType: 3
   <ItemID>k__BackingField: 0
   <IsActivateMerge>k__BackingField: 0

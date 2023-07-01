@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemType: 3
-  NextItem: 4
+  NextItemType: 4
   <ItemID>k__BackingField: 0
   <IsActivateMerge>k__BackingField: 0
 --- !u!135 &3357516290588733613

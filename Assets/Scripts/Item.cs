@@ -13,6 +13,5 @@ public enum ItemType
 public class Item : MonoBehaviour
 {
     [SerializeField] protected ItemType ItemType;
-    
-    public ItemType CurrentItemType => ItemType;
+    [SerializeField] protected ItemType NextItemType;
 }
