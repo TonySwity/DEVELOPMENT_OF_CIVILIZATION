@@ -1,26 +1,25 @@
-using System;
 using UnityEngine;
 
 public class Spawner : ActiveItemPool
 {
     [SerializeField] private ActiveItem[] _activeItems = new ActiveItem[]{};
     [SerializeField] private Cell _spawnPoint;
+    [SerializeField] private MergeSystem _mergeSystem;
 
     private int _iDCounter = 0;
-
-    private int _counter = 0;
-    
     private Vector3 _offset = Vector3.up * 0.2f;
     
     private void Start()
     {
+        _mergeSystem.Init(this);
+        
         for (int i = 0; i < _activeItems.Length - 1; i++)
         {
             ActiveItem activeItem = _activeItems[i];
             
             for (int j = 0; j < CapacityOfEachType; j++)
             {
-                Initialize(activeItem);
+                Initialize(activeItem, _mergeSystem);
             }
         }
     }
@@ -31,8 +30,6 @@ public class Spawner : ActiveItemPool
         {
             SetActiveItem(result, _spawnPoint);
         }
-        
-        MergeSystem.Instance.Merrged += SpawnNextActiveItem;
     }
 
     public void SpawnMan()
@@ -43,34 +40,32 @@ public class Spawner : ActiveItemPool
         }
     }
 
-    private void SpawnNextActiveItem(ActiveItem currentActiveItem)
+    public void SpawnNextActiveItem(ActiveItem currentActiveItem)
     {
         if(TryGetActiveItem(currentActiveItem.NextItem, out ActiveItem result))
         {
             currentActiveItem.CurrentCell.SetCurrentItemType(ItemType.Empty);
             SetActiveItem(result, currentActiveItem.CurrentCell);
         }
+        
         currentActiveItem.gameObject.SetActive(false);
-        MergeSystem.Instance.Merrged -= SpawnNextActiveItem;
     }
     
     private void SetActiveItem(ActiveItem activeItem, Cell cell)
     {
-
-        Debug.Log(_counter++);
         if (cell.CurrentItemType != ItemType.Empty)
         {
             return;
         }
         
         ChangeIDActiveItem(activeItem);
-        print(activeItem.ItemID);
         activeItem.gameObject.SetActive(true);
         activeItem.SetCurrentCell(cell);
         cell.SetCurrentItemType(activeItem.CurrentItemType);
         activeItem.transform.position = cell.transform.position + _offset;
+        //activeItem.ActivatedMerge();
     }
-
+    
     private void ChangeIDActiveItem(ActiveItem activeItem)
     {
         _iDCounter++;
