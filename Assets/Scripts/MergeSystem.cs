@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,25 +5,10 @@ public class MergeSystem : MonoBehaviour
 {
     private const float AccelerationFactor = 0.1f;
     private const float MergeTime = 1f;
+    private Spawner _spawner;
 
-    public static MergeSystem Instance;
+    public void Init(Spawner spawner) => _spawner = spawner;
 
-   public event Action<ActiveItem> Merrged; 
-   
-    private void Start()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance == this)
-        {
-            Destroy(gameObject);
-        }
-        
-        DontDestroyOnLoad(gameObject);
-    }
-    
     public void Collapse(ActiveItem firstActiveItem, ActiveItem secondActiveItem)
     {
         ActiveItem fromItem;
@@ -42,8 +26,10 @@ public class MergeSystem : MonoBehaviour
         }
         
         StartCoroutine(MergeProcess(fromItem, toItem));
+        Debug.Log(nameof(Collapse));
+        _spawner?.SpawnNextActiveItem(toItem);
     }
-
+    
     private IEnumerator MergeProcess(ActiveItem fromItem, ActiveItem toItem)
     {
         if (fromItem.CurrentItemType == toItem.CurrentItemType)
@@ -57,14 +43,8 @@ public class MergeSystem : MonoBehaviour
             }
 
             fromItem.ResetItemTypeCell();
-            
             fromItem.transform.position = toItem.transform.position;
             fromItem.gameObject.SetActive(false);
-            
-            Merrged?.Invoke(toItem);
-            
-            //pull
-            //Instance()
         }
     }
 }
