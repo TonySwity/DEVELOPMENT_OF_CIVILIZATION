@@ -1368,6 +1368,7 @@ MonoBehaviour:
   - {fileID: 5552933329959307971, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
   - {fileID: 2431931340925672189, guid: 1a309fb00e3dc42f085cfaee68292d20, type: 3}
   _spawnPoint: {fileID: 357303947}
+  _mergeSystem: {fileID: 1727966343}
 --- !u!4 &937992436
 Transform:
   m_ObjectHideFlags: 0
