@@ -9,7 +9,8 @@ public class MergeSystem : MonoBehaviour
 
     public static MergeSystem Instance;
 
-    public event Action<ActiveItem> Merrged; 
+   public event Action<ActiveItem> Merrged; 
+   
     private void Start()
     {
         if (Instance == null)
@@ -39,7 +40,7 @@ public class MergeSystem : MonoBehaviour
             fromItem = secondActiveItem;
             toItem = firstActiveItem;
         }
-
+        
         StartCoroutine(MergeProcess(fromItem, toItem));
     }
 
@@ -60,7 +61,7 @@ public class MergeSystem : MonoBehaviour
             fromItem.transform.position = toItem.transform.position;
             fromItem.gameObject.SetActive(false);
             
-            Merrged?.Invoke(fromItem);
+            Merrged?.Invoke(toItem);
             
             //pull
             //Instance()
