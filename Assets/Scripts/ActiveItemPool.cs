@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ActiveItemPool : MonoBehaviour
 {
@@ -10,9 +9,10 @@ public class ActiveItemPool : MonoBehaviour
 
     private List<ActiveItem> _pool = new List<ActiveItem>();
     
-    protected void Initialize(ActiveItem activeItem)
+    protected void Initialize(ActiveItem activeItem, MergeSystem mergeSystem)
     {
         ActiveItem spawned = Instantiate(activeItem, _container);
+        spawned.Init(mergeSystem);
         spawned.gameObject.SetActive(false);
         _pool.Add(spawned);
     }
