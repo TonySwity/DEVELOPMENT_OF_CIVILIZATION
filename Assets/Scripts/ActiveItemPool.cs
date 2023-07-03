@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ActiveItemPool : MonoBehaviour
 {
     [SerializeField] private Transform _container;
-    [SerializeField] private int _capacityOfEachType = 20;
+    [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
 
     private List<ActiveItem> _pool = new List<ActiveItem>();
     
