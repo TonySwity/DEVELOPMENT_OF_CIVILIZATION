@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ActiveItem : Item
@@ -11,18 +12,14 @@ public class ActiveItem : Item
     public ItemType CurrentItemType  => ItemType;
     public ItemType NextItem => NextItemType;
     [field: SerializeField] public int ItemID { get; private set; }
-
     [field: SerializeField] public bool IsActivateMerge { get; private set; }
 
     //first
     public void Init(MergeSystem mergeSystem) => _mergeSystem = mergeSystem;
     //
 
-    public void SetCurrentCell(Cell currentCell)
-    {
-        _currentCell = currentCell;
-    }
-    
+    public void SetCurrentCell(Cell currentCell) => _currentCell = currentCell;
+
     public void AddItemID(int itemID) => ItemID = itemID;
 
     public void ActivatedMerge() => IsActivateMerge = true;
@@ -39,7 +36,6 @@ public class ActiveItem : Item
         if (IsActivateMerge && activeItem.IsActivateMerge)
         {
             MergeSystem.Instance.Collapse(this, activeItem);
-             
             //
             //_mergeSystem.Collapse(this, activeItem);
             //
