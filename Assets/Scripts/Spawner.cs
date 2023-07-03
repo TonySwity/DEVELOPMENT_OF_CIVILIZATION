@@ -7,6 +7,10 @@ public class Spawner : ActiveItemPool
     [SerializeField] private Cell _spawnPoint;
 
     private int _iDCounter = 0;
+
+    private int _counter = 0;
+    
+    private Vector3 _offset = Vector3.up * 0.2f;
     
     private void Start()
     {
@@ -14,7 +18,7 @@ public class Spawner : ActiveItemPool
         {
             ActiveItem activeItem = _activeItems[i];
             
-            for (int j = 0; j < 20; j++)
+            for (int j = 0; j < CapacityOfEachType; j++)
             {
                 Initialize(activeItem);
             }
@@ -25,7 +29,7 @@ public class Spawner : ActiveItemPool
     {
         if (TryGetActiveItem(ItemType.Tree, out ActiveItem result))
         {
-            SetActiveItem(result, _spawnPoint.transform.position);
+            SetActiveItem(result, _spawnPoint);
         }
         
         MergeSystem.Instance.Merrged += SpawnNextActiveItem;
@@ -35,7 +39,7 @@ public class Spawner : ActiveItemPool
     {
         if (TryGetActiveItem(ItemType.Man, out ActiveItem result))
         {
-            SetActiveItem(result, _spawnPoint.transform.position);
+            SetActiveItem(result, _spawnPoint);
         }
     }
 
@@ -43,20 +47,18 @@ public class Spawner : ActiveItemPool
     {
         if(TryGetActiveItem(currentActiveItem.NextItem, out ActiveItem result))
         {
-            ChangeIDActiveItem(result);
-            print(result.ItemID);
-            result.gameObject.SetActive(true);
-            result.SetCurrentCell(currentActiveItem.CurrentCell);
-            currentActiveItem.CurrentCell.SetCurrentItemType(result.CurrentItemType);
-            result.transform.position = currentActiveItem.transform.position;
-            currentActiveItem.gameObject.SetActive(false);
+            currentActiveItem.CurrentCell.SetCurrentItemType(ItemType.Empty);
+            SetActiveItem(result, currentActiveItem.CurrentCell);
         }
+        currentActiveItem.gameObject.SetActive(false);
+        MergeSystem.Instance.Merrged -= SpawnNextActiveItem;
     }
     
-    private void SetActiveItem(ActiveItem activeItem, Vector3 spawn)
+    private void SetActiveItem(ActiveItem activeItem, Cell cell)
     {
 
-        if (_spawnPoint.CurrentItemType != ItemType.Empty)
+        Debug.Log(_counter++);
+        if (cell.CurrentItemType != ItemType.Empty)
         {
             return;
         }
@@ -64,19 +66,14 @@ public class Spawner : ActiveItemPool
         ChangeIDActiveItem(activeItem);
         print(activeItem.ItemID);
         activeItem.gameObject.SetActive(true);
-        activeItem.SetCurrentCell(_spawnPoint);
-        _spawnPoint.SetCurrentItemType(activeItem.CurrentItemType);
-        activeItem.transform.position = _spawnPoint.transform.position;
+        activeItem.SetCurrentCell(cell);
+        cell.SetCurrentItemType(activeItem.CurrentItemType);
+        activeItem.transform.position = cell.transform.position + _offset;
     }
 
     private void ChangeIDActiveItem(ActiveItem activeItem)
     {
         _iDCounter++;
         activeItem.AddItemID(_iDCounter);
-    }
-    
-    private void OnDisable()
-    {
-        MergeSystem.Instance.Merrged -= SpawnNextActiveItem;
     }
 }
