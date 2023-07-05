@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4855370360297399232}
-  - component: {fileID: 1884068493693214576}
   - component: {fileID: 3524319792474486719}
   - component: {fileID: 2431931340925672189}
   - component: {fileID: 2142758729475050766}
@@ -37,22 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1884068493693214576
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751257414085814772}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &3524319792474486719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +61,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemType: 5
-  NextItem: 0
+  NextItemType: 0
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
   <ItemID>k__BackingField: 0
   <IsActivateMerge>k__BackingField: 0
 --- !u!135 &2142758729475050766
