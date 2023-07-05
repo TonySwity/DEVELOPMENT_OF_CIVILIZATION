@@ -46,6 +46,8 @@ public class Spawner : ActiveItemPool
         {
             currentActiveItem.CurrentCell.SetCurrentItemType(ItemType.Empty);
             SetActiveItem(result, currentActiveItem.CurrentCell);
+            result.ActivatedMerge();
+            result.FindFirstColliderToMerge();
         }
         
         currentActiveItem.gameObject.SetActive(false);
