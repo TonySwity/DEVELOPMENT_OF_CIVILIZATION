@@ -63,7 +63,6 @@ public class SelectableObjectMover : MonoBehaviour
 
             _currentSelectObject.ActiveItem.SetCurrentCell(cell);
             cell.SetCurrentItemType(_currentSelectObject.GetCurrentItemType());
-
             UnhoveredCurrent();
         }
     }
