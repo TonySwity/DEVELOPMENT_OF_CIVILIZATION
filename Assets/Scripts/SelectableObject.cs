@@ -21,6 +21,7 @@ public class SelectableObject : MonoBehaviour
     {
         transform.localScale = Vector3.one;
         ActiveItem.ActivatedMerge();
+        ActiveItem.FindFirstColliderToMerge();
     }
 
     public ItemType GetCurrentItemType() => ActiveItem.CurrentItemType;
