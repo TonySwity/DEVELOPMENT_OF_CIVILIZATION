@@ -14,6 +14,7 @@ public class MergeSystem : MonoBehaviour
         ActiveItem fromItem;
         ActiveItem toItem;
 
+
         if (firstActiveItem.ItemID > secondActiveItem.ItemID)
         {
             fromItem = firstActiveItem;
@@ -25,9 +26,11 @@ public class MergeSystem : MonoBehaviour
             toItem = firstActiveItem;
         }
         
+        Debug.Log($"1.ID {fromItem.ItemID} =><= 2.ID {toItem.ItemID}");
+        
         StartCoroutine(MergeProcess(fromItem, toItem));
         Debug.Log(nameof(Collapse));
-        _spawner?.SpawnNextActiveItem(toItem);
+        
     }
     
     private IEnumerator MergeProcess(ActiveItem fromItem, ActiveItem toItem)
@@ -36,15 +39,19 @@ public class MergeSystem : MonoBehaviour
         {
             Vector3 startPosition = fromItem.transform.position;
 
-            for (float t = 0; t < MergeTime; t += Time.deltaTime / AccelerationFactor)
+            for (float t = 0; t < MergeTime; t += Time.deltaTime)
             {
+                
                 fromItem.transform.position = Vector3.Lerp(startPosition, toItem.transform.position, t);
+                Debug.Log($"{fromItem.transform.position}");
                 yield return null;
             }
-
+            
             fromItem.ResetItemTypeCell();
             fromItem.transform.position = toItem.transform.position;
             fromItem.gameObject.SetActive(false);
+            toItem.gameObject.SetActive(false);
+            _spawner?.SpawnNextActiveItem(toItem);
         }
     }
 }
