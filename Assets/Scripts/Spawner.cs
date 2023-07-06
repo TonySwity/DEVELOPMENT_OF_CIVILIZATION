@@ -13,7 +13,7 @@ public class Spawner : ActiveItemPool
     {
         _mergeSystem.Init(this);
         
-        for (int i = 0; i < _activeItems.Length - 1; i++)
+        for (int i = 0; i < _activeItems.Length; i++)
         {
             ActiveItem activeItem = _activeItems[i];
             
@@ -65,7 +65,6 @@ public class Spawner : ActiveItemPool
         activeItem.SetCurrentCell(cell);
         cell.SetCurrentItemType(activeItem.CurrentItemType);
         activeItem.transform.position = cell.transform.position + _offset;
-        //activeItem.ActivatedMerge();
     }
     
     private void ChangeIDActiveItem(ActiveItem activeItem)
