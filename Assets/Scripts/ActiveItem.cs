@@ -42,7 +42,7 @@ public class ActiveItem : Item
 
         if (colliders.Length >= minColliders)
         {
-            for (int i = 0; i < colliders.Length-1; i++)
+            for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].TryGetComponent(out ActiveItem activeItem))
                 {
