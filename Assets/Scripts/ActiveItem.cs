@@ -7,8 +7,8 @@ public class ActiveItem : Item
     [SerializeField] private LayerMask _layerMask;
 
     private MergeSystem _mergeSystem;
-    [field: SerializeField] public bool IsPared { get; private set; } = false;
-    private float _radiusSphere = 0.9f;
+    [field: SerializeField] public bool IsPaired { get; private set; } = false;
+    private float _radiusSphere = 0.8f;
     
     public Cell CurrentCell { get; private set; }
     public ItemType CurrentItemType => ItemType;
@@ -37,8 +37,15 @@ public class ActiveItem : Item
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, _radiusSphere, _layerMask);
 
+        foreach (var col in colliders)
+        {
+            if (col.TryGetComponent(out ActiveItem s))
+            {
+                print(s.ItemID);
+            }
+        }
+        
         int minColliders = 2;
-        int secondCollider = 0;
 
         if (colliders.Length >= minColliders)
         {
@@ -46,18 +53,21 @@ public class ActiveItem : Item
             {
                 if (colliders[i].TryGetComponent(out ActiveItem activeItem))
                 {
-                    if (ItemID != activeItem.ItemID && IsPared == false)
+                    if (CurrentItemType == activeItem.CurrentItemType)
                     {
-                        if (IsActivateMerge && activeItem.IsActivateMerge)
+                        if (ItemID != activeItem.ItemID && IsPaired == false)
                         {
-                            _mergeSystem?.Collapse(this, activeItem);
-                            IsPared = true;
+                            if (IsActivateMerge && activeItem.IsActivateMerge)
+                            {
+                                _mergeSystem?.Collapse(this, activeItem);
+                                IsPaired = true;
+                            }
                         }
                     }
                 }
             }
         }
 
-        IsPared = false;
+        IsPaired = false;
     }
 }
