@@ -69,7 +69,7 @@ public class Spawner : ActiveItemPool
     
     private void ChangeIDActiveItem(ActiveItem activeItem)
     {
-        _iDCounter++;
+        _iDCounter += 1;
         activeItem.AddItemID(_iDCounter);
     }
 }
