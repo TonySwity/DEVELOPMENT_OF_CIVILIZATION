@@ -1,13 +1,16 @@
-using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEngine;
 
 public class ActiveItem : Item
 {
     [SerializeField] private LayerMask _layerMask;
-    private Cell _currentCell;
+
     private MergeSystem _mergeSystem;
+    [field: SerializeField] public bool IsPared { get; private set; } = false;
+    private float _radiusSphere = 0.9f;
     
-    public Cell CurrentCell => _currentCell;
+    public Cell CurrentCell { get; private set; }
     public ItemType CurrentItemType => ItemType;
     public ItemType NextItem => NextItemType;
     [field: SerializeField] public int ItemID { get; private set; }
@@ -18,39 +21,43 @@ public class ActiveItem : Item
         _mergeSystem = mergeSystem;
     }
 
-    public void SetCurrentCell(Cell currentCell) => _currentCell = currentCell;
-
+    public void SetCurrentCell(Cell currentCell) => CurrentCell = currentCell;
     public void AddItemID(int itemID) => ItemID = itemID;
-
     public void ActivatedMerge() => IsActivateMerge = true;
-
     public void DeactivateMerge() => IsActivateMerge = false;
+    public void ResetItemTypeCell() => CurrentCell.SetCurrentItemType(ItemType.Empty);
 
-    public void ResetItemTypeCell() => _currentCell.SetCurrentItemType(ItemType.Empty);
-    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawSphere(transform.position, _radiusSphere);
+    }
+
     public void FindFirstColliderToMerge()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 0.7f, _layerMask);
-        
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _radiusSphere, _layerMask);
+
         int minColliders = 2;
         int secondCollider = 0;
 
         if (colliders.Length >= minColliders)
         {
-            for (int i = 0; i <colliders.Length-1; i++)
+            for (int i = 0; i < colliders.Length-1; i++)
             {
                 if (colliders[i].TryGetComponent(out ActiveItem activeItem))
                 {
-                    if (ItemID != activeItem.ItemID && activeItem.ItemID < ItemID)
+                    if (ItemID != activeItem.ItemID && IsPared == false)
                     {
                         if (IsActivateMerge && activeItem.IsActivateMerge)
                         {
                             _mergeSystem?.Collapse(this, activeItem);
+                            IsPared = true;
                         }
                     }
                 }
             }
-
         }
+
+        IsPared = false;
     }
 }
