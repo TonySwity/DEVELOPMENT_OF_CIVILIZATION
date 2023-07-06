@@ -22,7 +22,9 @@ public class SelectableObjectMover : MonoBehaviour
     private void Update()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
+        
+        Debug.DrawRay(ray.origin, ray.direction * MaxDistanceRay, Color.green);
+        
         if (Input.GetMouseButtonDown(0))
         {
             FindSelectableObject();
