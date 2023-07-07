@@ -85,7 +85,7 @@ public class SelectableObjectMover : MonoBehaviour
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit) == false)
+        if (Physics.Raycast(ray, out hit, MaxDistanceRay) == false)
         {
             UnhoveredCurrent();
             return;
