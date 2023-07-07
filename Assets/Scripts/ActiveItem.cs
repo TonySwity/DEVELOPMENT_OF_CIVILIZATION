@@ -5,31 +5,28 @@ public class ActiveItem : Item
     [SerializeField] private LayerMask _layerMask;
 
     private MergeSystem _mergeSystem;
-    [field: SerializeField] public bool IsPaired { get; private set; } = false;
     private float _radiusSphere = 0.9f;
-
+    
+    public bool IsPaired { get; private set; } = false;
     public Cell CurrentCell { get; private set; }
     public ItemType CurrentItemType => ItemType;
     public ItemType NextItem => NextItemType;
-    [field: SerializeField] public int ItemID { get; private set; }
-    [field: SerializeField] public bool IsActivateMerge { get; private set; }
+    public int ItemID { get; private set; }
+    public bool IsActivateMerge { get; private set; }
 
-    public void Init(MergeSystem mergeSystem)
-    {
-        _mergeSystem = mergeSystem;
-    }
-
-    public void SetCurrentCell(Cell currentCell) => CurrentCell = currentCell;
-    public void AddItemID(int itemID) => ItemID = itemID;
-    public void ActivatedMerge() => IsActivateMerge = true;
-    public void DeactivateMerge() => IsActivateMerge = false;
-    public void ResetItemTypeCell() => CurrentCell.SetCurrentItemType(ItemType.Empty);
-
+    private void OnEnable() => IsPaired = false;
     
-    private void OnEnable()
-    {
-        IsPaired = false;
-    }
+    public void Init(MergeSystem mergeSystem) => _mergeSystem = mergeSystem;
+    
+    public void SetCurrentCell(Cell currentCell) => CurrentCell = currentCell;
+    
+    public void AddItemID(int itemID) => ItemID = itemID;
+    
+    public void ActivatedMerge() => IsActivateMerge = true;
+    
+    public void DeactivateMerge() => IsActivateMerge = false;
+    
+    public void ResetItemTypeCell() => CurrentCell.SetCurrentItemType(ItemType.Empty);
     
     public void FindFirstColliderToMerge()
     {
