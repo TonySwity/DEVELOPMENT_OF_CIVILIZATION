@@ -6,7 +6,7 @@ public class ActiveItem : Item
 
     private MergeSystem _mergeSystem;
     [field: SerializeField] public bool IsPaired { get; private set; } = false;
-    private float _radiusSphere = 1f;
+    private float _radiusSphere = 0.9f;
 
     public Cell CurrentCell { get; private set; }
     public ItemType CurrentItemType => ItemType;
@@ -25,12 +25,7 @@ public class ActiveItem : Item
     public void DeactivateMerge() => IsActivateMerge = false;
     public void ResetItemTypeCell() => CurrentCell.SetCurrentItemType(ItemType.Empty);
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawSphere(transform.position, _radiusSphere);
-    }
-
+    
     private void OnEnable()
     {
         IsPaired = false;
