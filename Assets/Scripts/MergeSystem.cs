@@ -13,8 +13,7 @@ public class MergeSystem : MonoBehaviour
     {
         ActiveItem fromItem;
         ActiveItem toItem;
-
-
+        
         if (firstActiveItem.ItemID > secondActiveItem.ItemID)
         {
             fromItem = firstActiveItem;
