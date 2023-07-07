@@ -4,15 +4,15 @@ public class SelectableObjectMover : MonoBehaviour
 {
     private const float MaxDistanceRay = 500f;
 
-    [SerializeField] private SelectableObject _currentSelectObject;
     [SerializeField] private LayerMask _layerMaskCell;
-
+    
+    private SelectableObject _currentSelectObject;
+    private Cell _cell;
     private Camera _camera;
     private Plane _plane;
     private Vector3 _startPosition;
     private Vector3 _offset = Vector3.up * 0.2f;
-    [SerializeField] private Cell _cell;
-
+    
     private void Start()
     {
         _camera = Camera.main;
@@ -22,8 +22,6 @@ public class SelectableObjectMover : MonoBehaviour
     private void Update()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        
-        Debug.DrawRay(ray.origin, ray.direction * MaxDistanceRay, Color.green);
         
         if (Input.GetMouseButtonDown(0))
         {
