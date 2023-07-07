@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using UnityEngine;
 
 public class ActiveItem : Item
@@ -8,8 +6,8 @@ public class ActiveItem : Item
 
     private MergeSystem _mergeSystem;
     [field: SerializeField] public bool IsPaired { get; private set; } = false;
-    private float _radiusSphere = 0.8f;
-    
+    private float _radiusSphere = 1f;
+
     public Cell CurrentCell { get; private set; }
     public ItemType CurrentItemType => ItemType;
     public ItemType NextItem => NextItemType;
@@ -33,41 +31,32 @@ public class ActiveItem : Item
         Gizmos.DrawSphere(transform.position, _radiusSphere);
     }
 
+    private void OnEnable()
+    {
+        IsPaired = false;
+    }
+    
     public void FindFirstColliderToMerge()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, _radiusSphere, _layerMask);
-
-        foreach (var col in colliders)
-        {
-            if (col.TryGetComponent(out ActiveItem s))
-            {
-                print(s.ItemID);
-            }
-        }
         
         int minColliders = 2;
 
-        if (colliders.Length >= minColliders)
+        if (colliders.Length < minColliders)
         {
-            for (int i = 0; i < colliders.Length; i++)
+            return;
+        }
+        
+        foreach (var col in colliders)
+        {
+            if (col.TryGetComponent(out ActiveItem activeItem) &&
+                CurrentItemType == activeItem.CurrentItemType &&
+                ItemID != activeItem.ItemID && IsPaired == false &&
+                IsActivateMerge && activeItem.IsActivateMerge)
             {
-                if (colliders[i].TryGetComponent(out ActiveItem activeItem))
-                {
-                    if (CurrentItemType == activeItem.CurrentItemType)
-                    {
-                        if (ItemID != activeItem.ItemID && IsPaired == false)
-                        {
-                            if (IsActivateMerge && activeItem.IsActivateMerge)
-                            {
-                                _mergeSystem?.Collapse(this, activeItem);
-                                IsPaired = true;
-                            }
-                        }
-                    }
-                }
+                _mergeSystem?.Collapse(this, activeItem);
+                IsPaired = true;
             }
         }
-
-        IsPaired = false;
     }
 }
