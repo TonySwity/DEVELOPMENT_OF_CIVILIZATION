@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MergeSystem : MonoBehaviour
 {
-    private const float AccelerationFactor = 0.1f;
+    private const float DecelerationFactor = 0.5f;
     private const float MergeTime = 1f;
     private Spawner _spawner;
 
@@ -35,7 +35,7 @@ public class MergeSystem : MonoBehaviour
         {
             Vector3 startPosition = fromItem.transform.position;
 
-            for (float t = 0; t < MergeTime; t += Time.deltaTime / AccelerationFactor)
+            for (float t = 0; t < MergeTime; t += Time.deltaTime / DecelerationFactor)
             {
                 fromItem.transform.position = Vector3.Lerp(startPosition, toItem.transform.position, t);
                 yield return null;
@@ -44,7 +44,6 @@ public class MergeSystem : MonoBehaviour
             fromItem.ResetItemTypeCell();
             fromItem.transform.position = toItem.transform.position;
             fromItem.gameObject.SetActive(false);
-            toItem.gameObject.SetActive(false);
             _spawner?.SpawnNextActiveItem(toItem);
         }
     }
