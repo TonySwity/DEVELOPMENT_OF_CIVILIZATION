@@ -1,13 +1,24 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CellUnlocker : MonoBehaviour
 {
-    [field: SerializeField] private List<Cell> _availableCells = new List<Cell>();
+    private List<ICellable> _cells = new List<ICellable>();
 
     private void Start()
     {
-        Cell[] cells = transform.GetComponentsInChildren<Cell>();
-        _availableCells.AddRange(cells);
+        _cells = transform.GetComponentsInChildren<ICellable>().ToList();
+        _cells.ForEach(a => a.Achieved += UnlockAge);
+    }
+    
+    private void UnlockAge(ItemType itemType)
+    {
+        print($"{itemType}");
+    }
+
+    private void OnDisable()
+    {
+        _cells.ForEach(a => a.Achieved -= UnlockAge);
     }
 }
