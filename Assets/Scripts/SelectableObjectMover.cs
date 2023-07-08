@@ -7,7 +7,7 @@ public class SelectableObjectMover : MonoBehaviour
     [SerializeField] private LayerMask _layerMaskCell;
     
     private SelectableObject _currentSelectObject;
-    private Cell _cell;
+    private ICellable _cell;
     private Camera _camera;
     private Plane _plane;
     private Vector3 _startPosition;
@@ -138,7 +138,7 @@ public class SelectableObjectMover : MonoBehaviour
         }
         else
         {
-            if (_currentSelectObject && _cell)
+            if (_cell != null && _currentSelectObject)
             {
                 _cell.SetCurrentItemType(_currentSelectObject.GetCurrentItemType());
             }
