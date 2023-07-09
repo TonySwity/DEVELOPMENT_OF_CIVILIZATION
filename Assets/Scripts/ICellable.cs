@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public interface ICellable
 {
@@ -7,4 +8,7 @@ public interface ICellable
     public event Action<ItemType> Achieved; 
 
     public void SetCurrentItemType(ItemType itemType);
+    public void SetColorMaterial(Material material);
+    public void EnableCollider();
+    public void DisableCollider();
 }
