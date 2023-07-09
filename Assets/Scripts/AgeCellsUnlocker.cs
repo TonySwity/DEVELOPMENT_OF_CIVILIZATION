@@ -7,8 +7,8 @@ public class AgeCellsUnlocker : MonoBehaviour
     
     private ICellable[] _cells = {};
     
-    [field: SerializeField] public AgeItem AgeItem { get; private set; }
-    [field: SerializeField] public bool IsBlock { get; private set; }
+    public AgeItem CurrentAgeItem { get; private set; }
+    public bool IsBlock { get; private set; }
 
     private void OnEnable()
     {
