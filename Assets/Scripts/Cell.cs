@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour, ICellable
 {
     [field: SerializeField] public ItemType CurrentItemType { get; private set; }
-    
+
     private MeshRenderer _meshRenderer;
     private SphereCollider _sphereCollider;
     
@@ -28,19 +28,10 @@ public class Cell : MonoBehaviour, ICellable
         }
     }
 
-    public void EnableCollider()
-    {
-        _sphereCollider.enabled = true;
-    }
+    public void EnableCollider() => _sphereCollider.enabled = true;
 
-    public void DisableCollider()
-    {
-        _sphereCollider.enabled = false;
-    }
-    
-    public void SetColorMaterial(Material material)
-    {
-        _meshRenderer.material = material;
-    }
+    public void DisableCollider() => _sphereCollider.enabled = false;
+
+    public void SetColorMaterial(Material material) => _meshRenderer.material = material;
 }
 
