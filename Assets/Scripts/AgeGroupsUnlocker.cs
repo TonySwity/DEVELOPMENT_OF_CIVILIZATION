@@ -27,11 +27,12 @@ public class AgeGroupsUnlocker : MonoBehaviour
     
     private void CheckAchievement(ItemType itemType)
     {
-        print($"{itemType}");
-
-        if (itemType == ItemType.Home)
+        for (int i = 0; i < _ages.Length; i++)
         {
-            
+            if (itemType == ItemType.Home && _ages[(int)AgeItem.Iron].IsBlock)
+            {
+                _ages[(int)AgeItem.Iron].Unlock();
+            }
         }
     }
 
