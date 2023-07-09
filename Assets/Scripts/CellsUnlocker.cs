@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CellUnlocker : MonoBehaviour
+public class CellsUnlocker : MonoBehaviour
 {
+    [SerializeField] private Transform[] _ages = {};
     private List<ICellable> _cells = new List<ICellable>();
 
     private void Start()
