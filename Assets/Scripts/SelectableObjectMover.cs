@@ -11,7 +11,7 @@ public class SelectableObjectMover : MonoBehaviour
     private Camera _camera;
     private Plane _plane;
     private Vector3 _startPosition;
-    private Vector3 _offset = Vector3.up * 0.2f;
+    private float _offsetY = 0.2f;
     
     private void Start()
     {
@@ -152,7 +152,7 @@ public class SelectableObjectMover : MonoBehaviour
     {
         if (_currentSelectObject)
         {
-            _currentSelectObject.transform.position = position + _offset;
+            _currentSelectObject.transform.position = new Vector3(position.x, _offsetY, position.z);
         }
     }
 
@@ -160,7 +160,8 @@ public class SelectableObjectMover : MonoBehaviour
     {
         if (_currentSelectObject)
         {
-            _startPosition = _currentSelectObject.transform.position;
+
+            _startPosition = new Vector3(_currentSelectObject.transform.position.x, _offsetY, _currentSelectObject.transform.position.z);
         }
     }
 }
