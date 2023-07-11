@@ -13,6 +13,7 @@ public class CellAnimationMover : MonoBehaviour
     
     private void PlayStartAnimation()
     {
+        //вернуть на 10 и -10
         float duration = 2f;
         
         for (int i = 0; i < _cellsGroup.Length; i++)

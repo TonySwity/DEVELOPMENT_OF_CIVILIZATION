@@ -244,6 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 44872616}
   - component: {fileID: 44872617}
+  - component: {fileID: 44872618}
   m_Layer: 0
   m_Name: GameCells(AgeGroups)
   m_TagString: Untagged
@@ -285,6 +286,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ages: []
+--- !u!114 &44872618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44872615}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7626576e40bd46deb92221772d89823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cellsGroup:
+  - {fileID: 186390720}
+  - {fileID: 750995950}
+  - {fileID: 1421476816}
+  - {fileID: 1683577575}
+  - {fileID: 2065407079}
+  - {fileID: 252633589}
 --- !u!1 &186390719
 GameObject:
   m_ObjectHideFlags: 0
