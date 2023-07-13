@@ -5,9 +5,9 @@ public class MergeSystem : MonoBehaviour
 {
     private const float DecelerationFactor = 0.5f;
     private const float MergeTime = 1f;
-    private Spawner _spawner;
+    private ActiveItemSpawner _activeItemSpawner;
 
-    public void Init(Spawner spawner) => _spawner = spawner;
+    public void Init(ActiveItemSpawner activeItemSpawner) => _activeItemSpawner = activeItemSpawner;
 
     public void Collapse(ActiveItem firstActiveItem, ActiveItem secondActiveItem)
     {
@@ -43,7 +43,7 @@ public class MergeSystem : MonoBehaviour
             fromItem.ResetItemTypeCell();
             fromItem.transform.position = toItem.transform.position;
             fromItem.gameObject.SetActive(false);
-            _spawner?.SpawnNextActiveItem(toItem);
+            _activeItemSpawner?.SpawnNextActiveItem(toItem);
         }
     }
 }
