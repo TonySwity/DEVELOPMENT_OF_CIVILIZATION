@@ -9,6 +9,8 @@ public class ActiveItemSpawner : ActiveItemPool
     private int _iDCounter = 0;
     private Vector3 _offset = Vector3.up * 0.2f;
     
+    [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
+    
     private void Start()
     {
         _mergeSystem.Init(this);

@@ -5,8 +5,7 @@ using UnityEngine;
 public class ActiveItemPool : MonoBehaviour
 {
     [SerializeField] private Transform _container;
-    [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
-
+    
     private List<ActiveItem> _pool = new List<ActiveItem>();
     
     protected void Initialize(ActiveItem activeItem, MergeSystem mergeSystem)
