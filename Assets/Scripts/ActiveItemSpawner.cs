@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Spawner : ActiveItemPool
+public class ActiveItemSpawner : ActiveItemPool
 {
     [SerializeField] private ActiveItem[] _activeItems = new ActiveItem[]{};
     [SerializeField] private Cell _spawnPoint;
