@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class ActiveItemSpawner : ActiveItemPool
 {
     [SerializeField] private ActiveItem[] _activeItems = new ActiveItem[]{};

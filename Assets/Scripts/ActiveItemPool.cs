@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ActiveItemPool : MonoBehaviour
 {
-    
     [SerializeField] private Transform _container;
     
     private List<ActiveItem> _pool = new List<ActiveItem>();
