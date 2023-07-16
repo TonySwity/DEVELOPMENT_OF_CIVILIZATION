@@ -5,7 +5,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Vector3 _endPosition = new Vector3(0f, 0f, -5f);
     [SerializeField] private float _speed = 7f;
-
+    
+    [field: SerializeField] public AgeItem AgeItem { get; private set; }
 
     private void OnEnable()
     {
