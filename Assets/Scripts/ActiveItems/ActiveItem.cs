@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ActiveItem : Item
@@ -49,6 +50,14 @@ public class ActiveItem : Item
                 _mergeSystem?.Collapse(this, activeItem);
                 IsPaired = true;
             }
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (CurrentCell)
+        {
+            CurrentCell.SetCurrentItemType(ItemType.Empty);
         }
     }
 }

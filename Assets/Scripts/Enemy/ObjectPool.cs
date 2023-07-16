@@ -14,7 +14,7 @@ public class ObjectPool : MonoBehaviour
       _pool.Add(spawned);
    }
 
-   protected bool TryGetGameObject(GameObject inputGameObject, out GameObject resultGameObject)
+   protected bool TryGetGameObject(out GameObject resultGameObject)
    {
       resultGameObject = _pool.FirstOrDefault(a => a.gameObject.activeSelf == false);
 
