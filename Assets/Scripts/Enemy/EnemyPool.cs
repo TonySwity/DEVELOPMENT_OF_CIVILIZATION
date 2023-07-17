@@ -15,10 +15,10 @@ public class EnemyPool : MonoBehaviour
       _pool.Add(spawned);
    }
 
-   protected bool TryGetGameObject(AgeItem ageItem, out Enemy resultGameObject)
+   protected bool TryGetEnemyObject(AgeItem ageItem, out Enemy resultEnemyObject)
    {
-      resultGameObject = _pool.FirstOrDefault(target => target.gameObject.activeSelf == false && target.AgeItem == ageItem);
+      resultEnemyObject = _pool.FirstOrDefault(e => e.gameObject.activeSelf == false && e.AgeItem == ageItem);
 
-      return resultGameObject != null;
+      return resultEnemyObject != null;
    }
 }
