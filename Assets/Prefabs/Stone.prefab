@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 277500270}
   - component: {fileID: 277500269}
   - component: {fileID: 277500268}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 617697929}
   - component: {fileID: 617697928}
   - component: {fileID: 617697927}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,13 +208,13 @@ GameObject:
   - component: {fileID: 1683618045}
   - component: {fileID: 8634357657063338332}
   - component: {fileID: 181835402}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8634357657063338307
 Transform:
   m_ObjectHideFlags: 0
@@ -323,5 +323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a056b2335712a4fcaa0c81ce7c2f840f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AgeItem>k__BackingField: 2
   _endPosition: {x: 0, y: 0, z: -6}
   _speed: 7
