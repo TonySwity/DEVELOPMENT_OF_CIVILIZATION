@@ -1,21 +1,27 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
+
 public class EnemySpawner : EnemyPool
 {
-    [SerializeField] private GameObject _enemyPrefab;
-    [SerializeField] private float _timer;
     [SerializeField] private Transform _zone;
     [SerializeField] private EnemyWave[] _waves;
 
     private EnemyWave _currentWave;
     private int _currentWaveNumber = 0;
-    private float _timerAfterLastSpawn;
+    private float _timerAfterLastSpawn = 0f;
     private int _create;
 
     private void Start()
     {
-        
+        for (int i = 0; i < _waves.Length; i++)
+        {
+            for (int j = 0; j < _waves[i].Count; j++)
+            {
+                Initialize(_waves[i].Tamplate);
+            }
+        }
+
+        _currentWave = _waves[_currentWaveNumber];
     }
 
     private void Update()
@@ -29,7 +35,12 @@ public class EnemySpawner : EnemyPool
 
         if (_timerAfterLastSpawn >= _currentWave.Delay)
         {
-            
+            if (TryGetEnemyObject(AgeItem.Iron, out Enemy resultGameObject))
+            {
+                resultGameObject.gameObject.SetActive(true);
+                resultGameObject.transform.position = GetPointInsideZone();
+                _timerAfterLastSpawn = 0f;
+            }
         }
     }
 
@@ -50,7 +61,7 @@ public class EnemySpawner : EnemyPool
     #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position,transform.localScale);
+        Gizmos.DrawWireCube(_zone.transform.position,_zone.transform.localScale);
     }
   #endif
 
