@@ -4,7 +4,10 @@ public class Disactivator : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.SetActive(false);
+        if (other.TryGetComponent(out Enemy enemy))
+        {
+            enemy.DisActivate();
+        }
     }
 }
 
