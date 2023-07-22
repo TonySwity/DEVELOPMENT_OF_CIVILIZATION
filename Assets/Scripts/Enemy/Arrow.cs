@@ -2,18 +2,27 @@ using DG.Tweening;
 using UnityEngine;
 public class Arrow : Enemy
 {
-    [SerializeField] private EnemyPath _enemyPath;
     [SerializeField] private PathType _pathType;
 
     private float _duration = 7f;
+    private Vector3[] _currentPath = {};
     
-    private void Start()
+    private void OnEnable()
     {
-        Move();
+        if (_currentPath.Length > 0)
+        {
+            Move();
+        }
+    }
+    
+    public void SetPath(Vector3[] path)
+    {
+        _currentPath = new Vector3[path.Length];
+        _currentPath = path;
     }
 
     protected override void Move()
-    {
-        transform.DOPath(_enemyPath.GetNewPath(), _duration, _pathType).SetLookAt(0.01f);
+    { ;
+        transform.DOPath(_currentPath, _duration, _pathType).SetLookAt(0.01f).OnComplete(() => {gameObject.SetActive(false);});
     }
 }
