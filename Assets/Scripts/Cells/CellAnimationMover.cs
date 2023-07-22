@@ -1,24 +1,26 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
 public class CellAnimationMover : MonoBehaviour
 {
     [SerializeField] private Transform[] _cellsGroup = {};
+
+    [SerializeField] private Vector3 _startPosition = new Vector3(0f, 0f, 20f); 
     
     private void Start()
     {
-        //PlayStartAnimation();
-        OpenIronAge();
+        StartCoroutine(PlayStartAnimation());
+        //OpenIronAge();
     }
     
-    private void PlayStartAnimation()
+    private void PlayStartAnimation1()
     {
-        //вернуть на 10 и -10
         float duration = 2f;
         
         for (int i = 0; i < _cellsGroup.Length; i++)
         {
-            _cellsGroup[i].DOMove(Vector3.zero, duration);
+            _cellsGroup[i].DOMove(Vector3.zero, duration).From(_startPosition);
         }
     }
 
@@ -35,6 +37,19 @@ public class CellAnimationMover : MonoBehaviour
         }
         
     }
+
+    private IEnumerator PlayStartAnimation()
+    {
+        float duration = 2f;
+        float _waitTime = 0.5f;
+        
+        for (int i = 0; i < _cellsGroup.Length; i++)
+        {
+            _cellsGroup[i].DOMove(Vector3.zero, duration).From(_startPosition);
+            yield return new WaitForSeconds(_waitTime);
+        }
+    }
+        
     
     
     //необходимо реализовать Когда появиться новый интересный айтем камера вокруг перса
