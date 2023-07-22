@@ -4,12 +4,12 @@ public class Enemy: MonoBehaviour
 {
     [field: SerializeField]public AgeItem AgeItem { get; private set; }
     
-    protected virtual void Move() {}
-
     public void DisActivate()
     {
         gameObject.SetActive(false);
     }
+    
+    protected virtual void Move() {}
     
     private void OnTriggerEnter(Collider other)
     {
