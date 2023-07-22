@@ -6,6 +6,7 @@ public class Arrow : Enemy
 
     private float _duration = 7f;
     private Vector3[] _currentPath = {};
+    private Vector3 _startPosition;
     
     private void OnEnable()
     {
@@ -22,7 +23,12 @@ public class Arrow : Enemy
     }
 
     protected override void Move()
-    { ;
-        transform.DOPath(_currentPath, _duration, _pathType).SetLookAt(0.01f).OnComplete(() => {gameObject.SetActive(false);});
+    { 
+        transform.DOPath(_currentPath, _duration, _pathType).SetLookAt(0.01f).OnComplete(() =>
+        {
+            transform.DOComplete();
+            gameObject.SetActive(false);
+        });
     }
+    
 }
