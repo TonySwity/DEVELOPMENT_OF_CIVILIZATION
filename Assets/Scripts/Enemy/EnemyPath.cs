@@ -9,9 +9,10 @@ public class EnemyPath : MonoBehaviour
     
     private Vector3[] _path = { };
     private Transform[] _tempPath;
-    private void Start()
+    
+    private void Awake()
     {
-         _tempPath= GetComponentsInChildren<Transform>();
+         _tempPath = GetComponentsInChildren<Transform>();
         _path = new Vector3[_tempPath.Length];
     }
 
