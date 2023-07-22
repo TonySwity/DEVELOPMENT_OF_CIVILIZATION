@@ -4,12 +4,14 @@ using Random = UnityEngine.Random;
 public class EnemySpawner : EnemyPool
 {
     [SerializeField] private Transform _zone;
+    [SerializeField] private EnemyPath _enemyPath;
     [SerializeField] private EnemyWave[] _waves;
+    [SerializeField] private int _currentWaveNumber = 0;
 
     private EnemyWave _currentWave;
-    private int _currentWaveNumber = 0;
     private float _timerAfterLastSpawn = 0f;
     private int _create;
+    private AgeItem _currentAgeItem;
 
     private void Start()
     {
@@ -35,10 +37,18 @@ public class EnemySpawner : EnemyPool
 
         if (_timerAfterLastSpawn >= _currentWave.Delay)
         {
-            if (TryGetEnemyObject(AgeItem.Iron, out Enemy resultGameObject))
+            if (TryGetEnemyObject(AgeItem.Iron, out Enemy resultEnemy))
             {
-                resultGameObject.gameObject.SetActive(true);
-                resultGameObject.transform.position = GetPointInsideZone();
+                resultEnemy.transform.position = GetPointInsideZone();
+                resultEnemy.gameObject.SetActive(true);
+                _timerAfterLastSpawn = 0f;
+            }
+            
+            if(TryGetEnemyObject(AgeItem.Bronze, out Arrow resultEnemyArrow))
+            {
+                resultEnemyArrow.transform.position = GetPointInsideZone();
+                resultEnemyArrow.SetPath(_enemyPath.GetNewPath());
+                resultEnemyArrow.gameObject.SetActive(true);
                 _timerAfterLastSpawn = 0f;
             }
         }
