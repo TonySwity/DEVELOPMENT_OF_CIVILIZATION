@@ -24,7 +24,7 @@ public class AgeGroupsUnlocker : MonoBehaviour
             }
         }
     }
-    
+
     private void CheckAchievement(ItemType itemType)
     {
         for (int i = 0; i < _ages.Length; i++)

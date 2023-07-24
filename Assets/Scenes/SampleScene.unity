@@ -1673,6 +1673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 1266815917}
+  _wallet: {fileID: 1490050410}
   _activeItems:
   - {fileID: 122358771658366031, guid: 357572eedfb6b47d294ccedd1e38e3aa, type: 3}
   - {fileID: 5331320684135531563, guid: 2ef6ee6ed83be40dda848c47d8ec50fc, type: 3}
@@ -2588,6 +2589,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1204155278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 668168132282584039, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
+  m_PrefabInstance: {fileID: 668168132597784022}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1204259677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,8 +3405,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 937992435}
-        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
-        m_MethodName: Spawn
+        m_TargetAssemblyTypeName: ActiveItemSpawner, Assembly-CSharp
+        m_MethodName: IncreaseIncome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3559,9 +3571,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3bccc56841443c875363091b4f2930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _incomePriceText: {fileID: 2008538136}
   _walletText: {fileID: 1781815062}
+  _activeItemText: {fileID: 1204155278}
   _timeBetweenIncome: 3
-  <Value>k__BackingField: 20
+  _value: 20
 --- !u!1 &1549366800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,11 +4043,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 668168132087563881, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_text
-      value: "\u0414\u043B\u044F \u0432\u0438\u0434\u0430"
+      value: "\u0411\u043E\u043D\u0443\u0441"
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641784, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_Name
-      value: Card (1)
+      value: Reward
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641785, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_Pivot.x
@@ -4299,9 +4313,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 573891183}
-  - {fileID: 1898249437}
   - {fileID: 1467401930}
+  - {fileID: 1898249437}
+  - {fileID: 573891183}
   m_Father: {fileID: 1006044375}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4602,6 +4616,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2008538136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 668168132282584039, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
+  m_PrefabInstance: {fileID: 2024740754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2024740754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4611,11 +4636,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 668168132087563881, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_text
-      value: "\u0414\u043B\u044F \u0432\u0438\u0434\u0430"
+      value: "\u0414\u043E\u0445\u043E\u0434"
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641784, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_Name
-      value: Card (2)
+      value: Income
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641785, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_Pivot.x
@@ -4627,7 +4652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641785, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641785, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4707,7 +4732,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668168132282584039, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_text
-      value: "\u0425\u0417"
+      value: '40 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 668168132282584039, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668168132282584057, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
+      propertyPath: m_Name
+      value: Text (Price)
       objectReference: {fileID: 0}
     - target: {fileID: 668168132536063223, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_RaycastTarget
@@ -4894,7 +4927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641784, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_Name
-      value: Card
+      value: ActiveItem
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641785, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_Pivot.x
@@ -4906,7 +4939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641785, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641785, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4979,6 +5012,10 @@ PrefabInstance:
     - target: {fileID: 668168132091641785, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668168132282584057, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
+      propertyPath: m_Name
+      value: Text (Price)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
