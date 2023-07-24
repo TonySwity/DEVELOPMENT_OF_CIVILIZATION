@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class ActiveItemSpawner : ActiveItemPool
 {
+    [SerializeField] private Wallet _wallet;
     [SerializeField] private ActiveItem[] _activeItems = new ActiveItem[]{};
     [SerializeField] private Cell _spawnPoint;
     [SerializeField] private MergeSystem _mergeSystem;
 
     private int _iDCounter = 0;
     private Vector3 _offset = Vector3.up * 0.2f;
-    
+    private int _activeItemPrice = 17;
+    private int _incomePrice = 40;
+    private int _increaseIncome = 2;
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
     
     private void Start()
@@ -28,7 +31,7 @@ public class ActiveItemSpawner : ActiveItemPool
     
     public void SpawnTree()
     {
-        if (TryGetActiveItem(ItemType.Tree, out ActiveItem result))
+        if (_wallet.TryBuy(_activeItemPrice) && TryGetActiveItem(ItemType.Tree, out ActiveItem result))
         {
             SetActiveItem(result, _spawnPoint);
         }
@@ -39,6 +42,15 @@ public class ActiveItemSpawner : ActiveItemPool
         if (TryGetActiveItem(ItemType.Man, out ActiveItem result))
         {
             SetActiveItem(result, _spawnPoint);
+        }
+    }
+    
+    public void IncreaseIncome()
+    {
+        if (_wallet.TryBuy(_incomePrice))
+        {
+            _wallet.AddIncome(_increaseIncome);
+            _wallet.IncreasePriseIncome(_incomePrice);
         }
     }
 
