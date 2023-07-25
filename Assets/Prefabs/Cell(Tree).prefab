@@ -360,6 +360,6 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
-  <IsPaired>k__BackingField: 0
-  <ItemID>k__BackingField: 0
-  <IsActivateMerge>k__BackingField: 0
+  _cellMask:
+    serializedVersion: 2
+    m_Bits: 64

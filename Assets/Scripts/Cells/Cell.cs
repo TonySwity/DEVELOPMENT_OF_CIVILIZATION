@@ -10,22 +10,27 @@ public class Cell : MonoBehaviour, ICellable
     private SphereCollider _sphereCollider;
     
     public event Action<ItemType> Achieved;
+    public event Action<Transform> MyTransformed;
 
     private void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _sphereCollider = GetComponent<SphereCollider>();
     }
-    
-    
+
+
     public void SetCurrentItemType(ItemType itemType)
     {
         CurrentItemType = itemType;
+        Debug.Log("!!!cell " + CurrentItemType);
+        // if (CurrentItemType != ItemType.Empty)
+        // {
+        //     Achieved?.Invoke(CurrentItemType);
+        //     MyTransformed?.Invoke(this.transform);
+        // }
         
-        if (CurrentItemType != ItemType.Empty)
-        {
-            Achieved?.Invoke(CurrentItemType);
-        }
+        //Achieved?.Invoke(CurrentItemType);
+       // Debug.Log(CurrentItemType);
     }
 
     public void EnableCollider() => _sphereCollider.enabled = true;

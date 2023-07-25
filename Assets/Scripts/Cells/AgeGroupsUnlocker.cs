@@ -3,6 +3,7 @@ using UnityEngine;
 public class AgeGroupsUnlocker : MonoBehaviour
 {
     [SerializeField] private AgeCellsUnlocker[] _ages = {};
+    [SerializeField] private Wallet _wallet;
     
     private ICellable[] _cells = { };
 
@@ -14,6 +15,7 @@ public class AgeGroupsUnlocker : MonoBehaviour
         for (int i = 0; i < _cells.Length; i++)
         {
             _cells[i].Achieved += CheckAchievement;
+            _cells[i].Achieved += _wallet.SetCountCells;
         }
 
         for (int i = 0; i < _ages.Length; i++)
@@ -35,12 +37,13 @@ public class AgeGroupsUnlocker : MonoBehaviour
             }
         }
     }
-
+    
     private void OnDisable()
     {
         for (int i = 0; i < _cells.Length; i++)
         {
             _cells[i].Achieved -= CheckAchievement;
+            _cells[i].Achieved -= _wallet.SetCountCells;
         }
     }
 }

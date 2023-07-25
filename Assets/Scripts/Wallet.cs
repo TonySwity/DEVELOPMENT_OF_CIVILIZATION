@@ -12,6 +12,8 @@ public class Wallet: MonoBehaviour
     [SerializeField] private int _value = 20;
 
     private float _timer = 0f;
+    private int _cellsCount = 0;
+    
     private int _income = 1;
     private int _incomePrice = 40;
     private int _activeItemPrice = 17;
@@ -29,9 +31,21 @@ public class Wallet: MonoBehaviour
 
         if (_timer >= _timeBetweenIncome)
         {
-            _value += _income;
+            _value += _income + (_income * _cellsCount);
             _timer = 0f;
             _walletText.text = _value.ToString();
+        }
+    }
+
+    public void SetCountCells(ItemType itemType)
+    {
+        if (itemType != ItemType.Empty)
+        {
+            _cellsCount++;
+        }
+        else
+        {
+            _cellsCount--;
         }
     }
 

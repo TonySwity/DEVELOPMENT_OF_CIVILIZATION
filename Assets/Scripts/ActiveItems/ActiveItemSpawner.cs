@@ -12,6 +12,8 @@ public class ActiveItemSpawner : ActiveItemPool
     private int _activeItemPrice = 17;
     private int _incomePrice = 40;
     private int _increaseIncome = 2;
+    private ItemType _tempItemType;
+    
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
     
     private void Start()
@@ -60,6 +62,7 @@ public class ActiveItemSpawner : ActiveItemPool
         {
             currentActiveItem.CurrentCell.SetCurrentItemType(ItemType.Empty);
             SetActiveItem(result, currentActiveItem.CurrentCell);
+            result.FindFCells();
             result.ActivatedMerge();
             result.FindFirstColliderToMerge();
         }
@@ -77,8 +80,7 @@ public class ActiveItemSpawner : ActiveItemPool
         ChangeIDActiveItem(activeItem);
         activeItem.gameObject.SetActive(true);
         activeItem.SetCurrentCell(cell);
-        cell.SetCurrentItemType(activeItem.CurrentItemType);
-        activeItem.transform.position = cell.transform.position + _offset;
+        activeItem.transform.position = new Vector3(cell.transform.position.x, _offset.y, cell.transform.position.z);
     }
     
     private void ChangeIDActiveItem(ActiveItem activeItem)

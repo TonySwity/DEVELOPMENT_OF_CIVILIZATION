@@ -124,7 +124,6 @@ public class SelectableObjectMover : MonoBehaviour
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitCell;
         float maxDistanceRay = 500f;
-        Collider[] hitColliders = {};
 
         if (Physics.Raycast(ray, out hitCell, maxDistanceRay, _layerMaskCell))
         {
