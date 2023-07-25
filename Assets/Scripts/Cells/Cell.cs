@@ -1,0 +1,42 @@
+using System;
+using UnityEngine;
+
+[RequireComponent(typeof(MeshRenderer), typeof(SphereCollider))]
+public class Cell : MonoBehaviour, ICellable
+{
+    [field: SerializeField] public ItemType CurrentItemType { get; private set; }
+
+    private MeshRenderer _meshRenderer;
+    private SphereCollider _sphereCollider;
+    
+    public event Action<ItemType> Achieved;
+    public event Action<Transform> MyTransformed;
+
+    private void Awake()
+    {
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _sphereCollider = GetComponent<SphereCollider>();
+    }
+
+
+    public void SetCurrentItemType(ItemType itemType)
+    {
+        CurrentItemType = itemType;
+        Debug.Log("!!!cell " + CurrentItemType);
+        // if (CurrentItemType != ItemType.Empty)
+        // {
+        //     Achieved?.Invoke(CurrentItemType);
+        //     MyTransformed?.Invoke(this.transform);
+        // }
+        
+        //Achieved?.Invoke(CurrentItemType);
+       // Debug.Log(CurrentItemType);
+    }
+
+    public void EnableCollider() => _sphereCollider.enabled = true;
+
+    public void DisableCollider() => _sphereCollider.enabled = false;
+
+    public void SetColorMaterial(Material material) => _meshRenderer.material = material;
+}
+
