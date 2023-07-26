@@ -11,7 +11,7 @@ public class ActiveItemPool : MonoBehaviour
     protected void Initialize(ActiveItem activeItem, MergeSystem mergeSystem)
     {
         ActiveItem spawned = Instantiate(activeItem, _container);
-        spawned.Init(mergeSystem);
+        //spawned.Init(mergeSystem);
         spawned.gameObject.SetActive(false);
         _pool.Add(spawned);
     }

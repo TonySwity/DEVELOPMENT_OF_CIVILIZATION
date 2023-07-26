@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class ActiveItemSpawner : ActiveItemPool
-{
+{/*
     [SerializeField] private Wallet _wallet;
     [SerializeField] private ActiveItem[] _activeItems = new ActiveItem[]{};
     [SerializeField] private Cell _spawnPoint;
@@ -87,5 +87,5 @@ public class ActiveItemSpawner : ActiveItemPool
     {
         _iDCounter += 1;
         activeItem.AddItemID(_iDCounter);
-    }
+    }*/
 }

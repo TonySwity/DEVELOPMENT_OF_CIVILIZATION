@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class MergeSystem : MonoBehaviour
-{
+{/*
     private const float DecelerationFactor = 0.5f;
     private const float MergeTime = 1f;
     private ActiveItemSpawner _activeItemSpawner;
@@ -40,10 +40,10 @@ public class MergeSystem : MonoBehaviour
                 yield return null;
             }
             
-            fromItem.ResetItemTypeCell();
+            //fromItem.ResetItemTypeCell();
             fromItem.transform.position = toItem.transform.position;
             fromItem.gameObject.SetActive(false);
             _activeItemSpawner?.SpawnNextActiveItem(toItem);
         }
-    }
+    }*/
 }
