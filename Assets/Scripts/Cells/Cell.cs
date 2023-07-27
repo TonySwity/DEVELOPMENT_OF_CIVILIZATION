@@ -10,7 +10,6 @@ public class Cell : MonoBehaviour, ICellable
     private SphereCollider _sphereCollider;
     
     public event Action<ItemType> Achieved;
-    public event Action<Transform> MyTransformed;
 
     private void Awake()
     {
@@ -22,15 +21,7 @@ public class Cell : MonoBehaviour, ICellable
     public void SetCurrentItemType(ItemType itemType)
     {
         CurrentItemType = itemType;
-        Debug.Log("!!!cell " + CurrentItemType);
-        // if (CurrentItemType != ItemType.Empty)
-        // {
-        //     Achieved?.Invoke(CurrentItemType);
-        //     MyTransformed?.Invoke(this.transform);
-        // }
-        
-        //Achieved?.Invoke(CurrentItemType);
-       // Debug.Log(CurrentItemType);
+        Debug.Log("!!!cell = " + CurrentItemType);
     }
 
     public void EnableCollider() => _sphereCollider.enabled = true;
