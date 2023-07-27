@@ -6,5 +6,10 @@ public static class Constants
         public const float MaxDistanceRay = 500f;
         public const float OffsetY = 0.2f;
     }
+
+    public static class ActiveItemMerge
+    {
+        public const float _radiusSphere = 0.9f;
+    }
 }
 
