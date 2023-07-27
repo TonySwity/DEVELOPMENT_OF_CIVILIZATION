@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Stone : Enemy
+public class Zombie : Enemy
 {
     [SerializeField] private float _speed = 7f;
     
