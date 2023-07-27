@@ -5,7 +5,9 @@ public class DragObject: ActiveItem
     private Plane _dragPlane;
     private Camera _camera;
     private Vector3 _startPosition;
+    private Cell _cell;
     [SerializeField] private LayerMask _layerMaskCell;
+    
     
     private void Awake()
     {
@@ -30,7 +32,8 @@ public class DragObject: ActiveItem
         {
             return;
         }
-
+        _cell = cell;
+        
         if (cell.CurrentItemType == ItemType.Empty)
         {
             return;
@@ -54,6 +57,7 @@ public class DragObject: ActiveItem
         if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
         {
             SetNewPosition(_startPosition);
+            ReturnItemTypeLastCell();
             OnUnhover();
             return;
         }
@@ -67,6 +71,7 @@ public class DragObject: ActiveItem
         if (cell.CurrentItemType != ItemType.Empty)
         {
             SetNewPosition(_startPosition);
+            ReturnItemTypeLastCell();
             OnHover();
             return;
         }
@@ -84,5 +89,10 @@ public class DragObject: ActiveItem
     private void SetStartPosition()
     {
         _startPosition = new Vector3(transform.position.x, Constants.DragObject.OffsetY, transform.position.z);
+    }
+
+    private void ReturnItemTypeLastCell()
+    {
+        _cell?.SetCurrentItemType(CurrentItemType);
     }
 }
