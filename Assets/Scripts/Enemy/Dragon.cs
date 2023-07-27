@@ -1,6 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
-public class Arrow : Enemy
+public class Dragon : Enemy
 {
     [SerializeField] private PathType _pathType;
 
