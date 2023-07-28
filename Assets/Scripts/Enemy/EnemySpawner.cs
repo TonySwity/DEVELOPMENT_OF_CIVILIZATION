@@ -44,7 +44,7 @@ public class EnemySpawner : EnemyPool
                 _timerAfterLastSpawn = 0f;
             }
             
-            if(TryGetEnemyObject(AgeItem.Bronze, out Arrow resultEnemyArrow))
+            if(TryGetEnemyObject(AgeItem.Bronze, out Dragon resultEnemyArrow))
             {
                 resultEnemyArrow.transform.position = GetPointInsideZone();
                 resultEnemyArrow.SetPath(_enemyPath.GetNewPath());
