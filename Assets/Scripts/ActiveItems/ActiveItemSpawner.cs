@@ -1,14 +1,14 @@
+using System;
 using UnityEngine;
 
 public class ActiveItemSpawner : ActiveItemPool
-{/*
+{
     [SerializeField] private Wallet _wallet;
     [SerializeField] private ActiveItem[] _activeItems = new ActiveItem[]{};
     [SerializeField] private Cell _spawnPoint;
     [SerializeField] private MergeSystem _mergeSystem;
 
     private int _iDCounter = 0;
-    private Vector3 _offset = Vector3.up * 0.2f;
     private int _activeItemPrice = 17;
     private int _incomePrice = 40;
     private int _increaseIncome = 2;
@@ -18,15 +18,15 @@ public class ActiveItemSpawner : ActiveItemPool
     
     private void Start()
     {
-        _mergeSystem.Init(this);
-        
         for (int i = 0; i < _activeItems.Length; i++)
         {
             ActiveItem activeItem = _activeItems[i];
+
+            
             
             for (int j = 0; j < CapacityOfEachType; j++)
             {
-                Initialize(activeItem, _mergeSystem);
+                Initialize(activeItem);
             }
         }
     }
@@ -35,6 +35,7 @@ public class ActiveItemSpawner : ActiveItemPool
     {
         if (_wallet.TryBuy(_activeItemPrice) && TryGetActiveItem(ItemType.Tree, out ActiveItem result))
         {
+            result.Merged += _mergeSystem.Collapse;
             SetActiveItem(result, _spawnPoint);
         }
     }
@@ -60,11 +61,11 @@ public class ActiveItemSpawner : ActiveItemPool
     {
         if(TryGetActiveItem(currentActiveItem.NextItem, out ActiveItem result))
         {
-            currentActiveItem.CurrentCell.SetCurrentItemType(ItemType.Empty);
-            SetActiveItem(result, currentActiveItem.CurrentCell);
-            result.FindFCells();
-            result.ActivatedMerge();
-            result.FindFirstColliderToMerge();
+            //currentActiveItem.CurrentCell.SetCurrentItemType(ItemType.Empty);
+            //SetActiveItem(result, currentActiveItem.CurrentCell);
+            //result.FindFCells();
+            //result.ActivatedMerge();
+            result.FindActiveItemToMerge();
         }
         
         currentActiveItem.gameObject.SetActive(false);
@@ -79,13 +80,16 @@ public class ActiveItemSpawner : ActiveItemPool
         
         ChangeIDActiveItem(activeItem);
         activeItem.gameObject.SetActive(true);
-        activeItem.SetCurrentCell(cell);
-        activeItem.transform.position = new Vector3(cell.transform.position.x, _offset.y, cell.transform.position.z);
+        activeItem.transform.position = new Vector3(cell.transform.position.x, Constants.DragObject.OffsetY, cell.transform.position.z);
     }
     
     private void ChangeIDActiveItem(ActiveItem activeItem)
     {
         _iDCounter += 1;
         activeItem.AddItemID(_iDCounter);
-    }*/
+    }
+
+    private void OnDisable()
+    {
+    }
 }

@@ -8,7 +8,7 @@ public class ActiveItemPool : MonoBehaviour
     
     private List<ActiveItem> _pool = new List<ActiveItem>();
     
-    protected void Initialize(ActiveItem activeItem, MergeSystem mergeSystem)
+    protected void Initialize(ActiveItem activeItem)
     {
         ActiveItem spawned = Instantiate(activeItem, _container);
         //spawned.Init(mergeSystem);
