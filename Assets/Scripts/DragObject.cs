@@ -1,14 +1,13 @@
-using System;
 using UnityEngine;
-public class DragObject: ActiveItem
+
+public class DragObject : ActiveItem
 {
     private Plane _dragPlane;
     private Camera _camera;
     private Vector3 _startPosition;
     private Cell _cell;
     [SerializeField] private LayerMask _layerMaskCell;
-    
-    
+
     private void Awake()
     {
         _camera = Camera.main;
@@ -18,11 +17,10 @@ public class DragObject: ActiveItem
     private void OnMouseDown()
     {
         SetStartPosition();
-        
         OnHover();
-        
+
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        
+
         if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
         {
             return;
@@ -32,16 +30,17 @@ public class DragObject: ActiveItem
         {
             return;
         }
-        _cell = cell;
         
+        _cell = cell;
+
         if (cell.CurrentItemType == ItemType.Empty)
         {
             return;
         }
-        
-        cell.SetCurrentItemType(ItemType.Empty);
+
+        _cell.SetCurrentItemType(ItemType.Empty);
     }
- 
+
     private void OnMouseDrag()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -53,7 +52,7 @@ public class DragObject: ActiveItem
     private void OnMouseUp()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        
+
         if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
         {
             SetNewPosition(_startPosition);
@@ -64,7 +63,6 @@ public class DragObject: ActiveItem
 
         if (hit.collider.TryGetComponent(out Cell cell) == false)
         {
-                
             return;
         }
 
@@ -72,15 +70,16 @@ public class DragObject: ActiveItem
         {
             SetNewPosition(_startPosition);
             ReturnItemTypeLastCell();
-            OnHover();
+            OnUnhover();
             return;
         }
         
-        SetNewPosition(cell.transform.position);
-        cell.SetCurrentItemType(CurrentItemType);
+        _cell = cell;
+        SetNewPosition(_cell.transform.position);
+        _cell.SetCurrentItemType(CurrentItemType);
         OnUnhover();
     }
-    
+
     private void SetNewPosition(Vector3 position)
     {
         transform.position = new Vector3(position.x, Constants.DragObject.OffsetY, position.z);
@@ -94,5 +93,10 @@ public class DragObject: ActiveItem
     private void ReturnItemTypeLastCell()
     {
         _cell?.SetCurrentItemType(CurrentItemType);
+    }
+
+    private void OnDisable()
+    {
+        _cell?.SetCurrentItemType(ItemType.Empty);
     }
 }
