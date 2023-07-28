@@ -60,6 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30294a21cd2845518a4beed6f8531a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMaskActiveItem:
+    serializedVersion: 2
+    m_Bits: 128
   <CurrentItemType>k__BackingField: 3
   <NextItem>k__BackingField: 4
   _layerMaskCell:
