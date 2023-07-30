@@ -21,7 +21,6 @@ public class Cell : MonoBehaviour, ICellable
     public void SetCurrentItemType(ItemType itemType)
     {
         CurrentItemType = itemType;
-        Debug.Log("!!!cell = " + CurrentItemType);
     }
 
     public void EnableCollider() => _sphereCollider.enabled = true;
