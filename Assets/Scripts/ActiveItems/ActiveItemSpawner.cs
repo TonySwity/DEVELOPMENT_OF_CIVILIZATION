@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class ActiveItemSpawner : ActiveItemPool
@@ -21,14 +20,14 @@ public class ActiveItemSpawner : ActiveItemPool
         for (int i = 0; i < _activeItems.Length; i++)
         {
             ActiveItem activeItem = _activeItems[i];
-
-            
             
             for (int j = 0; j < CapacityOfEachType; j++)
             {
                 Initialize(activeItem);
             }
         }
+
+        _mergeSystem.Spawned += SpawnNextActiveItem;
     }
     
     public void SpawnTree()
@@ -57,18 +56,18 @@ public class ActiveItemSpawner : ActiveItemPool
         }
     }
 
-    public void SpawnNextActiveItem(ActiveItem currentActiveItem)
+    public void SpawnNextActiveItem(ActiveItem activeItem)
     {
-        if(TryGetActiveItem(currentActiveItem.NextItem, out ActiveItem result))
+        if(TryGetActiveItem(activeItem.NextItem, out ActiveItem result))
         {
-            //currentActiveItem.CurrentCell.SetCurrentItemType(ItemType.Empty);
-            //SetActiveItem(result, currentActiveItem.CurrentCell);
-            //result.FindFCells();
-            //result.ActivatedMerge();
-            result.FindActiveItemToMerge();
+            Debug.Log("next");
+            result.transform.position = activeItem.transform.position;
+            activeItem.gameObject.SetActive(false);
+            result.gameObject.SetActive(true);
+            ChangeIDActiveItem(result);
+            result.Merged += _mergeSystem.Collapse;
+            result.OnUnhover();
         }
-        
-        currentActiveItem.gameObject.SetActive(false);
     }
     
     private void SetActiveItem(ActiveItem activeItem, Cell cell)
@@ -91,5 +90,6 @@ public class ActiveItemSpawner : ActiveItemPool
 
     private void OnDisable()
     {
+        _mergeSystem.Spawned -= SpawnNextActiveItem;
     }
 }
