@@ -86,8 +86,8 @@ public class ActiveItem : SelectableObject
         }
     }
     
-    public void ActivatedMerge() => IsActivateMerge = true;
-    public void DeactivateMerge() => IsActivateMerge = false;
+    private void ActivatedMerge() => IsActivateMerge = true;
+    private void DeactivateMerge() => IsActivateMerge = false;
 
     protected void MouseDown()
     {
