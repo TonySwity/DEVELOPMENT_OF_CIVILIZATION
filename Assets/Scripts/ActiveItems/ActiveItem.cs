@@ -4,6 +4,13 @@ using UnityEngine;
 public class ActiveItem : SelectableObject
 {
     [SerializeField] private LayerMask _layerMaskActiveItem;
+    [SerializeField] private LayerMask _layerMaskCell;
+
+    private Plane _dragPlane;
+    private Camera _camera;
+    private Vector3 _startPosition;
+    private Cell _cell;
+
     [field: SerializeField]public ItemType CurrentItemType { get; private set; }
     [field: SerializeField]public ItemType NextItem { get; private set; }
     
@@ -16,6 +23,28 @@ public class ActiveItem : SelectableObject
     private void OnEnable()
     {
         IsPaired = false;
+        
+        Ray ray = new Ray(new Vector3(transform.position.x, Constants.ActiveItemMerge.OffsetY, transform.position.z), Vector3.down);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
+        {
+            return;
+        }
+
+        if (hit.collider.TryGetComponent(out Cell cell) == false)
+        {
+            return;
+        }
+        
+        _cell = cell;
+        
+        _cell.SetCurrentItemType(CurrentItemType);
+    }
+    
+    private void Awake()
+    {
+        _camera = Camera.main;
+        _dragPlane = new Plane(Vector3.up, Vector3.zero);
     }
 
     public void AddItemID(int itemID) => ItemID = itemID;
@@ -33,22 +62,15 @@ public class ActiveItem : SelectableObject
         FindActiveItemToMerge();
     }
     
+    [ContextMenu("Merge")]
     public void FindActiveItemToMerge()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, Constants.ActiveItemMerge.RadiusSphere, _layerMaskActiveItem);
         int minColliders = 2;
         
-        Debug.Log("count colliders = " + colliders.Length);
-        
-        
         if (colliders.Length < minColliders)
         {
             return;
-        }
-
-        foreach (var col in colliders)
-        {
-            Debug.Log("ID col = " + col.GetComponent<ActiveItem>().ItemID);
         }
         
         foreach (var col in colliders)
@@ -58,13 +80,94 @@ public class ActiveItem : SelectableObject
                 ItemID != activeItem.ItemID && IsPaired == false &&
                 IsActivateMerge && activeItem.IsActivateMerge)
             {
-                Debug.Log("mer");
                 IsPaired = true;
                 Merged?.Invoke(this, activeItem);
             }
         }
     }
     
-    private void ActivatedMerge() => IsActivateMerge = true;
-    private void DeactivateMerge() => IsActivateMerge = false;
+    public void ActivatedMerge() => IsActivateMerge = true;
+    public void DeactivateMerge() => IsActivateMerge = false;
+
+    protected void MouseDown()
+    {
+        SetStartPosition();
+        OnHover();
+//вынести в метод
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
+        {
+            return;
+        }
+
+        if (hit.collider.TryGetComponent(out Cell cell) == false)
+        {
+            return;
+        }
+        
+        _cell = cell;
+        
+        _cell.SetCurrentItemType(ItemType.Empty);
+    }
+
+    protected void MouseDrag()
+    {
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        _dragPlane.Raycast(ray, out float distance);
+        Vector3 mousePosition = ray.GetPoint(distance);
+        transform.position = new Vector3(mousePosition.x, Constants.DragObject.OffsetY, mousePosition.z);
+    }
+
+    protected void MouseUp()
+    {
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
+        {
+            SetNewPosition(_startPosition);
+            ReturnItemTypeLastCell();
+            OnUnhover();
+            return;
+        }
+
+        if (hit.collider.TryGetComponent(out Cell cell) == false)
+        {
+            return;
+        }
+
+        if (cell.CurrentItemType != ItemType.Empty)
+        {
+            SetNewPosition(_startPosition);
+            ReturnItemTypeLastCell();
+            OnUnhover();
+            return;
+        }
+        
+        _cell = cell;
+        SetNewPosition(_cell.transform.position);
+        _cell.SetCurrentItemType(CurrentItemType);
+        OnUnhover();
+    }
+    
+    
+    private void SetNewPosition(Vector3 position)
+    {
+        transform.position = new Vector3(position.x, Constants.DragObject.OffsetY, position.z);
+    }
+
+    private void SetStartPosition()
+    {
+        _startPosition = new Vector3(transform.position.x, Constants.DragObject.OffsetY, transform.position.z);
+    }
+
+    private void ReturnItemTypeLastCell()
+    {
+        _cell.SetCurrentItemType(CurrentItemType);
+    }
+
+    private void OnDisable()
+    {
+        _cell?.SetCurrentItemType(ItemType.Empty);
+    }
 }
