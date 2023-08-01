@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Wallet: MonoBehaviour
 {
-    private const string MoneySymbol = "<color=green>$</color>";
-    
     [SerializeField] private TextMeshProUGUI _incomePriceText;
     [SerializeField] private TextMeshProUGUI _walletText;
     [SerializeField] private TextMeshProUGUI _activeItemText;
@@ -13,16 +11,14 @@ public class Wallet: MonoBehaviour
 
     private float _timer = 0f;
     private int _cellsCount = 0;
-    
     private int _income = 1;
     private int _incomePrice = 40;
-    private int _activeItemPrice = 17;
+    
     private void Start()
     {
         _walletText.text = _value.ToString();
-        _incomePriceText.text = _incomePrice + MoneySymbol;
-        _activeItemText.text = _activeItemPrice + MoneySymbol;
-
+        _incomePriceText.text = _incomePrice + Constants.Wallet.MoneySymbol;
+        _activeItemText.text = Constants.Wallet.ActiveItemPrice + Constants.Wallet.MoneySymbol;
     }
 
     private void Update()
@@ -49,27 +45,48 @@ public class Wallet: MonoBehaviour
         }
     }
 
-    public bool TryBuy(int money)
+    public bool TryBuy()
     {
-        if (_value < money)
+        
+        if (_value < Constants.Wallet.ActiveItemPrice)
         {
             return false;
         }
         
-        _value -= money;
+        _value -= Constants.Wallet.ActiveItemPrice;
         _walletText.text = _value.ToString();
         return true;
     }
     
-    public void AddIncome(int value)
+    private bool TryBuy(int value)
     {
-        _income += value;
+        
+        if (_value < value)
+        {
+            return false;
+        }
+        
+        _value -= value;
+        _walletText.text = _value.ToString();
+        
+        return true;
+    }
+    
+    private void AddIncome()
+    {
+        _income += Constants.Wallet.IncomeIncrease;
     }
 
-    public void IncreasePriseIncome(int money)
+    public void IncreasePriseIncome()
     {
-        _incomePrice += money;
-        _incomePriceText.text = _incomePrice + MoneySymbol;
+        if (TryBuy(_incomePrice) == false)
+        {
+            return;
+        }
+        
+        AddIncome();
+        _incomePrice += _incomePrice;
+        _incomePriceText.text = _incomePrice + Constants.Wallet.MoneySymbol;
     }
 }
 
