@@ -10,7 +10,7 @@ public static class Constants
     public static class ActiveItemMerge
     {
         public const float RadiusSphere = 0.9f;
-        public const float OffsetY = 1f;
+        public const float OffsetY = 2f;
     }
 }
 
