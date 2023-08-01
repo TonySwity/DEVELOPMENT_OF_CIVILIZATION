@@ -11,7 +11,6 @@ public class CellAnimationMover : MonoBehaviour
     private void Start()
     {
         StartCoroutine(PlayStartAnimation());
-        //OpenIronAge();
     }
     
     private void PlayStartAnimation1()
@@ -49,8 +48,4 @@ public class CellAnimationMover : MonoBehaviour
             yield return new WaitForSeconds(_waitTime);
         }
     }
-        
-    
-    
-    //необходимо реализовать Когда появиться новый интересный айтем камера вокруг перса
 }
