@@ -19,32 +19,20 @@ public class ActiveItem : SelectableObject
     public bool IsActivateMerge { get; private set; }
 
     public event Action<ActiveItem, ActiveItem> Merged;
-
-    private void OnEnable()
-    {
-        IsPaired = false;
-        
-        Ray ray = new Ray(new Vector3(transform.position.x, Constants.ActiveItemMerge.OffsetY, transform.position.z), Vector3.down);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
-        {
-            return;
-        }
-
-        if (hit.collider.TryGetComponent(out Cell cell) == false)
-        {
-            return;
-        }
-        
-        _cell = cell;
-        
-        _cell.SetCurrentItemType(CurrentItemType);
-    }
     
     private void Awake()
     {
         _camera = Camera.main;
         _dragPlane = new Plane(Vector3.up, Vector3.zero);
+    }
+    
+    private void OnEnable()
+    {
+        IsPaired = false;
+        
+        FindCell();
+        
+        _cell?.SetCurrentItemType(CurrentItemType);
     }
 
     public void AddItemID(int itemID) => ItemID = itemID;
@@ -62,7 +50,6 @@ public class ActiveItem : SelectableObject
         FindActiveItemToMerge();
     }
     
-    [ContextMenu("Merge")]
     public void FindActiveItemToMerge()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, Constants.ActiveItemMerge.RadiusSphere, _layerMaskActiveItem);
@@ -89,29 +76,15 @@ public class ActiveItem : SelectableObject
     private void ActivatedMerge() => IsActivateMerge = true;
     private void DeactivateMerge() => IsActivateMerge = false;
 
-    protected void MouseDown()
+    protected void Grab()
     {
         SetStartPosition();
         OnHover();
-//вынести в метод
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
-        {
-            return;
-        }
-
-        if (hit.collider.TryGetComponent(out Cell cell) == false)
-        {
-            return;
-        }
-        
-        _cell = cell;
-        
-        _cell.SetCurrentItemType(ItemType.Empty);
+        FindCell();
+        _cell?.SetCurrentItemType(ItemType.Empty);
     }
 
-    protected void MouseDrag()
+    protected void Drag()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         _dragPlane.Raycast(ray, out float distance);
@@ -119,7 +92,7 @@ public class ActiveItem : SelectableObject
         transform.position = new Vector3(mousePosition.x, Constants.DragObject.OffsetY, mousePosition.z);
     }
 
-    protected void MouseUp()
+    protected void LetGo()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
@@ -150,6 +123,22 @@ public class ActiveItem : SelectableObject
         OnUnhover();
     }
     
+    private void FindCell()
+    {
+        Ray ray = new Ray(new Vector3(transform.position.x, Constants.ActiveItemMerge.OffsetY, transform.position.z), Vector3.down);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
+        {
+            return;
+        }
+
+        if (hit.collider.TryGetComponent(out Cell cell) == false)
+        {
+            return;
+        }
+        
+        _cell = cell;
+    }
     
     private void SetNewPosition(Vector3 position)
     {
