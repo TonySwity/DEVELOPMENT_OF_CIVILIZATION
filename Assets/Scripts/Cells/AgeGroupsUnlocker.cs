@@ -4,8 +4,8 @@ public class AgeGroupsUnlocker : MonoBehaviour
 {
     [SerializeField] private AgeCellsUnlocker[] _ages = {};
     [SerializeField] private Wallet _wallet;
-    
-    private ICellable[] _cells = { };
+
+    private ICellable[] _cells = {};
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class AgeGroupsUnlocker : MonoBehaviour
 
         for (int i = 0; i < _ages.Length; i++)
         {
-            if (i >=  (int)AgeItem.Iron)
+            if (i >= (int)AgeItem.Iron)
             {
                 _ages[i].Block();
             }
@@ -29,15 +29,12 @@ public class AgeGroupsUnlocker : MonoBehaviour
 
     private void CheckAchievement(ItemType itemType)
     {
-        for (int i = 0; i < _ages.Length; i++)
+        if (itemType == ItemType.Home && _ages[(int)AgeItem.Iron].IsBlock)
         {
-            if (itemType == ItemType.Home && _ages[(int)AgeItem.Iron].IsBlock)
-            {
-                _ages[(int)AgeItem.Iron].Unlock();
-            }
+            _ages[(int)AgeItem.Iron].Unlock();
         }
     }
-    
+
     private void OnDisable()
     {
         for (int i = 0; i < _cells.Length; i++)
