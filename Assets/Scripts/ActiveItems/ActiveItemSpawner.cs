@@ -8,9 +8,6 @@ public class ActiveItemSpawner : ActiveItemPool
     [SerializeField] private MergeSystem _mergeSystem;
 
     private int _iDCounter = 0;
-    private int _activeItemPrice = 17;
-    private int _incomePrice = 40;
-    private int _increaseIncome = 2;
     private ItemType _tempItemType;
 
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
@@ -32,7 +29,7 @@ public class ActiveItemSpawner : ActiveItemPool
     
     public void Spawn()
     {
-        if ( _spawnPoint.CurrentItemType == ItemType.Empty && TryGetActiveItem(ItemType.Tree, out ActiveItem result) && _wallet.TryBuy(_activeItemPrice))
+        if ( _spawnPoint.CurrentItemType == ItemType.Empty && TryGetActiveItem(ItemType.Tree, out ActiveItem result) && _wallet.TryBuy())
         {
             ChangeIDActiveItem(result);
             PutActiveItemToSpawnPoint(result, _spawnPoint);
@@ -43,11 +40,7 @@ public class ActiveItemSpawner : ActiveItemPool
     
     public void IncreaseIncome()
     {
-        if (_wallet.TryBuy(_incomePrice))
-        {
-            _wallet.AddIncome(_increaseIncome);
-            _wallet.IncreasePriseIncome(_incomePrice);
-        }
+        _wallet.IncreasePriseIncome();
     }
 
     public void SpawnNextActiveItem(ActiveItem activeItem)
