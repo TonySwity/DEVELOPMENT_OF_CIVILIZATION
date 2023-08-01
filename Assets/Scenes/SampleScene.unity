@@ -5754,7 +5754,7 @@ PrefabInstance:
       objectReference: {fileID: 937992435}
     - target: {fileID: 1036402730, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SpawnTree
+      value: Spawn
       objectReference: {fileID: 0}
     - target: {fileID: 668168132091641784, guid: a6e6f2c7eace7485791946cb93bc2205, type: 3}
       propertyPath: m_Name
