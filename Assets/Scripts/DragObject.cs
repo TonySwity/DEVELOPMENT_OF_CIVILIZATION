@@ -2,16 +2,16 @@ public class DragObject : ActiveItem
 {
     private void OnMouseDown()
     {
-        MouseDown();
+        Grab();
     }
 
     private void OnMouseDrag()
     {
-        MouseDrag();
+        Drag();
     }
 
     private void OnMouseUp()
     {
-        MouseUp();
+        Release();
     }
 }
