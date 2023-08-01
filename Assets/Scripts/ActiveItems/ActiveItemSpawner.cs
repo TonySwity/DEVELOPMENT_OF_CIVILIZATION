@@ -12,7 +12,7 @@ public class ActiveItemSpawner : ActiveItemPool
     private int _incomePrice = 40;
     private int _increaseIncome = 2;
     private ItemType _tempItemType;
-    
+
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
     
     private void Start()
@@ -30,20 +30,14 @@ public class ActiveItemSpawner : ActiveItemPool
         _mergeSystem.Spawned += SpawnNextActiveItem;
     }
     
-    public void SpawnTree()
+    public void Spawn()
     {
-        if (_wallet.TryBuy(_activeItemPrice) && TryGetActiveItem(ItemType.Tree, out ActiveItem result))
+        if ( _spawnPoint.CurrentItemType == ItemType.Empty && TryGetActiveItem(ItemType.Tree, out ActiveItem result) && _wallet.TryBuy(_activeItemPrice))
         {
+            ChangeIDActiveItem(result);
+            PutActiveItemToSpawnPoint(result, _spawnPoint);
+            result.gameObject.SetActive(true);
             result.Merged += _mergeSystem.Collapse;
-            SetActiveItem(result, _spawnPoint);
-        }
-    }
-
-    public void SpawnMan()
-    {
-        if (TryGetActiveItem(ItemType.Man, out ActiveItem result))
-        {
-            SetActiveItem(result, _spawnPoint);
         }
     }
     
@@ -60,7 +54,6 @@ public class ActiveItemSpawner : ActiveItemPool
     {
         if(TryGetActiveItem(activeItem.NextItem, out ActiveItem result))
         {
-            Debug.Log("next");
             result.transform.position = activeItem.transform.position;
             activeItem.gameObject.SetActive(false);
             result.gameObject.SetActive(true);
@@ -70,16 +63,14 @@ public class ActiveItemSpawner : ActiveItemPool
         }
     }
     
-    private void SetActiveItem(ActiveItem activeItem, Cell cell)
+    private void PutActiveItemToSpawnPoint(ActiveItem activeItem, Cell spawnPointCell)
     {
-        if (cell.CurrentItemType != ItemType.Empty)
+        if (spawnPointCell.CurrentItemType != ItemType.Empty)
         {
             return;
         }
         
-        ChangeIDActiveItem(activeItem);
-        activeItem.gameObject.SetActive(true);
-        activeItem.transform.position = new Vector3(cell.transform.position.x, Constants.DragObject.OffsetY, cell.transform.position.z);
+        activeItem.transform.position = new Vector3(spawnPointCell.transform.position.x, Constants.DragObject.OffsetY, spawnPointCell.transform.position.z);
     }
     
     private void ChangeIDActiveItem(ActiveItem activeItem)
