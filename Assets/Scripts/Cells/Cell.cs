@@ -11,7 +11,7 @@ public class Cell : MonoBehaviour, ICellable
     
     public event Action<ItemType> Achieved;
 
-    private void Awake()
+    private void OnEnable()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _sphereCollider = GetComponent<SphereCollider>();
@@ -21,6 +21,7 @@ public class Cell : MonoBehaviour, ICellable
     public void SetCurrentItemType(ItemType itemType)
     {
         CurrentItemType = itemType;
+        Achieved?.Invoke(CurrentItemType);
     }
 
     public void EnableCollider() => _sphereCollider.enabled = true;
