@@ -10,7 +10,7 @@ public class Wallet: MonoBehaviour
     [SerializeField] private int _value = 20;
 
     private float _timer = 0f;
-    private int _cellsCount = 0;
+    [SerializeField] private int _cellsCount = 0;
     private int _income = 1;
     private int _incomePrice = 40;
     
@@ -41,7 +41,11 @@ public class Wallet: MonoBehaviour
         }
         else
         {
-            _cellsCount--;
+            if (_cellsCount > 0)
+            {
+                _cellsCount--;
+            }
+            
         }
     }
 
