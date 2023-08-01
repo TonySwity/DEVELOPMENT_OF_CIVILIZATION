@@ -92,7 +92,7 @@ public class ActiveItem : SelectableObject
         transform.position = new Vector3(mousePosition.x, Constants.DragObject.OffsetY, mousePosition.z);
     }
 
-    protected void LetGo()
+    protected void Release()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
