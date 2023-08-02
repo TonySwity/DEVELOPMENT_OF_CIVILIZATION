@@ -29,10 +29,26 @@ public class AgeGroupsUnlocker : MonoBehaviour
 
     private void CheckAchievement(ItemType itemType)
     {
-        if (itemType == ItemType.Home && _ages[(int)AgeItem.Iron].IsBlock)
+        if (itemType == ItemType.Man && _ages[(int)AgeItem.Iron].IsBlock)
         {
             _ages[(int)AgeItem.Iron].Unlock();
         }
+        
+        if (itemType == ItemType.SpiderMan && _ages[(int)AgeItem.Classic].IsBlock)
+        {
+            _ages[(int)AgeItem.Classic].Unlock();
+        }
+        
+        if (itemType == ItemType.Neo && _ages[(int)AgeItem.Modern].IsBlock)
+        {
+            _ages[(int)AgeItem.Classic].Unlock();
+        }
+        
+        if (itemType == ItemType.Grogu && _ages[(int)AgeItem.Future].IsBlock)
+        {
+            _ages[(int)AgeItem.Classic].Unlock();
+        }
+        
     }
 
     private void OnDisable()
