@@ -11,12 +11,11 @@ public class ActiveItemPool : MonoBehaviour
     protected void Initialize(ActiveItem activeItem)
     {
         ActiveItem spawned = Instantiate(activeItem, _container);
-        //spawned.Init(mergeSystem);
         spawned.gameObject.SetActive(false);
         _pool.Add(spawned);
     }
 
-    protected bool TryGetActiveItem(ItemType itemType, out ActiveItem activeItemResult)
+    protected bool TryGetActiveItemFromPool(ItemType itemType, out ActiveItem activeItemResult)
     {
         activeItemResult = _pool.FirstOrDefault(a => a.gameObject.activeSelf == false && a.CurrentItemType == itemType);
 
