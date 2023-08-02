@@ -48,7 +48,6 @@ public class AgeGroupsUnlocker : MonoBehaviour
         {
             _ages[(int)AgeItem.Classic].Unlock();
         }
-        
     }
 
     private void OnDisable()

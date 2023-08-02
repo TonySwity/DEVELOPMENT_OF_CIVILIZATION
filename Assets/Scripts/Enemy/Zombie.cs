@@ -4,6 +4,7 @@ public class Zombie : Enemy
 {
     [SerializeField] private float _speed = 7f;
     [SerializeField] private float _rotateSpeed = 180f;
+    
     private void Update()
     {
         Move();

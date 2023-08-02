@@ -45,13 +45,11 @@ public class Wallet: MonoBehaviour
             {
                 _cellsCount--;
             }
-            
         }
     }
 
     public bool TryBuy()
     {
-        
         if (_value < Constants.Wallet.ActiveItemPrice)
         {
             return false;

@@ -18,14 +18,13 @@ public class EnemyPool : MonoBehaviour
    protected bool TryGetEnemyObject(AgeItem ageItem, out Enemy resultEnemyObject)
    {
       resultEnemyObject = _pool.FirstOrDefault(e => e.gameObject.activeSelf == false && e.AgeItem == ageItem);
-
+      
       return resultEnemyObject != null;
    }
    
    protected bool TryGetEnemyObject(AgeItem ageItem, out Dragon resultEnemyObject)
    {
       var tempEnemyObject = _pool.FirstOrDefault(e => e.gameObject.activeSelf == false && e.AgeItem == ageItem);
-      
       resultEnemyObject = tempEnemyObject.gameObject.TryGetComponent(out Dragon arrow) ? arrow : null;
       
       return resultEnemyObject != null;

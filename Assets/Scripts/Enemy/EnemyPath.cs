@@ -21,7 +21,6 @@ public class EnemyPath : MonoBehaviour
         for (int i = 0; i < _tempPath.Length; i++)
         {
             float tempX = Random.Range(_minX, _maxX);
-            
             _tempPath[i].position = new Vector3(tempX, _tempPath[i].position.y, _tempPath[i].position.z);
             _path[i] = _tempPath[i].position;
         }

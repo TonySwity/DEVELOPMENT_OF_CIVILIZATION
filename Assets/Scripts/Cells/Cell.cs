@@ -16,8 +16,7 @@ public class Cell : MonoBehaviour, ICellable
         _meshRenderer = GetComponent<MeshRenderer>();
         _sphereCollider = GetComponent<SphereCollider>();
     }
-
-
+    
     public void SetCurrentItemType(ItemType itemType)
     {
         CurrentItemType = itemType;
