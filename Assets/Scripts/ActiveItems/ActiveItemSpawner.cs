@@ -29,7 +29,7 @@ public class ActiveItemSpawner : ActiveItemPool
     
     public void Spawn()
     {
-        if ( _spawnPoint.CurrentItemType == ItemType.Empty && TryGetActiveItem(ItemType.Tree, out ActiveItem result) && _wallet.TryBuy())
+        if ( _spawnPoint.CurrentItemType == ItemType.Empty && TryGetActiveItemFromPool(ItemType.Sheep, out ActiveItem result) && _wallet.TryBuy())
         {
             ChangeIDActiveItem(result);
             PutActiveItemToSpawnPoint(result, _spawnPoint);
@@ -45,11 +45,11 @@ public class ActiveItemSpawner : ActiveItemPool
 
     public void SpawnNextActiveItem(ActiveItem activeItem)
     {
-        if(TryGetActiveItem(activeItem.NextItem, out ActiveItem result))
+        if(TryGetActiveItemFromPool(activeItem.NextItem, out ActiveItem result))
         {
             result.transform.position = activeItem.transform.position;
-            activeItem.gameObject.SetActive(false);
-            result.gameObject.SetActive(true);
+            activeItem.ReturnToPool();
+            result.GetFromPool();
             ChangeIDActiveItem(result);
             result.Merged += _mergeSystem.Collapse;
             result.OnUnhover();
