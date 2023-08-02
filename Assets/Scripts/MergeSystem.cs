@@ -34,9 +34,9 @@ public class MergeSystem : MonoBehaviour
         {
             Vector3 startPosition = fromItem.transform.position;
 
-            for (float t = 0; t < MergeTime; t += Time.deltaTime / DecelerationFactor)
+            for (float timer = 0; timer < MergeTime; timer += Time.deltaTime / DecelerationFactor)
             {
-                fromItem.transform.position = Vector3.Lerp(startPosition, toItem.transform.position, t);
+                fromItem.transform.position = Vector3.Lerp(startPosition, toItem.transform.position, timer);
                 yield return null;
             }
             
