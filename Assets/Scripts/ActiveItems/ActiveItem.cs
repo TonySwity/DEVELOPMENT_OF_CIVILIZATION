@@ -36,6 +36,16 @@ public class ActiveItem : SelectableObject
     }
 
     public void AddItemID(int itemID) => ItemID = itemID;
+
+    public void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void GetFromPool()
+    {
+        gameObject.SetActive(true);
+    }
     
     public override void OnHover()
     {
