@@ -11,7 +11,7 @@ public class ActiveItemPool : MonoBehaviour
     protected void Initialize(ActiveItem activeItem)
     {
         ActiveItem spawned = Instantiate(activeItem, _container);
-        spawned.gameObject.SetActive(false);
+        spawned.ReturnToPool();
         _pool.Add(spawned);
     }
 
