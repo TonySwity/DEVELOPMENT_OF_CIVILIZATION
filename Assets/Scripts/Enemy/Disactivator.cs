@@ -6,7 +6,7 @@ public class Disactivator : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
-            enemy.DisActivate();
+            enemy.ReturnToPool();
         }
     }
 }
