@@ -11,7 +11,7 @@ public class EnemyPool : MonoBehaviour
    protected void Initialize(Enemy enemy)
    {
       Enemy spawned = Instantiate(enemy, _container);
-      spawned.gameObject.SetActive(false);
+      spawned.ReturnToPool();
       _pool.Add(spawned);
    }
    
@@ -25,7 +25,7 @@ public class EnemyPool : MonoBehaviour
    protected bool TryGetEnemyObject(AgeItem ageItem, out Dragon resultEnemyObject)
    {
       var tempEnemyObject = _pool.FirstOrDefault(e => e.gameObject.activeSelf == false && e.AgeItem == ageItem);
-      resultEnemyObject = tempEnemyObject.gameObject.TryGetComponent(out Dragon arrow) ? arrow : null;
+      resultEnemyObject = tempEnemyObject.gameObject.TryGetComponent(out Dragon dragon) ? dragon : null;
       
       return resultEnemyObject != null;
    }
