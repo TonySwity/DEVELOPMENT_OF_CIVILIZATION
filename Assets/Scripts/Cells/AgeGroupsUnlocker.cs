@@ -29,24 +29,24 @@ public class AgeGroupsUnlocker : MonoBehaviour
 
     private void CheckAchievement(ItemType itemType)
     {
-        if (itemType == ItemType.Man && _ages[(int)AgeItem.Iron].IsBlock)
+        switch (itemType)
         {
-            _ages[(int)AgeItem.Iron].Unlock();
-        }
-        
-        if (itemType == ItemType.SpiderMan && _ages[(int)AgeItem.Classic].IsBlock)
-        {
-            _ages[(int)AgeItem.Classic].Unlock();
-        }
-        
-        if (itemType == ItemType.Neo && _ages[(int)AgeItem.Modern].IsBlock)
-        {
-            _ages[(int)AgeItem.Classic].Unlock();
-        }
-        
-        if (itemType == ItemType.Grogu && _ages[(int)AgeItem.Future].IsBlock)
-        {
-            _ages[(int)AgeItem.Classic].Unlock();
+            case ItemType.Man when _ages[(int)AgeItem.Iron].IsBlock:
+                _ages[(int)AgeItem.Iron].Unlock();
+                break;
+            case ItemType.SpiderMan when _ages[(int)AgeItem.Classic].IsBlock:
+                _ages[(int)AgeItem.Classic].Unlock();
+                break;
+            case ItemType.Neo when _ages[(int)AgeItem.Modern].IsBlock:
+                _ages[(int)AgeItem.Modern].Unlock();
+                break;
+            case ItemType.Grogu when _ages[(int)AgeItem.Future].IsBlock:
+                _ages[(int)AgeItem.Future].Unlock();
+                break;
+            default:
+                print("Произошла незапланированная фигня");
+                break;
+                
         }
     }
 
