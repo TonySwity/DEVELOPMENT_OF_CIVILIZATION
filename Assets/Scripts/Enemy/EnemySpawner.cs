@@ -6,13 +6,14 @@ public class EnemySpawner : EnemyPool
     [SerializeField] private Transform _zone;
     [SerializeField] private EnemyPath _enemyPath;
     [SerializeField] private EnemyWave[] _waves;
-    [SerializeField] private int _currentWaveNumber = 0;
 
     private EnemyWave _currentWave;
     private float _timerAfterLastSpawn = 0f;
-    private int _create;
-    private AgeItem _currentAgeItem;
-
+    private bool _isZombiesAttack;
+    private bool _isDragonsAttack;
+    private int _zombiesIndex = 0;
+    private int _dragonIndex = 1;
+    
     private void Start()
     {
         for (int i = 0; i < _waves.Length; i++)
@@ -23,7 +24,7 @@ public class EnemySpawner : EnemyPool
             }
         }
 
-        _currentWave = _waves[_currentWaveNumber];
+        _currentWave = null;
     }
 
     private void Update()
@@ -32,31 +33,59 @@ public class EnemySpawner : EnemyPool
         {
             return;
         }
-
+        
         _timerAfterLastSpawn += Time.deltaTime;
 
-        if (_timerAfterLastSpawn >= _currentWave.Delay)
-        {
-            if (TryGetEnemyObject(AgeItem.Iron, out Enemy resultEnemy))
-            {
-                resultEnemy.transform.position = GetPointInsideZone();
-                resultEnemy.gameObject.SetActive(true);
-                _timerAfterLastSpawn = 0f;
-            }
-            
-            if(TryGetEnemyObject(AgeItem.Bronze, out Dragon resultEnemyArrow))
-            {
-                resultEnemyArrow.transform.position = GetPointInsideZone();
-                resultEnemyArrow.SetPath(_enemyPath.GetNewPath());
-                resultEnemyArrow.gameObject.SetActive(true);
-                _timerAfterLastSpawn = 0f;
-            }
-        }
+         if (_timerAfterLastSpawn >= _currentWave.Delay)
+         {
+            AttackZombies();
+            AttackDragons();
+         }
+    }
+    
+    public void ActivateZombiesAttack()
+    {
+        _isZombiesAttack = true;
+        _currentWave = _waves[_zombiesIndex];
     }
 
-    private void SetWave(int index)
+    public void DisActivateZombieAttack()
     {
-        _currentWave = _waves[index];
+        _isZombiesAttack = false;
+        _currentWave = null;
+    }
+
+    public void ActivateDragonAttack()
+    {
+        _isDragonsAttack = true;
+        _currentWave = _waves[_dragonIndex];
+    }
+    
+    public void DisActivateDragonAttack()
+    {
+        _isDragonsAttack = false;
+        _currentWave = null;
+    }
+    
+    private void AttackZombies()
+    {
+        if (_isZombiesAttack && TryGetEnemyObject(AgeItem.Modern, out Enemy resultEnemy))
+        {
+            resultEnemy.transform.position = GetPointInsideZone();
+            resultEnemy.GetFromPool();
+            _timerAfterLastSpawn = 0f;
+        }
+    }
+    
+    private void AttackDragons()
+    {
+        if(_isDragonsAttack && TryGetEnemyObject(AgeItem.Future, out Dragon resultEnemyArrow))
+        {
+            resultEnemyArrow.transform.position = GetPointInsideZone();
+            resultEnemyArrow.SetPath(_enemyPath.GetNewPath());
+            resultEnemyArrow.GetFromPool();
+            _timerAfterLastSpawn = 0f;
+        }
     }
 
     private Vector3 GetPointInsideZone()
