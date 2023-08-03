@@ -272,9 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a056b2335712a4fcaa0c81ce7c2f840f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AgeItem>k__BackingField: 2
-  _endPosition: {x: 0, y: 0, z: -6}
-  _speed: 7
+  <AgeItem>k__BackingField: 4
+  _speed: 5
+  _rotateSpeed: 180
 --- !u!1 &9006592169144002036
 GameObject:
   m_ObjectHideFlags: 0
