@@ -3,8 +3,8 @@ using UnityEngine;
 public class Dragon : Enemy
 {
     [SerializeField] private PathType _pathType;
-
-    private float _duration = 7f;
+    [SerializeField]private float _duration = 10f;
+    
     private Vector3[] _currentPath = {};
     private Vector3 _startPosition;
     

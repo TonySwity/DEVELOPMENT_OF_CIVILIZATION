@@ -77,8 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c013ef68b34303ae044c36a5c52cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AgeItem>k__BackingField: 1
+  <AgeItem>k__BackingField: 5
   _pathType: 1
+  _duration: 10
 --- !u!1 &6708163117499448865
 GameObject:
   m_ObjectHideFlags: 0
