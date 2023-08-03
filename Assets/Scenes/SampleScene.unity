@@ -349,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ages: []
   _wallet: {fileID: 1490050410}
+  _enemySpawner: {fileID: 1992960709}
 --- !u!114 &44872618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,7 +1627,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &937992434
 GameObject:
@@ -1684,7 +1685,7 @@ Transform:
   - {fileID: 357303946}
   - {fileID: 1727966342}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -2097,7 +2098,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1096375530
 GameObject:
@@ -3869,7 +3870,7 @@ Transform:
   m_Children:
   - {fileID: 1006044375}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727966341
 GameObject:
@@ -4234,7 +4235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1992960709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4253,10 +4254,10 @@ MonoBehaviour:
   _waves:
   - Tamplate: {fileID: 181835402, guid: 310ccc53dcc154099bdd42ebe85e5140, type: 3}
     Delay: 3
-    Count: 20
+    Count: 10
   - Tamplate: {fileID: 6708163117124937656, guid: 586248eb0697b4a929c3d1fe49ea5dd7, type: 3}
-    Delay: 3
-    Count: 20
+    Delay: 5
+    Count: 10
   _currentWaveNumber: 0
 --- !u!4 &1992960710
 Transform:
@@ -4274,7 +4275,7 @@ Transform:
   - {fileID: 761375496}
   - {fileID: 1297482988}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2065407078
 GameObject:
