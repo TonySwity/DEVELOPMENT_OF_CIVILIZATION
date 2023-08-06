@@ -14,10 +14,8 @@ public class ActiveItemSpawner : ActiveItemPool
     
     private void Start()
     {
-        for (int i = 0; i < _activeItems.Length; i++)
+        foreach (var activeItem in _activeItems)
         {
-            ActiveItem activeItem = _activeItems[i];
-            
             for (int j = 0; j < CapacityOfEachType; j++)
             {
                 Initialize(activeItem);
@@ -45,15 +43,18 @@ public class ActiveItemSpawner : ActiveItemPool
 
     public void SpawnNextActiveItem(ActiveItem activeItem)
     {
-        if(TryGetActiveItemFromPool(activeItem.NextItem, out ActiveItem result))
+        if (TryGetActiveItemFromPool(activeItem.NextItem, out ActiveItem result) == false)
         {
-            result.transform.position = activeItem.transform.position;
-            activeItem.ReturnToPool();
-            result.GetFromPool();
-            ChangeIDActiveItem(result);
-            result.Merged += _mergeSystem.Collapse;
-            result.OnUnhover();
+            return;
         }
+        
+        result.transform.position = activeItem.transform.position;
+        activeItem.ReturnToPool();
+        result.GetFromPool();
+        ChangeIDActiveItem(result);
+        result.Merged += _mergeSystem.Collapse;
+        result.OnUnhover();
+        _wallet.AddMoneyWhenNextActiveItemSpawn();
     }
     
     private void PutActiveItemToSpawnPoint(ActiveItem activeItem, Cell spawnPointCell)
