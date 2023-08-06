@@ -13,6 +13,7 @@ public class Wallet: MonoBehaviour
     [SerializeField] private int _cellsCount = 0;
     private int _income = 1;
     private int _incomePrice = 40;
+    private int _incomeNextActiveItemSpawn = 20;
     
     private void Start()
     {
@@ -60,6 +61,24 @@ public class Wallet: MonoBehaviour
         return true;
     }
     
+    public void IncreasePriseIncome()
+    {
+        if (TryBuy(_incomePrice) == false)
+        {
+            return;
+        }
+        
+        AddIncome();
+        _incomePrice += _incomePrice;
+        _incomePriceText.text = _incomePrice + Constants.Wallet.MoneySymbol;
+    }
+
+    public void AddMoneyWhenNextActiveItemSpawn()
+    {
+        _value += _incomeNextActiveItemSpawn;
+        _walletText.text = _value.ToString();
+    }
+    
     private bool TryBuy(int value)
     {
         
@@ -77,18 +96,6 @@ public class Wallet: MonoBehaviour
     private void AddIncome()
     {
         _income += Constants.Wallet.IncomeIncrease;
-    }
-
-    public void IncreasePriseIncome()
-    {
-        if (TryBuy(_incomePrice) == false)
-        {
-            return;
-        }
-        
-        AddIncome();
-        _incomePrice += _incomePrice;
-        _incomePriceText.text = _incomePrice + Constants.Wallet.MoneySymbol;
     }
 }
 
