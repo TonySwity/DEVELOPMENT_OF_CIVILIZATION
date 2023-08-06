@@ -1661,11 +1661,16 @@ MonoBehaviour:
   _container: {fileID: 1266815917}
   _wallet: {fileID: 1490050410}
   _activeItems:
-  - {fileID: 8762001888288347511, guid: 357572eedfb6b47d294ccedd1e38e3aa, type: 3}
-  - {fileID: 5213568231057268626, guid: 2ef6ee6ed83be40dda848c47d8ec50fc, type: 3}
-  - {fileID: 3662595009447568401, guid: 7f0c7d1e3216841a59f8ec3a2843af5b, type: 3}
   - {fileID: 3325694202857357995, guid: 1a309fb00e3dc42f085cfaee68292d20, type: 3}
   - {fileID: 6513374721779457650, guid: da0484723bd5c44b1ad2ccc16e3d324b, type: 3}
+  - {fileID: 2110526100325059110, guid: dac0e6346c6e349919c4da1f4cfd9193, type: 3}
+  - {fileID: 7455438013547660994, guid: c92b89655cc5c4a02883bb50b02c6c09, type: 3}
+  - {fileID: 4728731619507193038, guid: b849ac0eaea724dc390210434b31698a, type: 3}
+  - {fileID: 4657978147815662035, guid: 3153211fceb5449fcb672722d6218dad, type: 3}
+  - {fileID: 7498932316552033190, guid: 845fa3f7f3d624b94b7c49db44da8e34, type: 3}
+  - {fileID: 8570212926121839044, guid: 99342eb98810b49268100c8a724dfdfa, type: 3}
+  - {fileID: 428157230206114441, guid: 38af635b209464eac9af5f9d38b1fe14, type: 3}
+  - {fileID: 3631044459559858452, guid: 6369d3c1cdc06421aa7573f73e662d64, type: 3}
   _spawnPoint: {fileID: 357303947}
   _mergeSystem: {fileID: 1727966343}
   <CapacityOfEachType>k__BackingField: 20
@@ -3456,7 +3461,7 @@ MonoBehaviour:
   _walletText: {fileID: 1781815062}
   _activeItemText: {fileID: 1204155278}
   _timeBetweenIncome: 3
-  _value: 1000
+  _value: 40
   _cellsCount: 0
 --- !u!1 &1549366800
 GameObject:
@@ -4258,7 +4263,6 @@ MonoBehaviour:
   - Tamplate: {fileID: 6708163117124937656, guid: 586248eb0697b4a929c3d1fe49ea5dd7, type: 3}
     Delay: 5
     Count: 10
-  _currentWaveNumber: 0
 --- !u!4 &1992960710
 Transform:
   m_ObjectHideFlags: 0
