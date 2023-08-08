@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class Wallet: MonoBehaviour
     [SerializeField] private TextMeshProUGUI _incomePriceText;
     [SerializeField] private TextMeshProUGUI _walletText;
     [SerializeField] private TextMeshProUGUI _activeItemText;
+    [SerializeField] private TextMeshProUGUI _levelUpText;
+    [SerializeField] private TextMeshProUGUI _levelUpPriceText;
     [SerializeField] private float _timeBetweenIncome = 3f;
     [SerializeField] private int _value = 20;
 
@@ -13,13 +16,18 @@ public class Wallet: MonoBehaviour
     [SerializeField] private int _cellsCount = 0;
     private int _income = 1;
     private int _incomePrice = 40;
-    private int _incomeNextActiveItemSpawn = 20;
+    private int _levelUpPrice = 1000;
+    private int _levelIndex = 0;
+
+    public event Action<int> LevelUpped;
     
-    private void Start()
+    public void Initialize()
     {
         _walletText.text = _value.ToString();
         _incomePriceText.text = _incomePrice + Constants.Wallet.MoneySymbol;
         _activeItemText.text = Constants.Wallet.ActiveItemPrice + Constants.Wallet.MoneySymbol;
+        _levelUpText.text = _levelIndex.ToString();
+        _levelUpPriceText.text = _levelUpPrice + Constants.Wallet.MoneySymbol;
     }
 
     private void Update()
@@ -31,6 +39,18 @@ public class Wallet: MonoBehaviour
             _value += _income + (_income * _cellsCount);
             _timer = 0f;
             _walletText.text = _value.ToString();
+        }
+    }
+
+    public void BuyLevelUp()
+    {
+        if (TryBuy(_levelUpPrice))
+        {
+            _levelIndex++;
+            _levelUpPrice *= Constants.Wallet.MultiplicationFactorLevelUp;
+            _levelUpText.text = _levelIndex.ToString();
+            _levelUpPriceText.text = _levelUpPrice + Constants.Wallet.MoneySymbol;
+            LevelUpped?.Invoke(_levelIndex);
         }
     }
 
@@ -48,7 +68,7 @@ public class Wallet: MonoBehaviour
             }
         }
     }
-
+    
     public bool TryBuy()
     {
         if (_value < Constants.Wallet.ActiveItemPrice)
@@ -75,7 +95,7 @@ public class Wallet: MonoBehaviour
 
     public void AddMoneyWhenNextActiveItemSpawn()
     {
-        _value += _incomeNextActiveItemSpawn;
+        _value += Constants.Wallet.IncomeNextActiveItemSpawn;
         _walletText.text = _value.ToString();
     }
     
