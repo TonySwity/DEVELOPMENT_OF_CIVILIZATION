@@ -294,7 +294,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &44872615
 GameObject:
@@ -348,8 +348,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ages: []
-  _wallet: {fileID: 1490050410}
+  _wallet: {fileID: 3871370841940842502}
   _enemySpawner: {fileID: 1992960709}
+  _cellAnimationMover: {fileID: 44872618}
 --- !u!114 &44872618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,37 +2210,6 @@ Transform:
   m_Father: {fileID: 1297482988}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &847319062
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 847319064}
-  m_Layer: 0
-  m_Name: ActiveObjectMover
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &847319064
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847319062}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &937992434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,7 +2240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 1266815917}
-  _wallet: {fileID: 1490050410}
+  _wallet: {fileID: 3871370841940842502}
   _activeItems:
   - {fileID: 3325694202857357995, guid: 1a309fb00e3dc42f085cfaee68292d20, type: 3}
   - {fileID: 6513374721779457650, guid: da0484723bd5c44b1ad2ccc16e3d324b, type: 3}
@@ -2301,7 +2271,7 @@ Transform:
   - {fileID: 357303946}
   - {fileID: 1727966342}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -2398,7 +2368,7 @@ GameObject:
   - component: {fileID: 979935362}
   - component: {fileID: 979935363}
   m_Layer: 0
-  m_Name: GameMechanicsCenter
+  m_Name: Bootstrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2417,7 +2387,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &979935363
 MonoBehaviour:
@@ -2431,9 +2401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0847b3d2d34091b9250e3b3c4f3d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeItemSpawner: {fileID: 0}
-  _enemySpawner: {fileID: 0}
-  _ageGroups: {fileID: 0}
+  _activeItemSpawner: {fileID: 937992435}
+  _enemySpawner: {fileID: 1992960709}
+  _ageGroups: {fileID: 44872617}
+  _wallet: {fileID: 3871370841940842502}
 --- !u!1 &1006044374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,7 +2820,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1096375530
 GameObject:
@@ -3056,7 +3027,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1127664823
 MonoBehaviour:
@@ -3657,9 +3628,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ActiveItemSpawner, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 3871370841940842502}
+        m_TargetAssemblyTypeName: Wallet, Assembly-CSharp
+        m_MethodName: BuyLevelUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4333,56 +4304,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!1 &1490050408
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1490050409}
-  - component: {fileID: 1490050410}
-  m_Layer: 0
-  m_Name: Wallet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1490050409
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490050408}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1490050410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490050408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d3bccc56841443c875363091b4f2930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _incomePriceText: {fileID: 668168131870432373}
-  _walletText: {fileID: 1781815062}
-  _activeItemText: {fileID: 1204155278}
-  _timeBetweenIncome: 3
-  _value: 40
-  _cellsCount: 0
 --- !u!1 &1549366800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4690,12 +4611,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 26.95
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 12
+  m_fontSizeMax: 36
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
@@ -4930,7 +4851,7 @@ Transform:
   m_Children:
   - {fileID: 1006044375}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727966341
 GameObject:
@@ -10175,10 +10096,10 @@ MonoBehaviour:
   _enemyPath: {fileID: 1297482989}
   _waves:
   - Tamplate: {fileID: 181835402, guid: 310ccc53dcc154099bdd42ebe85e5140, type: 3}
-    Delay: 7
+    Delay: 5
     Count: 10
   - Tamplate: {fileID: 6708163117124937656, guid: 586248eb0697b4a929c3d1fe49ea5dd7, type: 3}
-    Delay: 10
+    Delay: 7
     Count: 10
 --- !u!4 &1992960710
 Transform:
@@ -22006,6 +21927,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3871370841940842501}
+  - component: {fileID: 3871370841940842502}
   m_Layer: 0
   m_Name: Wallet
   m_TagString: Untagged
@@ -22036,6 +21958,26 @@ RectTransform:
   m_AnchoredPosition: {x: -30, y: -30}
   m_SizeDelta: {x: 250, y: 170}
   m_Pivot: {x: 1, y: 1}
+--- !u!114 &3871370841940842502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871370841940842500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3bccc56841443c875363091b4f2930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _incomePriceText: {fileID: 668168131870432373}
+  _walletText: {fileID: 1781815062}
+  _activeItemText: {fileID: 1204155278}
+  _levelUpText: {fileID: 1049633457}
+  _levelUpPriceText: {fileID: 1640434749}
+  _timeBetweenIncome: 3
+  _value: 40
+  _cellsCount: 0
 --- !u!1 &3871370842051513416
 GameObject:
   m_ObjectHideFlags: 0
@@ -22178,7 +22120,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $$$
+  m_text: $
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a3f7e1414ec274440b18d110b6dadb37, type: 2}
   m_sharedMaterial: {fileID: 7541344027575542457, guid: a3f7e1414ec274440b18d110b6dadb37, type: 2}
