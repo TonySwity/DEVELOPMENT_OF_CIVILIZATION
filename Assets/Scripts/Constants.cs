@@ -18,6 +18,7 @@ public static class Constants
         public const string MoneySymbol = "<color=green>$</color>";
         public const int IncomeIncrease = 2;
         public const int MultiplicationFactorLevelUp = 5;
+        public const int IncomeNextActiveItemSpawn = 20;
     }
 }
 
