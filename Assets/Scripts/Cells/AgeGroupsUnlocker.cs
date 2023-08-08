@@ -5,11 +5,13 @@ public class AgeGroupsUnlocker : MonoBehaviour
     [SerializeField] private AgeCellsUnlocker[] _ages = {};
     [SerializeField] private Wallet _wallet;
     [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField] private CellAnimationMover _cellAnimationMover;
 
     private ICellable[] _cells = {};
 
-    private void Start()
+    public void Initialize()
     {
+        _cellAnimationMover.Initialize();
         _enemySpawner.DisActivateZombieAttack();
         _enemySpawner.DisActivateDragonAttack();
         _ages = transform.GetComponentsInChildren<AgeCellsUnlocker>();
@@ -25,6 +27,7 @@ public class AgeGroupsUnlocker : MonoBehaviour
         {
             if (i >= (int)AgeItem.Iron)
             {
+                _ages[i].Initialize();
                 _ages[i].Block();
             }
         }

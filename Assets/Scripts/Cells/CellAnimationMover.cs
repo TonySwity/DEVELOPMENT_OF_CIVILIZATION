@@ -7,7 +7,7 @@ public class CellAnimationMover : MonoBehaviour
     [SerializeField] private Transform[] _cellsGroup = {};
     [SerializeField] private Vector3 _startPosition = new Vector3(0f, 0f, 20f); 
     
-    private void Start()
+    public void Initialize()
     {
         StartCoroutine(PlayStartAnimation());
     }

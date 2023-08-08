@@ -14,7 +14,7 @@ public class EnemySpawner : EnemyPool
     private int _zombiesIndex = 0;
     private int _dragonIndex = 1;
     
-    private void Start()
+    public void Initialize()
     {
         for (int i = 0; i < _waves.Length; i++)
         {
