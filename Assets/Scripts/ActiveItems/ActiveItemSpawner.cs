@@ -7,12 +7,27 @@ public class ActiveItemSpawner : ActiveItemPool
     [SerializeField] private Cell _spawnPoint;
     [SerializeField] private MergeSystem _mergeSystem;
 
+    private readonly ItemType[] _itemTypes =
+    {
+        ItemType.Sheep,
+        ItemType.EndermanBaby,
+        ItemType.Enderman,
+        ItemType.Totem,
+        ItemType.Skeleton,
+        ItemType.Man,
+        ItemType.Women,
+        ItemType.SpiderMan,
+        ItemType.Neo,
+        ItemType.Grogu
+    };
+    
+    private int _activeIndexType = 0;
     private int _iDCounter = 0;
-    private ItemType _tempItemType;
+    private ItemType _currentActiveItemSpawn;
 
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
     
-    private void Start()
+    public void Initialize()
     {
         foreach (var activeItem in _activeItems)
         {
@@ -21,13 +36,15 @@ public class ActiveItemSpawner : ActiveItemPool
                 Initialize(activeItem);
             }
         }
-
+        
+        _wallet.LevelUpped += SetSpawnActiveItem;
+        _currentActiveItemSpawn = _itemTypes[_activeIndexType];
         _mergeSystem.Spawned += SpawnNextActiveItem;
     }
     
     public void Spawn()
     {
-        if ( _spawnPoint.CurrentItemType == ItemType.Empty && TryGetActiveItemFromPool(ItemType.Sheep, out ActiveItem result) && _wallet.TryBuy())
+        if ( _spawnPoint.CurrentItemType == ItemType.Empty && TryGetActiveItemFromPool(_currentActiveItemSpawn, out ActiveItem result) && _wallet.TryBuy())
         {
             ChangeIDActiveItem(result);
             PutActiveItemToSpawnPoint(result, _spawnPoint);
@@ -56,6 +73,16 @@ public class ActiveItemSpawner : ActiveItemPool
         result.OnUnhover();
         _wallet.AddMoneyWhenNextActiveItemSpawn();
     }
+
+    private void SetSpawnActiveItem(int levelIndex)
+    {
+        _activeIndexType = levelIndex;
+        
+        if (_activeIndexType < _itemTypes.Length)
+        {
+            _currentActiveItemSpawn = _itemTypes[_activeIndexType];
+        }
+    }
     
     private void PutActiveItemToSpawnPoint(ActiveItem activeItem, Cell spawnPointCell)
     {
@@ -76,5 +103,6 @@ public class ActiveItemSpawner : ActiveItemPool
     private void OnDisable()
     {
         _mergeSystem.Spawned -= SpawnNextActiveItem;
+        _wallet.LevelUpped -= SetSpawnActiveItem;
     }
 }
