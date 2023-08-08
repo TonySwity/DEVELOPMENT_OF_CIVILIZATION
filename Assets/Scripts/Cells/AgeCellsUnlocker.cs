@@ -10,7 +10,7 @@ public class AgeCellsUnlocker : MonoBehaviour
     public AgeItem CurrentAgeItem { get; private set; }
     public bool IsBlock { get; private set; }
 
-    private void OnEnable()
+    public void Initialize()
     {
         _cells = transform.GetComponentsInChildren<ICellable>();
     }
