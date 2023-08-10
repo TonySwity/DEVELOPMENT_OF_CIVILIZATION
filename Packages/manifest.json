@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.agava.webutility": "https://github.com/forcepusher/com.agava.webutility.git",
     "com.agava.yandexgames": "https://github.com/forcepusher/com.agava.yandexgames.git",
     "com.unity.2d.animation": "7.0.11",
     "com.unity.2d.pixel-perfect": "5.0.3",
