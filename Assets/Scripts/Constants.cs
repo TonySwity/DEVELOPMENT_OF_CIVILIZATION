@@ -20,5 +20,19 @@ public static class Constants
         public const int MultiplicationFactorLevelUp = 5;
         public const int IncomeNextActiveItemSpawn = 20;
     }
+
+    public static class AudioSource
+    {
+        public const float MinPitch = 0.9f;
+        public const float MaxPitch = 1.1f;
+    }
+
+    public static class AudioMixer
+    {
+        public const string MasterVolume = "MasterVolume";
+        public const string MusicVolume = "MusicVolume";
+        public const float MaxVolumeValue = 0f;
+        public const float MinVolumeValue = -80f;
+    }
 }
 
