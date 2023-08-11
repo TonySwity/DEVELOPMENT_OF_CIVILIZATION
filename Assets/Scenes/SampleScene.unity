@@ -304,7 +304,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19025935}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6058479764955560485, guid: a113a7b04be934273868b6f1b8f79f77, type: 2}
   m_audioClip: {fileID: 8300000, guid: 66e00627df9b543448e7668459838caa, type: 3}
@@ -445,10 +445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2040e300cee8e485c93a7951dafa8b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cellAnimationMover: {fileID: 44872618}
+  _enemySpawner: {fileID: 1992960709}
   _ages: []
   _wallet: {fileID: 3871370841940842502}
-  _enemySpawner: {fileID: 1992960709}
-  _cellAnimationMover: {fileID: 44872618}
   _cellRegistrationSound: {fileID: 1133073193}
 --- !u!114 &44872618
 MonoBehaviour:
@@ -1021,7 +1021,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2347,7 +2347,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2405,8 +2405,9 @@ GameObject:
   - component: {fileID: 605445121}
   - component: {fileID: 605445123}
   - component: {fileID: 605445122}
+  - component: {fileID: 605445124}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PausePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2473,6 +2474,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605445120}
   m_CullTransparentMesh: 1
+--- !u!114 &605445124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605445120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc228a38bdccb41e79c289759e5156e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mixer: {fileID: 24300002, guid: a113a7b04be934273868b6f1b8f79f77, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,7 +3335,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1032476279}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 605445120}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1032476279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3872,7 +3898,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 605445124}
+        m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
+        m_MethodName: ChangeVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1127664818
 GameObject:
   m_ObjectHideFlags: 0
@@ -4018,7 +4056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1132675895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4032,7 +4070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  m_BlockingObjects: 3
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -5451,7 +5489,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 605445124}
+        m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
+        m_MethodName: ToggleMusic
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1475680671
 GameObject:
@@ -23469,8 +23519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3bccc56841443c875363091b4f2930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _incomePriceText: {fileID: 668168131870432373}
   _walletText: {fileID: 1781815062}
+  _incomePriceText: {fileID: 668168131870432373}
   _activeItemText: {fileID: 1204155278}
   _levelUpText: {fileID: 1049633457}
   _levelUpPriceText: {fileID: 1640434749}
