@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Wallet: MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _incomePriceText;
     [SerializeField] private TextMeshProUGUI _walletText;
+    [SerializeField] private TextMeshProUGUI _incomePriceText;
     [SerializeField] private TextMeshProUGUI _activeItemText;
     [SerializeField] private TextMeshProUGUI _levelUpText;
     [SerializeField] private TextMeshProUGUI _levelUpPriceText;
     [SerializeField] private float _timeBetweenIncome = 3f;
     [SerializeField] private int _value = 20;
+    [SerializeField] private int _cellsCount = 0;
 
     private float _timer = 0f;
-    [SerializeField] private int _cellsCount = 0;
     private int _income = 1;
     private int _incomePrice = 40;
     private int _levelUpPrice = 1000;
