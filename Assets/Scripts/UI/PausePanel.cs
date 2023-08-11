@@ -26,10 +26,12 @@ public class PausePanel : MonoBehaviour
          _mixer.audioMixer.SetFloat(Constants.AudioMixer.MusicVolume, Constants.AudioMixer.MinVolumeValue);
       }
       
+      PlayerPrefs.SetInt(Constants.AudioMixer.MusicVolume, enable ? 1 : 0);
    }
 
    public void ChangeVolume(float volume)
    {
       _mixer.audioMixer.SetFloat(Constants.AudioMixer.MasterVolume, Mathf.Lerp(Constants.AudioMixer.MinVolumeValue, Constants.AudioMixer.MaxVolumeValue, volume));
+      PlayerPrefs.SetFloat(Constants.AudioMixer.MasterVolume, volume);
    }
 }
