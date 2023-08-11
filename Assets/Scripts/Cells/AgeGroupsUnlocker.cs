@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class AgeGroupsUnlocker : MonoBehaviour
 {
+    [SerializeField] private CellAnimationMover _cellAnimationMover;
+    [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private AgeCellsUnlocker[] _ages = {};
     [SerializeField] private Wallet _wallet;
-    [SerializeField] private EnemySpawner _enemySpawner;
-    [SerializeField] private CellAnimationMover _cellAnimationMover;
+    [SerializeField] private AudioSource _cellRegistrationSound;
 
     private ICellable[] _cells = {};
 
@@ -35,6 +36,9 @@ public class AgeGroupsUnlocker : MonoBehaviour
 
     private void CheckAchievement(ItemType itemType)
     {
+        _cellRegistrationSound.pitch = Random.Range(Constants.AudioSource.MinPitch, Constants.AudioSource.MaxPitch);
+        _cellRegistrationSound.Play();
+        
         switch (itemType)
         {
             case ItemType.Man when _ages[(int)AgeItem.Iron].IsBlock:
