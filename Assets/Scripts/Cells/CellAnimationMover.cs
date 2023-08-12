@@ -6,6 +6,7 @@ public class CellAnimationMover : MonoBehaviour
 {
     [SerializeField] private Transform[] _cellsGroup = {};
     [SerializeField] private Vector3 _startPosition = new Vector3(0f, 0f, 20f); 
+    
     private Vector3 _firstEndRotate = new Vector3(0, 0, 180);
     private Vector3 _secondEndRotate = new Vector3(0, 0, -0);
     
