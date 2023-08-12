@@ -6,6 +6,8 @@ public class CellAnimationMover : MonoBehaviour
 {
     [SerializeField] private Transform[] _cellsGroup = {};
     [SerializeField] private Vector3 _startPosition = new Vector3(0f, 0f, 20f); 
+    private Vector3 _firstEndRotate = new Vector3(0, 0, 180);
+    private Vector3 _secondEndRotate = new Vector3(0, 0, -0);
     
     public void Initialize()
     {
@@ -27,16 +29,15 @@ public class CellAnimationMover : MonoBehaviour
         float duration = 1f;
         float firstDOMoveY = -3f;
         float secondDOMoveY = 0f;
-        Vector3 firstEndRotate = new Vector3(0, 0, 180);
-        Vector3 secondEndRotate = new Vector3(0, 0, -0);
+
         Sequence sequence = DOTween.Sequence();
         
         for (int i = 0; i < _cellsGroup.Length; i++)
         {
             sequence.Append(_cellsGroup[i].DOMoveY(firstDOMoveY, duration));
-            sequence.Join(_cellsGroup[i].DORotate(firstEndRotate, duration));
+            sequence.Join(_cellsGroup[i].DORotate(_firstEndRotate, duration));
             sequence.Append(_cellsGroup[i].DOMoveY(secondDOMoveY, duration));
-            sequence.Join(_cellsGroup[i].DORotate(secondEndRotate, duration));
+            sequence.Join(_cellsGroup[i].DORotate(_secondEndRotate, duration));
         }
     }
 
