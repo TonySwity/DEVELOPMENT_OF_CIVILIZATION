@@ -31,6 +31,4 @@ public class SwitchToggle : MonoBehaviour
     {
         _toggle.onValueChanged.RemoveListener(OnSwitch);
     }
-
-
 }
