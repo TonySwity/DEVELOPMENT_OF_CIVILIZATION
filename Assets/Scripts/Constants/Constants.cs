@@ -31,8 +31,15 @@ public static class Constants
     {
         public const string MasterVolume = "MasterVolume";
         public const string MusicVolume = "MusicVolume";
+        public const string EffectsVolume = "EffectsVolume";
         public const float MaxVolumeValue = 0f;
         public const float MinVolumeValue = -80f;
+    }
+    
+    public static class Scenes
+    {
+        public const string InitialScene = "InitialScene";
+        public const string GameplayScene = "GameplayScene";
     }
 }
 
