@@ -19,14 +19,14 @@ public class PausePanel : MonoBehaviour
    {
       if (enable)
       {
-         _mixer.audioMixer.SetFloat(Constants.AudioMixer.MusicVolume, Constants.AudioMixer.MaxVolumeValue);
+         _mixer.audioMixer.SetFloat(Constants.AudioMixer.EffectsVolume, Constants.AudioMixer.MaxVolumeValue);
       }
       else
       {
-         _mixer.audioMixer.SetFloat(Constants.AudioMixer.MusicVolume, Constants.AudioMixer.MinVolumeValue);
+         _mixer.audioMixer.SetFloat(Constants.AudioMixer.EffectsVolume, Constants.AudioMixer.MinVolumeValue);
       }
       
-      PlayerPrefs.SetInt(Constants.AudioMixer.MusicVolume, enable ? 1 : 0);
+      PlayerPrefs.SetInt(Constants.AudioMixer.EffectsVolume, enable ? 1 : 0);
    }
 
    public void ChangeVolume(float volume)
