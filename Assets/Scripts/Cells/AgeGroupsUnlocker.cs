@@ -3,15 +3,17 @@ using UnityEngine;
 public class AgeGroupsUnlocker : MonoBehaviour
 {
     [SerializeField] private CellAnimationMover _cellAnimationMover;
-    [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private AgeCellsUnlocker[] _ages = {};
-    [SerializeField] private Wallet _wallet;
     [SerializeField] private AudioSource _cellRegistrationSound;
 
+    private Wallet _wallet;
+    private EnemySpawner _enemySpawner;
     private ICellable[] _cells = {};
 
-    public void Initialize()
+    public void Initialize(Wallet wallet, EnemySpawner enemySpawner)
     {
+        _wallet = wallet;
+        _enemySpawner = enemySpawner;
         _cellAnimationMover.Initialize();
         _enemySpawner.DisActivateZombieAttack();
         _enemySpawner.DisActivateDragonAttack();
