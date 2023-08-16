@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class ActiveItemSpawner : ActiveItemPool
 {
-    [SerializeField] private Wallet _wallet;
     [SerializeField] private ActiveItem[] _activeItems = new ActiveItem[]{};
     [SerializeField] private Cell _spawnPoint;
-    [SerializeField] private MergeSystem _mergeSystem;
-
+    
     private readonly ItemType[] _itemTypes =
     {
         ItemType.Sheep,
@@ -20,15 +18,19 @@ public class ActiveItemSpawner : ActiveItemPool
         ItemType.Neo,
         ItemType.Grogu
     };
-    
+    private Wallet _wallet;
+    private MergeSystem _mergeSystem;
     private int _activeIndexType = 0;
     private int _iDCounter = 0;
     private ItemType _currentActiveItemSpawn;
 
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
     
-    public void Initialize()
+    public void Initialize(Wallet wallet, MergeSystem mergeSystem)
     {
+        _wallet = wallet;
+        _mergeSystem = mergeSystem;
+        
         foreach (var activeItem in _activeItems)
         {
             for (int j = 0; j < CapacityOfEachType; j++)
