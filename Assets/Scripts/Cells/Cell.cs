@@ -8,13 +8,23 @@ public class Cell : MonoBehaviour, ICellable
 
     private MeshRenderer _meshRenderer;
     private SphereCollider _sphereCollider;
+    private bool _isBusy;
     
     public event Action<ItemType> Achieved;
-
+    public event Action<Vector3> Busied;
+    
     private void OnEnable()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _sphereCollider = GetComponent<SphereCollider>();
+    }
+
+    public void SayState()
+    {
+        if (CurrentItemType != ItemType.Empty)
+        {
+            Busied?.Invoke(transform.position);
+        }
     }
     
     public void SetCurrentItemType(ItemType itemType)
@@ -22,7 +32,7 @@ public class Cell : MonoBehaviour, ICellable
         CurrentItemType = itemType;
         Achieved?.Invoke(CurrentItemType);
     }
-
+    
     public void EnableCollider() => _sphereCollider.enabled = true;
 
     public void DisableCollider() => _sphereCollider.enabled = false;
