@@ -7,7 +7,6 @@ public class AgeCellsUnlocker : MonoBehaviour
     
     private ICellable[] _cells = {};
     
-    public AgeItem CurrentAgeItem { get; private set; }
     public bool IsBlock { get; private set; }
 
     public void Initialize()
