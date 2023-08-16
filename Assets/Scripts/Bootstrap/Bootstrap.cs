@@ -1,18 +1,20 @@
-using System;
 using UnityEngine;
-public class Bootstrap: MonoBehaviour
-{
-    [SerializeField] private ActiveItemSpawner _activeItemSpawner;
-    [SerializeField] private EnemySpawner _enemySpawner;
-    [SerializeField] private AgeGroupsUnlocker _ageGroups;
-    [SerializeField] private Wallet _wallet;
 
+public class Bootstrap : MonoBehaviour
+{
+    [SerializeField] private Wallet _wallet;
+    [SerializeField] private MergeSystem _mergeSystem;
+    [SerializeField] private ActiveItemSpawner _activeItemSpawner;
+    [SerializeField] private CoinAdder _coinAdder;
+    [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField] private AgeGroupsUnlocker _ageGroupsUnlocker;
+    
     private void Start()
     {
-        _ageGroups.Initialize();
-        _enemySpawner.Initialize();
-        _activeItemSpawner.Initialize();
         _wallet.Initialize();
+        _activeItemSpawner.Initialize(_wallet, _mergeSystem);
+        _coinAdder.Initialize(_wallet);
+        _enemySpawner.Initialize();
+        _ageGroupsUnlocker.Initialize(_wallet, _enemySpawner, _coinAdder);
     }
 }
-
