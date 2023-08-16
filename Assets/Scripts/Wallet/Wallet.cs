@@ -11,15 +11,15 @@ public class Wallet: MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelUpPriceText;
     [SerializeField] private float _timeBetweenIncome = 3f;
     [SerializeField] private int _value = 20;
-    [SerializeField] private int _cellsCount = 0;
 
     private float _timer = 0f;
     private int _income = 1;
     private int _incomePrice = 40;
     private int _levelUpPrice = 1000;
     private int _levelIndex = 0;
-
+    
     public event Action<int> LevelUpped;
+    public event Action AddedMoney;
     
     public void Initialize()
     {
@@ -36,12 +36,12 @@ public class Wallet: MonoBehaviour
 
         if (_timer >= _timeBetweenIncome)
         {
-            _value += _income + (_income * _cellsCount);
+            AddMoney();
             _timer = 0f;
-            _walletText.text = _value.ToString();
+            AddedMoney?.Invoke();
         }
     }
-
+    
     public void BuyLevelUp()
     {
         if (TryBuy(_levelUpPrice))
@@ -51,21 +51,6 @@ public class Wallet: MonoBehaviour
             _levelUpText.text = _levelIndex.ToString();
             _levelUpPriceText.text = _levelUpPrice + Constants.Wallet.MoneySymbol;
             LevelUpped?.Invoke(_levelIndex);
-        }
-    }
-
-    public void SetCountCells(ItemType itemType)
-    {
-        if (itemType != ItemType.Empty)
-        {
-            _cellsCount++;
-        }
-        else
-        {
-            if (_cellsCount > 0)
-            {
-                _cellsCount--;
-            }
         }
     }
     
@@ -80,7 +65,7 @@ public class Wallet: MonoBehaviour
         _walletText.text = _value.ToString();
         return true;
     }
-    
+
     public void IncreasePriseIncome()
     {
         if (TryBuy(_incomePrice) == false)
@@ -99,6 +84,12 @@ public class Wallet: MonoBehaviour
         _walletText.text = _value.ToString();
     }
     
+    public void AddMoney()
+    {
+        _value += _income;
+        _walletText.text = _value.ToString();
+    }
+
     private bool TryBuy(int value)
     {
         
