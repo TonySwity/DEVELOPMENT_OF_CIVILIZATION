@@ -20,7 +20,7 @@ public class ActiveItem : SelectableObject
 
     public event Action<ActiveItem, ActiveItem> Merged;
     
-    private void Awake()
+    private void Start()
     {
         _camera = Camera.main;
         _dragPlane = new Plane(Vector3.up, Vector3.zero);
