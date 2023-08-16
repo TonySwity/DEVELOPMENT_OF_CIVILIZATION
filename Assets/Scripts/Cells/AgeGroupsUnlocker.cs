@@ -8,22 +8,25 @@ public class AgeGroupsUnlocker : MonoBehaviour
 
     private Wallet _wallet;
     private EnemySpawner _enemySpawner;
+    private CoinAdder _coinAdder;
     private ICellable[] _cells = {};
 
-    public void Initialize(Wallet wallet, EnemySpawner enemySpawner)
+    public void Initialize(Wallet wallet, EnemySpawner enemySpawner, CoinAdder coinAdder)
     {
         _wallet = wallet;
         _enemySpawner = enemySpawner;
-        _cellAnimationMover.Initialize();
+        _coinAdder = coinAdder;
         _enemySpawner.DisActivateZombieAttack();
         _enemySpawner.DisActivateDragonAttack();
+        _cellAnimationMover.Initialize();
         _ages = transform.GetComponentsInChildren<AgeCellsUnlocker>();
         _cells = transform.GetComponentsInChildren<ICellable>();
 
         for (int i = 0; i < _cells.Length; i++)
         {
+            _cells[i].Busied += _coinAdder.StartCoinToWallet;
             _cells[i].Achieved += CheckAchievement;
-            _cells[i].Achieved += _wallet.SetCountCells;
+            _wallet.AddedMoney += _cells[i].SayState;
         }
 
         for (int i = 0; i < _ages.Length; i++)
@@ -67,8 +70,9 @@ public class AgeGroupsUnlocker : MonoBehaviour
     {
         for (int i = 0; i < _cells.Length; i++)
         {
+            _cells[i].Busied -= _coinAdder.StartCoinToWallet;
             _cells[i].Achieved -= CheckAchievement;
-            _cells[i].Achieved -= _wallet.SetCountCells;
+            _wallet.AddedMoney -= _cells[i].SayState;
         }
     }
 }
