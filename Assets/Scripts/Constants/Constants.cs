@@ -11,7 +11,7 @@ public static class Constants
         public const float RadiusSphere = 0.9f;
         public const float OffsetY = 2f;
     }
-    
+
     public static class Wallet
     {
         public const int ActiveItemPrice = 17;
@@ -35,11 +35,17 @@ public static class Constants
         public const float MaxVolumeValue = 0f;
         public const float MinVolumeValue = -80f;
     }
-    
+
     public static class Scenes
     {
         public const string InitialScene = "InitialScene";
         public const string GameplayScene = "GameplayScene";
     }
-}
 
+    public static class CoinAdder
+    {
+        public const int CoinCountForPool = 42;
+        public const float AdjustmentX = -140f;
+        public const float AdjustmentY = -50f;
+    }
+}
