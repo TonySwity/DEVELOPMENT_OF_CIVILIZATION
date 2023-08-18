@@ -8,7 +8,10 @@ public class CoinAdder : ObjectPool
 
     private Wallet _wallet;
     private Camera _camera;
-
+    private float _leftOffset = 2.5f;
+    private float _backOffsetPoint1 = 3f;
+    private float _backOffsetPoint2 = 2f;
+    
     public event Action Finished;
 
     public void Initialize(Wallet wallet)
@@ -33,10 +36,10 @@ public class CoinAdder : ObjectPool
         if (TryGetObjectFromPool(out GameObject result))
         {
             Vector3 point0 = cellPosition;
-            Vector3 point1 = point0 + Vector3.left * 2.5f + Vector3.back * 3f;
+            Vector3 point1 = point0 + Vector3.left * _leftOffset + Vector3.back * _backOffsetPoint1;
             Vector3 screenPositionWallet = new Vector3(walletPosition.x + Constants.CoinAdder.AdjustmentX, walletPosition.y + Constants.CoinAdder.AdjustmentY, -_camera.transform.position.z);
             Vector3 point3 = _camera.ScreenToWorldPoint(screenPositionWallet);
-            Vector3 point2 = point3 + Vector3.back * 4f;
+            Vector3 point2 = point3 + Vector3.back * _backOffsetPoint2;
             result.transform.position = point0;
             result.SetActive(true);
 
