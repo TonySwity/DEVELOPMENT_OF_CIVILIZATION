@@ -12,6 +12,7 @@ public class Bootstrap : MonoBehaviour
     private void Start()
     {
         _wallet.Initialize();
+        _mergeSystem.Initialize();
         _activeItemSpawner.Initialize(_wallet, _mergeSystem);
         _coinAdder.Initialize(_wallet);
         _enemySpawner.Initialize();
