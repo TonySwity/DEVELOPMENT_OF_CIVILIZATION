@@ -44,8 +44,6 @@ public class MergeSystem : ObjectPool
 
     private IEnumerator MergeProcess(ActiveItem fromItem, ActiveItem toItem)
     {
-
-        
         Vector3 startPosition = fromItem.transform.position;
 
         for (float timer = 0; timer < MergeTime; timer += Time.deltaTime / DecelerationFactor)
@@ -59,8 +57,6 @@ public class MergeSystem : ObjectPool
         fromItem.gameObject.SetActive(false);
         Spawned?.Invoke(toItem);
         toItem.Merged -= this.Collapse;
-        
-        
     }
 
     private IEnumerator MergeEffectAnimation(Vector3 position, float animationTime)
