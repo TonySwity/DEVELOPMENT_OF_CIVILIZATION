@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
 {
-    [SerializeField] private Camera _gameCamera;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private MergeSystem _mergeSystem;
+    [SerializeField] private Camera _gameCamera;
     [SerializeField] private ActiveItemSpawner _activeItemSpawner;
     [SerializeField] private CoinAdder _coinAdder;
     [SerializeField] private EnemySpawner _enemySpawner;
