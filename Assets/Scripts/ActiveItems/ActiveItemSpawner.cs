@@ -26,7 +26,7 @@ public class ActiveItemSpawner : ActiveItemPool
 
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
     
-    public void Initialize(Wallet wallet, MergeSystem mergeSystem)
+    public void Initialize(Wallet wallet, MergeSystem mergeSystem, Camera gameCamera)
     {
         _wallet = wallet;
         _mergeSystem = mergeSystem;
@@ -35,7 +35,7 @@ public class ActiveItemSpawner : ActiveItemPool
         {
             for (int j = 0; j < CapacityOfEachType; j++)
             {
-                Initialize(activeItem);
+                InitializePool(activeItem, gameCamera);
             }
         }
         
