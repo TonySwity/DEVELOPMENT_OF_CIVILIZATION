@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
 {
+    [SerializeField] private Camera _gameCamera;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private MergeSystem _mergeSystem;
     [SerializeField] private ActiveItemSpawner _activeItemSpawner;
@@ -13,7 +14,7 @@ public class Bootstrap : MonoBehaviour
     {
         _wallet.Initialize();
         _mergeSystem.Initialize();
-        _activeItemSpawner.Initialize(_wallet, _mergeSystem);
+        _activeItemSpawner.Initialize(_wallet, _mergeSystem, _gameCamera);
         _coinAdder.Initialize(_wallet);
         _enemySpawner.Initialize();
         _ageGroupsUnlocker.Initialize(_wallet, _enemySpawner, _coinAdder);
