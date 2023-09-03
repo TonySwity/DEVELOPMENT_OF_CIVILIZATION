@@ -20,9 +20,9 @@ public class ActiveItem : SelectableObject
 
     public event Action<ActiveItem, ActiveItem> Merged;
     
-    private void Start()
+    public void Init(Camera gameCamera)
     {
-        _camera = Camera.main;
+        _camera = gameCamera;
         _dragPlane = new Plane(Vector3.up, Vector3.zero);
     }
     
