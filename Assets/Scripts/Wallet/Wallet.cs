@@ -10,7 +10,7 @@ public class Wallet: MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelUpText;
     [SerializeField] private TextMeshProUGUI _levelUpPriceText;
     [SerializeField] private float _timeBetweenIncome = 3f;
-    [SerializeField] private int _value = 20;
+    private int _value = 20;
 
     private float _timer = 0f;
     private int _income = 1;
@@ -21,8 +21,9 @@ public class Wallet: MonoBehaviour
     public event Action<int> LevelUpped;
     public event Action AddedMoney;
     
-    public void Initialize()
+    public void Initialize(int value)
     {
+        _value = value;
         _walletText.text = _value.ToString();
         _incomePriceText.text = _incomePrice + Constants.Wallet.MoneySymbol;
         _activeItemText.text = Constants.Wallet.ActiveItemPrice + Constants.Wallet.MoneySymbol;
