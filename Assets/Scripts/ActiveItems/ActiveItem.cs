@@ -5,11 +5,12 @@ public class ActiveItem : SelectableObject
 {
     [SerializeField] private LayerMask _layerMaskActiveItem;
     [SerializeField] private LayerMask _layerMaskCell;
-
+    [SerializeField] private float _radius = 1f;
     private Plane _dragPlane;
     private Camera _camera;
     private Vector3 _startPosition;
     private Cell _cell;
+    private SphereCollider _collider;
 
     [field: SerializeField]public ItemType CurrentItemType { get; private set; }
     [field: SerializeField]public ItemType NextItem { get; private set; }
@@ -19,7 +20,13 @@ public class ActiveItem : SelectableObject
     public bool IsActivateMerge { get; private set; }
 
     public event Action<ActiveItem, ActiveItem> Merged;
-    
+
+    private void Awake()
+    {
+        _collider = this.GetComponent<SphereCollider>();
+        _collider.radius = _radius;
+    }
+
     public void Init(Camera gameCamera)
     {
         _camera = gameCamera;
@@ -28,10 +35,9 @@ public class ActiveItem : SelectableObject
     
     private void OnEnable()
     {
+        ActivateCollider();
         IsPaired = false;
-        
         FindCell();
-        
         _cell?.SetCurrentItemType(CurrentItemType);
     }
 
@@ -41,6 +47,10 @@ public class ActiveItem : SelectableObject
     {
         gameObject.SetActive(false);
     }
+
+    public void ActivateCollider() => _collider.enabled = true;
+
+    public void DeactivateCollider() => _collider.enabled = false;
 
     public void GetFromPool()
     {
