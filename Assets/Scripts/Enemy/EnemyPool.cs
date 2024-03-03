@@ -22,10 +22,10 @@ public class EnemyPool : MonoBehaviour
       return resultEnemyObject != null;
    }
    
-   protected bool TryGetEnemyObject(AgeItem ageItem, out Dragon resultEnemyObject)
+   protected bool TryGetEnemyObject(AgeItem ageItem, out Agent resultEnemyObject)
    {
-      var tempEnemyObject = _pool.FirstOrDefault(e => e.gameObject.activeSelf == false && e.AgeItem == ageItem);
-      resultEnemyObject = tempEnemyObject.gameObject.TryGetComponent(out Dragon dragon) ? dragon : null;
+      Enemy tempEnemyObject = _pool.FirstOrDefault(e => e.gameObject.activeSelf == false && e.AgeItem == ageItem);
+      resultEnemyObject = tempEnemyObject as Agent;
       
       return resultEnemyObject != null;
    }
