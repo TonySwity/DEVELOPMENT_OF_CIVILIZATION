@@ -44,6 +44,7 @@ public class MergeSystem : ObjectPool
 
     private IEnumerator MergeProcess(ActiveItem fromItem, ActiveItem toItem)
     {
+        fromItem.DeactivateCollider();
         Vector3 startPosition = fromItem.transform.position;
 
         for (float timer = 0; timer < MergeTime; timer += Time.deltaTime / DecelerationFactor)
