@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
-public class Dragon : Enemy
+
+public class Agent : Enemy
 {
     [SerializeField] private PathType _pathType;
     [SerializeField]private float _duration = 10f;
