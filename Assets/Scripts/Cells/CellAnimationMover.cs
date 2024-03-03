@@ -12,19 +12,8 @@ public class CellAnimationMover : MonoBehaviour
     
     public void Initialize()
     {
-        StartCoroutine(PlayStartAnimation());
+        //StartCoroutine(PlayStartAnimation());
     }
-    
-    private void PlayStartAnimation1()
-    {
-        float duration = 2f;
-        
-        for (int i = 0; i < _cellsGroup.Length; i++)
-        {
-            _cellsGroup[i].DOMove(Vector3.zero, duration).From(_startPosition);
-        }
-    }
-
     public void OpenAge()
     {
         float duration = 1f;
