@@ -79,7 +79,7 @@ public class EnemySpawner : EnemyPool
     
     private void AttackDragons()
     {
-        if(_isDragonsAttack && TryGetEnemyObject(AgeItem.Future, out Dragon resultEnemyArrow))
+        if(_isDragonsAttack && TryGetEnemyObject(AgeItem.Future, out Agent resultEnemyArrow))
         {
             resultEnemyArrow.transform.position = GetPointInsideZone();
             resultEnemyArrow.SetPath(_enemyPath.GetNewPath());
