@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -5,14 +6,22 @@ public class PausePanel : MonoBehaviour
 {
    [SerializeField] private AudioMixerGroup _mixer;
 
+   private bool _isPause;
+
+   public event Action<bool> PauseState; 
+
    private void OnEnable()
    {
       Time.timeScale = 0f;
+      _isPause = true;
+      PauseState?.Invoke(_isPause);
    }
 
    private void OnDisable()
    {
       Time.timeScale = 1f;
+      _isPause = false;
+      PauseState?.Invoke(_isPause);
    }
 
    public void ToggleMusic(bool enable)

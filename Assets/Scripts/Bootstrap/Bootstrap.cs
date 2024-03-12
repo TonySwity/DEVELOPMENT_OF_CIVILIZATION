@@ -10,11 +10,12 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private AgeGroupsUnlocker _ageGroupsUnlocker;
     [SerializeField] private int _walletValue = 40;
+    [SerializeField] private PausePanel _pausePanel;
     private void Start()
     {
         _wallet.Initialize(_walletValue);
         _mergeSystem.Initialize();
-        _activeItemSpawner.Initialize(_wallet, _mergeSystem, _gameCamera);
+        _activeItemSpawner.Initialize(_wallet, _mergeSystem, _gameCamera, _pausePanel);
         _coinAdder.Initialize(_wallet);
         _enemySpawner.Initialize();
         _ageGroupsUnlocker.Initialize(_wallet, _enemySpawner, _coinAdder);

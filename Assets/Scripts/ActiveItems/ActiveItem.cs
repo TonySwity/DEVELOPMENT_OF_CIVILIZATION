@@ -11,6 +11,7 @@ public class ActiveItem : SelectableObject
     private Vector3 _startPosition;
     private Cell _cell;
     private SphereCollider _collider;
+    private bool _isActivePause;
 
     [field: SerializeField]public ItemType CurrentItemType { get; private set; }
     [field: SerializeField]public ItemType NextItem { get; private set; }
@@ -41,21 +42,17 @@ public class ActiveItem : SelectableObject
         _cell?.SetCurrentItemType(CurrentItemType);
     }
 
+    public void SetActiveAction(bool value) => _isActivePause = value;
+    
     public void AddItemID(int itemID) => ItemID = itemID;
 
-    public void ReturnToPool()
-    {
-        gameObject.SetActive(false);
-    }
-
+    public void ReturnToPool() => gameObject.SetActive(false);
+    
     public void ActivateCollider() => _collider.enabled = true;
 
     public void DeactivateCollider() => _collider.enabled = false;
 
-    public void GetFromPool()
-    {
-        gameObject.SetActive(true);
-    }
+    public void GetFromPool() => gameObject.SetActive(true);
     
     public override void OnHover()
     {
@@ -98,6 +95,11 @@ public class ActiveItem : SelectableObject
 
     protected void Grab()
     {
+        if (_isActivePause)
+        {
+            return;
+        }
+        
         SetStartPosition();
         OnHover();
         FindCell();
@@ -106,6 +108,11 @@ public class ActiveItem : SelectableObject
 
     protected void Drag()
     {
+        if (_isActivePause)
+        {
+            return;
+        }
+        
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         _dragPlane.Raycast(ray, out float distance);
         Vector3 mousePosition = ray.GetPoint(distance);
@@ -114,6 +121,11 @@ public class ActiveItem : SelectableObject
 
     protected void Release()
     {
+        if (_isActivePause)
+        {
+            return;
+        }
+        
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, Constants.DragObject.MaxDistanceRay, _layerMaskCell) == false)
@@ -160,23 +172,11 @@ public class ActiveItem : SelectableObject
         _cell = cell;
     }
     
-    private void SetNewPosition(Vector3 position)
-    {
-        transform.position = new Vector3(position.x, Constants.DragObject.OffsetY, position.z);
-    }
+    private void SetNewPosition(Vector3 position)=> transform.position = new Vector3(position.x, Constants.DragObject.OffsetY, position.z);
 
-    private void SetStartPosition()
-    {
-        _startPosition = new Vector3(transform.position.x, Constants.DragObject.OffsetY, transform.position.z);
-    }
+    private void SetStartPosition() => _startPosition = new Vector3(transform.position.x, Constants.DragObject.OffsetY, transform.position.z);
 
-    private void ReturnItemTypeLastCell()
-    {
-        _cell.SetCurrentItemType(CurrentItemType);
-    }
+    private void ReturnItemTypeLastCell() => _cell.SetCurrentItemType(CurrentItemType);
 
-    private void OnDisable()
-    {
-        _cell?.SetCurrentItemType(ItemType.Empty);
-    }
+    private void OnDisable()=> _cell?.SetCurrentItemType(ItemType.Empty);
 }

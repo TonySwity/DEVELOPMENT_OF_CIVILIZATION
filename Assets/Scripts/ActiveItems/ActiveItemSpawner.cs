@@ -10,7 +10,7 @@ public class ActiveItemSpawner : ActiveItemPool
         ItemType.Sheep,
         ItemType.EndermanBaby,
         ItemType.Enderman,
-        ItemType.Totem,
+        //ItemType.Totem,
         ItemType.Skeleton,
         ItemType.Man,
         ItemType.Women,
@@ -26,18 +26,19 @@ public class ActiveItemSpawner : ActiveItemPool
 
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
     
-    public void Initialize(Wallet wallet, MergeSystem mergeSystem, Camera gameCamera)
+    public void Initialize(Wallet wallet, MergeSystem mergeSystem, Camera gameCamera, PausePanel pausePanel)
     {
         _wallet = wallet;
         _mergeSystem = mergeSystem;
-        
+        pausePanel.gameObject.SetActive(true);
         foreach (var activeItem in _activeItems)
         {
             for (int j = 0; j < CapacityOfEachType; j++)
             {
-                InitializePool(activeItem, gameCamera);
+                InitializePool(activeItem, gameCamera, pausePanel);
             }
         }
+        pausePanel.gameObject.SetActive(false);
         
         _wallet.LevelUpped += SetSpawnActiveItem;
         _currentActiveItemSpawn = _itemTypes[_activeIndexType];

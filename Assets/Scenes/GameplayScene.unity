@@ -6939,6 +6939,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 1992960709}
   _ageGroupsUnlocker: {fileID: 44872617}
   _walletValue: 40
+  _pausePanel: {fileID: 605445124}
 --- !u!1 &980302366
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,10 +8,12 @@ public class DragObject : ActiveItem
     private void OnMouseDrag()
     {
         Drag();
+        
     }
 
     private void OnMouseUp()
     {
         Release();
+        
     }
 }

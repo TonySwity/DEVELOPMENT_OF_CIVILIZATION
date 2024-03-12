@@ -8,10 +8,11 @@ public class ActiveItemPool : MonoBehaviour
     
     private List<ActiveItem> _pool = new List<ActiveItem>();
     
-    protected void InitializePool(ActiveItem activeItem, Camera gameCamera)
+    protected void InitializePool(ActiveItem activeItem, Camera gameCamera, PausePanel pausePanel)
     {
         ActiveItem spawned = Instantiate(activeItem, _container);
         spawned.Init(gameCamera);
+        pausePanel.PauseState += spawned.SetActiveAction;
         spawned.gameObject.SetActive(false);
         _pool.Add(spawned);
     }
