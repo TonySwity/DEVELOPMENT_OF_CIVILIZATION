@@ -833,7 +833,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 49c43f9ee46174369a4cc35d14633efd, type: 2}
     - target: {fileID: 919132149155446097, guid: aa6de247c36aa474aaa11a05c148c4a6, type: 3}
       propertyPath: m_Name
-      value: Emberman_copy
+      value: Emberman
       objectReference: {fileID: 0}
     - target: {fileID: 2853347263979531907, guid: aa6de247c36aa474aaa11a05c148c4a6, type: 3}
       propertyPath: m_LocalRotation.w

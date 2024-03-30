@@ -15,4 +15,5 @@ public class Zombie : Enemy
         transform.position += Vector3.back * (_speed * Time.deltaTime);
         transform.Rotate(Vector3.right * (_rotateSpeed * Time.deltaTime));;
     }
+    
 }

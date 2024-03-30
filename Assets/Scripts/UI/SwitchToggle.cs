@@ -7,7 +7,9 @@ public class SwitchToggle : MonoBehaviour
     [SerializeField] private RectTransform _uiHandleRectTransform;
 
     private Toggle _toggle;
+    
     private Vector2 _handlePosition;
+
     private int _setPosition = -1;
 
     private void OnEnable()

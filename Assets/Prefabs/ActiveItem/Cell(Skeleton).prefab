@@ -67,6 +67,7 @@ MonoBehaviour:
   _layerMaskCell:
     serializedVersion: 2
     m_Bits: 64
+  _radius: 1
   <CurrentItemType>k__BackingField: 5
   <NextItem>k__BackingField: 6
 --- !u!1 &3507542319959034498
@@ -616,15 +617,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
       propertyPath: m_LocalPosition.x
@@ -682,6 +683,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ebef2573abdb842d3af48c4096f8660c, type: 2}
+    - target: {fileID: -198904300690706714, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -198904300690706714, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -198904300690706714, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -198904300690706714, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
       propertyPath: m_Name
       value: Skeleton
@@ -700,6 +717,31 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ebef2573abdb842d3af48c4096f8660c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
+--- !u!1 &3575131750796585890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
+  m_PrefabInstance: {fileID: 4421411903259956979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8090238737302335803
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3575131750796585890}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd8d245ac37b24bf2b94c91e86cec938, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &4239782593555542296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c1ba63ed5319445e901085410caa340, type: 3}
