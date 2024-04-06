@@ -68,8 +68,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _radius: 1
-  <CurrentItemType>k__BackingField: 6
-  <NextItem>k__BackingField: 7
+  <CurrentItemType>k__BackingField: 5
+  <NextItem>k__BackingField: 6
 --- !u!1 &9017898897054106719
 GameObject:
   m_ObjectHideFlags: 0
