@@ -3,7 +3,37 @@ guid: 7111869c75f8644f688e5109f04b3f32
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ManFinal.vox-0CleanedMaterial
+    second: {fileID: 2100000, guid: 98db031ec80df4491be4ef9f66ee71b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ManFinal.vox-1CleanedMaterial
+    second: {fileID: 2100000, guid: 98db031ec80df4491be4ef9f66ee71b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ManFinal.vox-2CleanedMaterial
+    second: {fileID: 2100000, guid: 98db031ec80df4491be4ef9f66ee71b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ManFinal.vox-3CleanedMaterial
+    second: {fileID: 2100000, guid: 98db031ec80df4491be4ef9f66ee71b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ManFinal.vox-4CleanedMaterial
+    second: {fileID: 2100000, guid: 98db031ec80df4491be4ef9f66ee71b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ManFinal.vox-5CleanedMaterial
+    second: {fileID: 2100000, guid: 98db031ec80df4491be4ef9f66ee71b2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

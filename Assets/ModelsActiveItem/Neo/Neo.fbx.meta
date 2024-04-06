@@ -3,7 +3,12 @@ guid: ddd67ceda54c349cd995d9c8f734df45
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NeoFinal.vox-0CleanedMaterial
+    second: {fileID: 2100000, guid: 148740ee0f87f441e94227c0499a10d7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,12 @@ guid: 2c1ba63ed5319445e901085410caa340
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SkeletonFinal.vox-0CleanedMaterial
+    second: {fileID: 2100000, guid: ebef2573abdb842d3af48c4096f8660c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

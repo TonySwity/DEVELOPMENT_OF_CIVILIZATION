@@ -3,7 +3,12 @@ guid: 08609d818c61f449d90f019e50fdd59c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EmbermanBabyFinal.vox-0CleanedMaterial
+    second: {fileID: 2100000, guid: d11afada9554848499bb086316d75ee8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

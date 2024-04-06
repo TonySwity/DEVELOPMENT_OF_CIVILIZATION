@@ -3,7 +3,12 @@ guid: e285dc6777d144a649deb0fe5e92a569
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SpiderManFinal.vox-0CleanedMaterial
+    second: {fileID: 2100000, guid: fda31618d7bfc452ebd94c25b2301a17, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

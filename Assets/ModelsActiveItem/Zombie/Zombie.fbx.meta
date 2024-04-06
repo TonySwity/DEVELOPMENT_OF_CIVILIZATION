@@ -3,7 +3,12 @@ guid: 9da6f5d28d1ef4c90a9a633676c3e3b7
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ZombieFinal.vox-0CleanedMaterial
+    second: {fileID: 2100000, guid: 0461601d7e6ad48d3b4b1d627db043f9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

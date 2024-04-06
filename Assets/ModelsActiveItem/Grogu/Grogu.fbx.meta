@@ -3,7 +3,12 @@ guid: 706c22da81fd94ddd942621ef8f93e1f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GroguFinal.vox-0CleanedMaterial.001
+    second: {fileID: 2100000, guid: f854ecf90eb024af794ab61d1243f951, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

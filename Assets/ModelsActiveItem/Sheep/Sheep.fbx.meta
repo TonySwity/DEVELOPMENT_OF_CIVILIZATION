@@ -3,7 +3,12 @@ guid: 625d6d0d67a024891ab8ae1a44d4f3b4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SheepFinal.vox-0CleanedMaterial
+    second: {fileID: 2100000, guid: 31bc9c08e31cd43979af8e300de2ce42, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
