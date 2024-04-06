@@ -4,12 +4,11 @@ public enum ItemType
     Sheep,
     EndermanBaby,
     Enderman,
-    Totem,
     Skeleton,
     Man,
     Women,
     SpiderMan,
+    Trinity,
     Neo,
     Grogu
-    
 }
