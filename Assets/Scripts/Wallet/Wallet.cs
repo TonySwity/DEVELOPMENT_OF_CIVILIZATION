@@ -16,7 +16,7 @@ public class Wallet: MonoBehaviour
     private int _income = 1;
     private int _incomePrice = 40;
     private int _levelUpPrice = 1000;
-    private int _levelIndex = 0;
+    private int _levelIndex = 1;
     
     public event Action<int> LevelUpped;
     public event Action AddedMoney;
