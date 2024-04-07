@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ActiveItemSpawner : ActiveItemPool
@@ -5,24 +7,12 @@ public class ActiveItemSpawner : ActiveItemPool
     [SerializeField] private ActiveItem[] _activeItems = new ActiveItem[]{};
     [SerializeField] private Cell _spawnPoint;
     
-    private readonly ItemType[] _itemTypes =
-    {
-        ItemType.Sheep,
-        ItemType.EndermanBaby,
-        ItemType.Enderman,
-        //ItemType.Totem,
-        ItemType.Skeleton,
-        ItemType.Man,
-        ItemType.Women,
-        ItemType.SpiderMan,
-        ItemType.Neo,
-        ItemType.Grogu
-    };
     private Wallet _wallet;
     private MergeSystem _mergeSystem;
     private int _activeIndexType = 0;
     private int _iDCounter = 0;
     private ItemType _currentActiveItemSpawn;
+    private int _lenghtItemType => Enum.GetValues(typeof(ItemType)).Length - 1;
 
     [field: SerializeField]public int CapacityOfEachType { get; private set; } = 20;
     
@@ -41,7 +31,7 @@ public class ActiveItemSpawner : ActiveItemPool
         pausePanel.gameObject.SetActive(false);
         
         _wallet.LevelUpped += SetSpawnActiveItem;
-        _currentActiveItemSpawn = _itemTypes[_activeIndexType];
+        _currentActiveItemSpawn = (ItemType)_activeIndexType;
         _mergeSystem.Spawned += SpawnNextActiveItem;
     }
     
@@ -81,9 +71,9 @@ public class ActiveItemSpawner : ActiveItemPool
     {
         _activeIndexType = levelIndex;
         
-        if (_activeIndexType < _itemTypes.Length)
+        if (_activeIndexType < _lenghtItemType)
         {
-            _currentActiveItemSpawn = _itemTypes[_activeIndexType];
+            _currentActiveItemSpawn = (ItemType)_activeIndexType;
         }
     }
     
